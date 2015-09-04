@@ -2,8 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 public class main {
 	
@@ -25,7 +23,7 @@ public class main {
 		username.sendKeys("pawel");
 		
 		WebElement password = driver.findElement(By.name("j_password"));
-		password.sendKeys("W4rr10rs");
+		password.sendKeys("INPUT REAL PASS HERE");
 		
 		WebElement submit_button = driver.findElement(By.name("login"));
 		submit_button.submit();
