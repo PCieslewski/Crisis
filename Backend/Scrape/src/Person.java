@@ -4,16 +4,18 @@ public class Person {
 	private String birthday;
 	private String major;
 	private String college;
+	private Schedule schedule;
 	
 	public Person() {
 		
 	}
 	
-	public Person(String name, String birthday, String major, String college) {
+	public Person(String name, String birthday, String major, String college, Schedule schedule) {
 		this.name = name;
 		this.birthday = birthday;
 		this.major = major;
 		this.college = college;
+		this.schedule = schedule;
 	}
 	
 	public String getName() {
@@ -46,6 +48,14 @@ public class Person {
 	
 	public void setCollege(String college) {
 		this.college = college;
+	}
+	
+	public Schedule getSchedule() {
+		return schedule;
+	}
+	
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
 	}
 	
 }
