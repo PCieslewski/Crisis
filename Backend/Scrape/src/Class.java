@@ -1,3 +1,4 @@
+import java.util.List;
 
 public class Class {
 
@@ -5,21 +6,19 @@ public class Class {
 	private String type;
 	private String course;
 	private String credits;
-	private ClassTime classTime;
-	private ClassLocation classLocation;
+	private List<ClassTimeAndLocation> classTimeAndLocation;
 
 	public Class() {
 
 	}
 
-	public Class(String section, String type, String course, String credits, ClassTime classTime,
-			ClassLocation classLocation) {
+	public Class(String section, String type, String course, String credits,
+			List<ClassTimeAndLocation> classTimeAndLocation) {
 		this.section = section;
 		this.type = type;
 		this.course = course;
 		this.credits = credits;
-		this.classTime = classTime;
-		this.classLocation = classLocation;
+		this.classTimeAndLocation = classTimeAndLocation;
 	}
 
 	public String getSection() {
@@ -53,21 +52,13 @@ public class Class {
 	public void setCredits(String credits) {
 		this.credits = credits;
 	}
-	
-	public ClassTime getClassTime() {
-		return classTime;
+
+	public List<ClassTimeAndLocation> getClassTimeAndLocation() {
+		return classTimeAndLocation;
 	}
-	
-	public void setClassTime(ClassTime classTime) {
-		this.classTime = classTime;
-	}
-	
-	public ClassLocation getClassLocation() {
-		return classLocation;
-	}
-	
-	public void setClassLocation(ClassLocation classLocation) {
-		this.classLocation = classLocation;
+
+	public void setClassTimeAndLocation(List<ClassTimeAndLocation> classTimeAndLocation) {
+		this.classTimeAndLocation = classTimeAndLocation;
 	}
 
 }
