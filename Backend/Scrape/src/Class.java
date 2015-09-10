@@ -60,5 +60,5 @@ public class Class {
 	public void setClassTimeAndLocation(List<ClassTimeAndLocation> classTimeAndLocation) {
 		this.classTimeAndLocation = classTimeAndLocation;
 	}
-
+	
 }
