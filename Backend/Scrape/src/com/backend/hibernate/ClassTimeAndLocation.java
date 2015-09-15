@@ -1,3 +1,4 @@
+package com.backend.hibernate;
 
 public class ClassTimeAndLocation {
 	private String day;

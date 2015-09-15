@@ -1,3 +1,5 @@
+package com.backend.hibernate;
+
 import java.util.List;
 
 public class Class {

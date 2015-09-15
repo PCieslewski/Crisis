@@ -1,21 +1,37 @@
+package com.backend.hibernate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Person_table")
 public class Person {
+	
 	private String name;
+	
 	private String birthday;
+	
 	private String major;
+	
 	private String college;
-	private Schedule schedule;
+	
+	@Id
+	private int id; //added so we can use it as primary key 
+	
+//	private Schedule schedule;
 	
 	public Person() {
 		
 	}
 	
-	public Person(String name, String birthday, String major, String college, Schedule schedule) {
+	public Person(String name, String birthday, String major, String college, int id) {
 		this.name = name;
 		this.birthday = birthday;
 		this.major = major;
 		this.college = college;
-		this.schedule = schedule;
+		this.id = id;
+//		this.schedule = schedule;
 	}
 	
 	public String getName() {
@@ -50,12 +66,20 @@ public class Person {
 		this.college = college;
 	}
 	
-	public Schedule getSchedule() {
-		return schedule;
+	public int getId() {
+		return id;
 	}
 	
-	public void setSchedule(Schedule schedule) {
-		this.schedule = schedule;
+	public void setId(int id) {
+		this.id = id;
 	}
+	
+//	public Schedule getSchedule() {
+//		return schedule;
+//	}
+//	
+//	public void setSchedule(Schedule schedule) {
+//		this.schedule = schedule;
+//	}
 	
 }
