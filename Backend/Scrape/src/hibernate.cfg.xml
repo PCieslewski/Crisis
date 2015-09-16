@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+   <session-factory>
+       <!-- Database connection settings -->
+	   <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	   <property name="connection.url">jdbc:mysql://localhost:3306/Crisis</property>
+	   <property name="connection.username">root</property>
+	   <property name="connection.password">Pizza1</property>
+
+	   <!-- JDBC connection pool (use the built-in) -->
+	   <property name="connection.pool_size">1</property>
+	   
+	   <!-- SQL dialect -->
+	   <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+	   
+	   <!-- Disable the second-level cache -->
+	   <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+	   
+	   <!-- Echo all executed SQL to stdout -->
+	   <property name="show_sql">true</property>
+	   
+	   <!-- Options: create, update, validate, create-drop -->
+	   <property name="hbm2ddl.auto">create</property>
+	   
+	   <!-- Determines how long to keep session open -->
+	   	<property name ="current_session_context_class">thread</property>
+	   		
+	   <!-- Mention here all the model claaes along with their package name -->
+	   <mapping class="com.backend.hibernate.Person"/>
+	</session-factory>
+</hibernate-configuration>
+	   
+  
