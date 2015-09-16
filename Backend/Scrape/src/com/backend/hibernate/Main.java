@@ -10,37 +10,28 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-/*
- * Todo:
- * -Don't have browser pop up
- * -Parse smallPartOfFile into usuable things
- * -Set up lombok
- */
+import com.backend.Util.HibernateUtil;
+
 public class Main {
 
 	private static final String WEBPAGE_URL = "https://www.isis.ufl.edu/cgi-bin/nirvana?MDASTRAN=RSI-FSCHED";
 
 	public static void main(String args[]) {
-		// String name, String birthday, String major, String college, int id,
-		// Schedule schedule
+
 		Schedule empty = new Schedule();
 		Person will = new Person("LIVESEY WILLIAM T", "06/27/1993",
-				"COMPUTER ENGINEERING", "ENGINEERING", 27);
-
-		// path to .cfg.xml in configure() "hibernate.cfg.xml"
-		SessionFactory sessionFactory = new Configuration().configure()
-				.buildSessionFactory();
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-
-		session.save(will);
-
-		session.getTransaction().commit();
-		session.close();
-		sessionFactory.close();
-
+				"COMPUTER ENGINEERING", "ENGINEERING", 21);
+		
+		persistPerson(will);
 	}
 
+	private static void persistPerson(Person bob) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.save(bob);
+		session.getTransaction().commit();
+	}
+	
 	private static void scapeIsis() {
 		Scanner input = new Scanner(System.in);
 		LoginCredentials login = new LoginCredentials();
@@ -90,8 +81,6 @@ public class Main {
 	}
 
 	private static String getWebpageSourceCode(LoginCredentials login) {
-		// private static String getWebpageSourceCode(final String user,
-		// final String passwd) {
 		WebDriver driver = new FirefoxDriver();
 
 		driver.get(WEBPAGE_URL);

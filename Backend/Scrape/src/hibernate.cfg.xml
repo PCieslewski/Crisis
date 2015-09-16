@@ -22,9 +22,12 @@
 	   <!-- Echo all executed SQL to stdout -->
 	   <property name="show_sql">true</property>
 	   
-	   <!-- Drop the existing tables and create new one -->
+	   <!-- Options: create, update, validate, create-drop -->
 	   <property name="hbm2ddl.auto">create</property>
 	   
+	   <!-- Determines how long to keep session open -->
+	   	<property name ="current_session_context_class">thread</property>
+	   		
 	   <!-- Mention here all the model claaes along with their package name -->
 	   <mapping class="com.backend.hibernate.Person"/>
 	</session-factory>
