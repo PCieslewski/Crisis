@@ -1,0 +1,2 @@
+https://lackovic.wordpress.com/2012/05/31/eclipse-tomcat-ubuntu-jersey/
+http://lucasterdev.altervista.org/wordpress/2012/05/12/could-not-load-the-tomcat-server-configuration-at-serverstomcat-v7-0-server-at-localhost-config-the-configuration-may-be-corrupt-or-incomplet/
