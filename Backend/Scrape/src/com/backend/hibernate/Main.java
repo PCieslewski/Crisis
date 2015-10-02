@@ -34,7 +34,7 @@ public class Main {
 		session.getTransaction().commit();
 	}
 	
-	private static void scapeIsis() {
+	private static void scrapeIsis() {
 		Scanner input = new Scanner(System.in);
 		LoginCredentials login = new LoginCredentials();
 
