@@ -18,6 +18,8 @@ public class Main {
 
 	public static void main(String args[]) {
 
+		System.out.println("Lol will...");
+		
 		Schedule empty = new Schedule();
 		Person will = new Person("LIVESEY WILLIAM T", "06/27/1993",
 				"COMPUTER ENGINEERING", "ENGINEERING", 21);
