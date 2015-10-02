@@ -1,0 +1,511 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<!-- All information in this document, including the transport mechanism and protocols,-->
+<!-- are copyright 1998 by the University of Florida.  EAGLE patent pending.  All rights reserved. -->
+<!-- GSM available -->
+<!----*** TOPIC = RSI-FSCHED ***---->
+<!-- rest of left menu is on rsi-head2; continue --> 
+<head> 
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+ <META HTTP-EQUIV="Pragma" Content="no-cache"> 
+ <META HTTP-EQUIV="expires" CONTENT="Tue, 01 Jun 1999 19:58:02 GMT"> 
+ <link rel="stylesheet" type="text/css"  
+ href="/css/isis.css" /> 
+ <link rel="stylesheet" type="text/css" media="print"  
+ href="/css/print.css" /> 
+ <script language="JavaScript" src="/javascripts/isis_2_5.js"></script> 
+<title>ISIS</title> 
+<!--[if IE]><style> 
+#alert {padding: 6px 0 6px 0;} 
+.menugroup h1, #links h1 {margin-top:-15px; height: 33px; padding-top:7px;} 
+.menuGroup ul ul li a {margin-left: -12px; width:148px;} 
+#links ul ul li a {width:148px !important;} 
+h1#isisTitle {margin-left:0;} 
+#titlediv {margin-right:-3px;} 
+#wellbody {text-align: left;} 
+img.wellinfopic {margin-top: 20px;} 
+#isisMid {width:99%;} 
+</style> 
+<![endif]--> 
+</head> 
+<body> 
+<!-- Do not remove mailForm or mail link will not work! --> 
+<form name="mailform" style="display:none;" ></form> 
+<form method="post" name="drill_form2" action="/cgi-bin/eaglec"> 
+<INPUT TYPE="hidden" NAME="MDASSTTE" VALUE="T0049635M0000205"> 
+<INPUT TYPE="hidden" NAME="MDASCACH" VALUE="00049635"> 
+<input type="hidden" name="MDASTRAN"> 
+<input type="hidden" name="MDASKEYY"> 
+</form> 
+<form method="post" name="eagle_form" action="/cgi-bin/nirvana"> 
+ <input type="hidden" name="MDASTRAN"> 
+<INPUT TYPE="hidden" NAME="MDASSTTE" VALUE="T0049635M0000205"> 
+<INPUT TYPE="hidden" NAME="MDASCACH" VALUE="00049635"> 
+</form> 
+<FORM METHOD="get" name="eagle2_form" action="/cgi-bin/nirvana"> 
+<INPUT TYPE="hidden" NAME="MDASTRAN" value="RSI-EAG2GO"> 
+<INPUT TYPE="hidden" NAME="MDASKEYY"> 
+<INPUT TYPE="hidden" NAME="E2TARGET"> 
+<INPUT TYPE="hidden" NAME="WINNAME"> 
+<INPUT TYPE="HIDDEN" NAME="WINPROPS"> 
+<INPUT TYPE="hidden" NAME="MDASACTN" value="/cgi-bin/eaglec"> 
+<INPUT TYPE="hidden" NAME="MDASSTTE" VALUE="T0049635M0000205"> 
+<INPUT TYPE="hidden" NAME="MDASCACH" VALUE="00049635"> 
+</form> 
+<FORM METHOD="post" name="eagle3_form" action="/cgi-bin/nirvana"> 
+<INPUT TYPE="hidden" NAME="MDASTRAN" value="RSI-EAG2PP"> 
+<INPUT TYPE="hidden" NAME="MDASKEYY"> 
+<input type="hidden" name="MDASNEXT"> 
+<input type="hidden" name="MDASPREV"> 
+<INPUT TYPE="hidden" NAME="E2TARGET" value="TRQ-SMAIN"> 
+<INPUT TYPE="hidden" NAME="MDASACTN" value="/cgi-bin/eaglec"> 
+<INPUT TYPE="hidden" NAME="WINNAME" value="Transcript"> 
+<INPUT TYPE="HIDDEN" NAME="WINPROPS"> 
+<INPUT TYPE="hidden" NAME="MDASSTTE" VALUE="T0049635M0000205"> 
+<INPUT TYPE="hidden" NAME="MDASCACH" VALUE="00049635"> 
+</form> 
+<div id="isisBanner"><a href="javascript:confirmHP();"> 
+<img id="isisLogoHP" src="/images/isisDesign2K9.jpg" alt=ISIS></a> 
+<div id="isisSIM"> <!-- </TD> --></div>                                                                      
+<div id="isisBannerText"><img src="/images/ufLogo.gif" alt="University of      
+Florida" /></div></div>                                                        
+<div id="isisMid">                                                             
+<div class="menuGroup"><div class="mHead"></div><div class="mContent">         
+<h1>My Online Services</h1><ul>                                                
+<li class="hideToggle"><a class="hideToggle" id="treql" href="javascript:void(0
+);" onClick="showhide('treq');swapLabel('treq');"></a><a class="hideToggle2" hr
+ef="javascript:void(0);" onClick="showhide('treq');swapLabel('treq');return fal
+se;">Transcripts</a></li>                                                      
+<div id="treq">                                                                
+<ul>                                                                           
+<li><a href="../transcripts1.html">Current Students</a></li>                   
+<li><a href="../transcripts2.html">Former Students</a></li>                    
+<li><a href="/cgi-bin/eaglec?MDASTRAN=TRQ-SPEND" target="_new">Pending Requests
+</a></li>                                                                      
+<li><a href="/cgi-bin/eaglec?MDASTRAN=TRQ-SHIST" target="_new">                
+Completed Requests</a></li>                                                    
+<li><a href="../transcriptfaq.html">FAQ</a></li>                               
+</ul>                                                                          
+</div>                                                                         
+<script language="JavaScript">doBox('treq');</script>                          
+<li class="hidetoggle"><a class="hideToggle" id="myRecordl"                    
+href="javascript:void(0);"  onClick="showhide('myRecord');"></a><a             
+href="javascript:void(0);"  onClick="showhide('myRecord');return false;">      
+My Record</a></li><div ID="myRecord"><ul>                                      
+<li><a href="/cgi-bin/eaglec?MDASTRAN=RSI-MULTMJ" target="_new">               
+Academic Programs</a></li>                                                     
+<li><a href="javascript:doeagle('RSI-GPA');">Cumulative GPA/Hrs</a></li>       
+<li><a href="/cgi-bin/eaglec?MDASTRAN=CDS-APPSUM" target="_new">Certificate /  
+Degree Application</a></li>                                                    
+<li><a href="/cediploma" target="_new">CeDiploma</a></li>                      
+<li><a href="javascript:doeagle('RSI-DIRD');">Verify Degree</a></li>           
+<li><a href="/certifications.html">Enrollment<br/>&nbsp;&nbsp;Verifications</a>
+</li>                                                                          
+                                                                               
+                                                                               
+<!-- <li><a href="/cgi-bin/eaglec?MDASTRAN=RSI-ETHN" target="_new">Ethnicity Su
+rvey</li> -->                                                                  
+<li><a href="javascript:doeagle('RSI-GRADES');">Final Grades</a></li>          
+<li><a href="javascript:doeagle('RSI-HOLDS');">Holds</a></li>                  
+<li><a href="javascript:doeagle2('RSI-SPET','Petitions','',                    
+'width=600,height=580,scrollbars=yes,resizable=yes,status=yes');">             
+Petition Status</a></li>                                                       
+<li><a href="javascript:doeagle('RSI-SCOR');">Test Scores</a></li>             
+<li><script type="text/javascript">                                            
+ps_link("UF_PA_CONTACT_INFO.GBL","Update Emergency<br />Contact Info");        
+</script></li>                                                                 
+</ul></div><script language="javascript">doBox('myRecord');</script>           
+<li class="hideToggle"><a class="hideToggle" id="myAssessmentl"                
+href="javascript:void(0);" onClick="showhide('myAssessment');"></a><a          
+href="javascript:void(0);" onClick="showhide('myAssessment');return false;">   
+Placement</a></li><div ID="myAssessment"><ul>                                  
+<!--- <li><a href="/cgi-bin/nirvana?MDASTRAN=RSI-CTSOP">                       
+Chemistry Readiness<br /> Assessment</a></li>                                  
+<li><a href="/cgi-bin/nirvana?MDASTRAN=RSI-CTSTD">Chemistry Score</a></li>     
+---><li><a href="http://teachingcenter.ufl.edu/sat2.html" target="_blank       
+">Foreign Language<br /> Placement</a></li>                                    
+<li><a href="/aleksinfo.html">ALEKS (Chem/Math)<br />                          
+ Placement Exam</a></li>                                                       
+</ul></div>                                                                    
+<script language="JavaScript">doBox('myAssessment');</script>                  
+<li class="hidetoggle"><a class="hideToggle" id="advisingl"                    
+href="javascript:void(0);" onClick="showhide('advising');"></a><a              
+href="javascript:void(0);" onClick="showhide('advising');return false;">       
+Degree Audit</a></li><div ID="advising"><ul>                                   
+<li><a href="javascript:doeagle('RSI-MENUU');">Degree Audit</a></li>           
+<li><a href="javascript:doeagle('RSI-MENUU');">Degree Shopping</a></li>        
+<li><a href="javascript:doeagle('RSI-MENUU');">Excess Hours <br>Surcharge</a>  
+</li>                                                                          
+<li><a href="javascript:doeagle('RSI-MENUU');">Tracking Audit</a></li>         
+</ul></div> <script language="JavaScript">doBox('advising');</script>          
+<script language="javascript" type="text/javascript">                          
+var tranprop;                                                                  
+if(screen.availWidth>869){swidth=870}else{swidth=screen.availWidth};           
+tranprop='width='+swidth+',height=' + (screen.availHeight-75);                 
+tranprop=tranprop + ',left=0,top=10,screenX=0,screenY=10';                     
+tranprop=tranprop + ",scrollbars=yes,status=yes,resizable=yes,menubar=yes";    
+</script>                                                                      
+<li class="hideToggle"><a class="hideToggle" id="elearnl" href="javascript:void
+(0);" onClick="showhide('elearn');"></a><a href="javascript:                   
+void(0);" onClick="showhide('elearn');return false;">e-Learning</a></li>       
+<div ID="elearn"><ul><li><a href="https://lss.at.ufl.edu">e-Learning</a></li>  
+</ul></div><script>doBox('elearn');</script>                                   
+<li class="hideToggle"><a class="hideToggle" id="evalsl"                       
+href="javascript:void(0);" onClick="showhide('evals');"></a>                   
+<a class="hideToggle2" href="javascript:void(0);"                              
+onClick="showhide('evals');return false;">Evaluations</a></li>                 
+<div ID="evals"><ul><li><a href="http://evaluations.ufl.edu" target="_blank">  
+Faculty Evaluations</a></li></ul></div>                                        
+<script language="JavaScript">doBox('evals');</script>                         
+<li class="hidetoggle"><a class="hideToggle" id="finAidl"                      
+href="javascript:void(0);" onClick="showhide('finAid');swapLabel('finAid');">  
+</a><a href="javascript:void(0);"                                              
+onClick="showhide('finAid');swapLabel('finAid');return false;">                
+Financial Aid</a></li>                                                         
+<div ID="finAid">                                                              
+<div class="menusmalltxt" style="font-size:10px;margin-left:10px;"><b>2015-16  
+<br />(Fall,Spring,Summer)</b><br /><br /></div><ul>                           
+<li><a href="javascript:doeagle2('sfi-csta','Status','','scrollbars=yes,toolbar
+=yes,resizable=yes,status=yes');">                                             
+Aid Status</a></li>                                                            
+<li><a href="javascript:doeagle2('sfi-cawd','Awards','','scrollbars=yes,toolbar
+=yes,resizable=yes,status=yes');">                                             
+Awards and<br />   Disbursements</a></li>                                      
+<li><a href="javascript:doeagle2('sfi-cadd','AddAid','','scrollbars=yes,toolbar
+=yes,resizable=yes,status=yes');">                                             
+Additional<br />   Aid Reporting</a></li>                                      
+</ul>                                                                          
+<div class="menusmalltxt" style="font-size:10px;margin-left:10px;"><b>2014-15  
+<br />(Fall,Spring,Summer)</b><br /><br /></div><ul>                           
+<li><a href="javascript:doeagle2('sfi-asta','Status','','scrollbars=yes,toolbar
+=yes,resizable=yes,status=yes');">                                             
+Aid Status</a></li>                                                            
+<li><a href="javascript:doeagle2('sfi-aawd','Awards','','scrollbars=yes,toolbar
+=yes,resizable=yes,status=yes');">                                             
+Awards and<br />   Disbursements</a></li>                                      
+</ul>                                                                          
+</div>                                                                         
+<script language="JavaScript">                                                 
+doBox('finAid');                                                               
+</script>                                                                      
+<li class="hidetoggle"><a class="hideToggle" id="finSvcsl"                     
+href="javascript:void(0);" onClick="showhide('finSvcs');swapLabel('finSvcs');">
+</a><a class="hideToggle2"                                                     
+href="javascript:void(0);"                                                     
+onClick="showhide('finSvcs');swapLabel('finSvcs');return false;">              
+University Bursar</a></li>                                                     
+<div ID="finSvcs">                                                             
+<ul>                                                                           
+<script type="text/javascript">                                                
+pss("UF_SS_PERM_VIEW.GBL","View Student Permissions");                         
+pss("UF_SS_STDNT_CENTER.GBL","Student Center");                                
+pss("UF_SS_MAKE_PAYMENT.GBL","Make a Payment");                                
+pss("UF_SS_ACCT_ACT.GBL","Account Activity");                                  
+pss("UF_SS_CHARGES_DUE.GBL","Charges Due");                                    
+pss("UF_SS_PAY_HIST.GBL","Payment History");                                   
+pss("UF_SS_TUITION_STMT.GBL","Tuition Statement");                             
+pss("UF_SS_FIN_AID_RCPT.GBL","Financial Aid Disbursement");                    
+pss("UF_BNKACCT_DTL.GBL","Student Direct Deposit");                            
+// ("UF_SF_LNENTR_QZ_SS.GBL","Loan Entrance Counseling");                      
+</script>                                                                      
+<li><a href="https://www.nslds.ed.gov" target="_new">Exit Counseling<br />     
+  Direct Loans &   Teaching Grants</a></li>                                    
+<li><a href="https://www.ecsi.net/cgi-bin/bcgi.exe?blogm7" target="_new">Exit  
+Counseling<br />   Perkins & UF Loans</a></li>                                 
+<script type="text/javascript">                                                
+pss("UF_SF_FLPP_OPTOUT.GBL","Opt Out of Florida Prepaid");</script>            
+<li><a href="https://my.ufl.edu/psp/ps/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSF_SS
+_1098.GBL?UF_SA&FolderPath=PORTAL_ROOT_OBJECT.UF_SA_SELF_SERVICE.UF_SSF_SS_1098
+_GBL&IsFolder=false&IgnoreParamTempl=FolderPath%2cIsFolder.ufl.edu/psp/ps/EMPLO
+YEE/SA/c/SA_LEARNER_SERVICES.SSF_SS_1098.GBL?UF_SA&PORTALPARAM_PTCNAV=UF_SSF_SS
+_1098_GBL&EOPP.SCNode=EMPL&EOPP.SCPortal=EMPLOYEE&EOPP.SCName=UF_SA_SELF_SERVIC
+E&EOPP.SCLabel=My%20Campus%20Finances&EOPP.SCPTfname=UF_SA_SELF_SERVICE&FolderP
+ath=PORTAL_ROOT_OBJECT.UF_SA_SELF_SERVICE.UF_SSF_SS_1098_GBL&IsFolder=false">10
+98T Tax Form</a>  (2008)</li>                                                  
+<li><a href="https://www.isis.ufl.edu/cgi-bin/nirvana?MDASTRAN=BAI-TAXFRM">1098
+T Tax Form</a>  (pre 2008)</li>                                                
+<li><a href="javascript:doeagle2('bai-ewrap', 'EBILL','','scrollbars=yes, toolb
+ar=yes, resizable=yes, status=yes');">                                         
+eBills <br />   (before 10/2008)</a></li>                                      
+<script type="text/javascript">                                                
+pss("UF_SF_PARENTSIGNON.GBL","GatorParent Payment Access");                    
+</script>                                                                      
+</ul>                                                                          
+</div>                                                                         
+<script language="JavaScript">                                                 
+doBox('finSvcs');                                                              
+</script>                                                                      
+                                                                               
+<li class="hidetoggle"><a class="hideToggle" id="regl"                         
+href="javascript:void(0);"onClick="showhide('reg');swapLabel('reg');">         
+</a> <a class="hideToggle2" href="javascript:void(0);"                         
+onClick="showhide('reg');swapLabel('reg');return false;">Registration</a></li> 
+<div ID="reg">                                                                 
+<ul>                                                                           
+<li><a href="javascript:doeagle('RSI-RGHOLD');">Registration Prep</a>          
+<div class="menusmalltxt" style="font-size:10px;margin-left:10px;">Degree      
+Audit, <br />Reg Start Time,                                                   
+<br /> Current Holds</span></li></ul>                                          
+<h3>Register Now</h3>                                                          
+<ul>                                                                           
+<li><a href="javascript:doeagle('RSS-RGCHK2');">- Spring</a></li>              
+<li><a href="javascript:doeagle('RSU-RGCHK2');">- Summer</a></li>              
+<li><a href="javascript:doeagle('RSF-RGCHK2');">- Fall</a></li>                
+<li><a href="javascript:doeagle2('RSI-prepfa','PREP','FALL',                   
+'scrollbars=yes');">- Checklist</a></li>                                       
+<li> <a href="http://www.registrar.ufl.edu/currents/withdraw.html"> - Withdraw 
+</a></li>                                                                      
+</ul>                                                                          
+<h3>My Schedule</h3>                                                           
+<ul>                                                                           
+<li><a href="javascript:doeagle('RSI-SSCHED');">- Spring</a></li>              
+<li><a href="javascript:doeagle('RSI-USCHED');">- Summer</a></b></li>          
+<li><a href="javascript:doeagle('RSI-FSCHED');">- Fall</a></li>                
+</ul>                                                                          
+<h3>My Textbooks</h3>                                                          
+<ul>                                                                           
+<li><a href="javascript:doeagle('RSS-TEXTBS');">- Spring</a></li>              
+<li><a href="javascript:doeagle('RSU-TEXTBS');">- Summer</a></li>              
+<li><a href="javascript:doeagle('RSF-TEXTBS');">- Fall</a></li>                
+</ul>                                                                          
+<h3>Request to:</h3>                                                           
+<ul>                                                                           
+<li><a href="javascript:doeagle2('RSI-SIDAD','Drop','',                        
+'width=850,height=800,scrollbars=yes,resizable=yes,status=yes');">             
+- Drop a course(s)</a></li>                                                    
+<li><a href="javascript:doeagle2('RSI-SIDAA','Add','',                         
+'width=850,height=800,scrollbars=yes,resizable=yes,status=yes');">             
+- Add a course(s)</a></li>                                                     
+<li><a href="javascript:doeagle2('RSI-SIDAS','Status','',                      
+'width=850,height=800,scrollbars=yes,resizable=yes,status=yes');">             
+- Check status of drop/add request</a></li> <li></li>                          
+<li><a href="javascript:doeagle2('RSI-SIDAW','Withdraw','',                    
+'width=850,height=800,scrollbars=yes,resizable=yes,status=yes');">             
+- Withdraw from <b>ALL</b> courses for the <b>current</b> term </a></li>       
+</ul></div>                                                                    
+</ul></div>                                                                    
+<div class="mFoot"></div>                                                      
+</div>                                                                         
+<!-- ENDS #MENUGROUP -->                                                       
+<div id="links"><div class="mHead"></div><div class="mContent"><h1>My          
+Resources</h1><ul style="margin-left:-5px;"><li class="hideToggle">            
+<a class="hideToggle" id="oAcadl" href="javascript:void(0);"                   
+onClick="showhide('oAcad');"></a><a class="hideToggle2"                        
+href="javascript:void(0);" onClick="showhide('oAcad');">                       
+<b>Academic Info</b></a></li><div ID="oAcad"><ul>                              
+<li><a href="https://catalog.ufl.edu/ugrad/current/Pages/academic-learning-comp
+acts.aspx"                                                                     
+target="_blank">Academic Learning Compacts, by Major</a></li>                  
+<li><a href="https://www.dso.ufl.edu/nsfp/first-year-experience/campus-clarity-
+think-about-it-module/" target="_blank">CampusClarity<br>Think About it Module 
+</a></li>                                                                      
+<li><a href="https://catalog.ufl.edu/ugrad/current/Pages/dates-and-deadlines.as
+px"                                                                            
+target="_blank">Calendars/Deadlines</a></li>                                   
+<li><a href="https://catalog.ufl.edu/ugrad/current/Pages/home.aspx"            
+target="_blank">Catalog - Undergrad</a></li>                                   
+<li><a href="http://www.admissions.ufl.edu/ugrad/combdegree.html"              
+target="_blank">Combined Degrees</a></li>                                      
+<li><a href="http://www.aa.ufl.edu/aa/dass/tcheval/search.asp"                 
+target="_blank">Course Evaluations</a></li>                                    
+<li><a href="http://www.distance.ufl.edu"                                      
+target="_blank">Distance Ed Courses</a></li>                                   
+<li><a href="http://www.registrar.ufl.edu/soc/"                                
+target="_blank">Exam Schedules</a></li>                                        
+<li><a href="http://www.registrar.ufl.edu/forms.html"                          
+target="_blank">Forms - Registrar</a></li>                                     
+<li><a href="http://www.honors.ufl.edu/scholarships.html"                      
+target="_blank">Prestigious National<br>   Scholarships</a></li>               
+<li><a href="http://www.registrar.ufl.edu/soc/"                                
+target="_blank">Schedule of Courses</a></li>                                   
+<li><a href="http://www.registrar.ufl.edu/soc/studyabroad.html"                
+target="_blank">Study Abroad Ops</a></li>                                      
+<li><a href="http://www.admissions.ufl.edu/ugrad/experience.html"              
+target="_blank">Ugrad Experience</a></li>                                      
+</ul></div><script language="JavaScript">doBox('oAcad');</script>              
+<li class="hideToggle"><a class="hideToggle" id="oAdvisl"                      
+href="javascript:void(0);" onClick="showhide('oAdvis');"></a><a                
+class="hideToggle2" href="javascript:void(0);" onClick="showhide('oAdvis');">  
+<b>Advising Info</b></a></li><div ID="oAdvis"><ul>                             
+<li><a href="http://www.ufadvising.ufl.edu/"                                   
+target="_blank">Academic Advising</a></li>                                     
+<li><a href="https://www.isis.ufl.edu/fyi/"                                    
+target="_blank">First Year Information</a></li>                                
+<li><a href="http://www.registrar.ufl.edu/currents/changemajor.html"           
+target="_blank">Major - Changing A</a></li>                                    
+<li><a href="http://www.at.ufl.edu/testing/placementtesting.php"               
+target="_blank">Placement Testing</a></li>                                     
+</ul></div><script language="JavaScript">doBox('oAdvis');</script><li          
+class="hideToggle"><a class="hideToggle" id="oFinanl"                          
+href="javascript:void(0);" onClick="showhide('oFinan');"></a><a                
+href="javascript:void(0);" onClick="showhide('oFinan');return false;">         
+<b>Financial Info</b></a></li><div ID="oFinan"><ul>                            
+<li><a href="http://fa.ufl.edu/ufs/cashiers/feecalc.asp"                       
+target="_blank">Calculate Tuition/Fees</a></li>                                
+<li><a href="http://www.sfa.ufl.edu/?p=206" target="_blank">Forms-             
+Financial Aid</a></li>                                                         
+<li><a href="http://fa.ufl.edu/ufs/forms/default.asp" target="_blank">Forms-   
+ Financial Svcs</a></li>                                                       
+</ul></div><script language="JavaScript">doBox('oFinan');</script><li          
+class="hideToggle"><a class="hideToggle" id="oGradl"                           
+href="javascript:void(0);" onClick="showhide('oGrad');"></a><a                 
+class="hideToggle2"                                                            
+href="javascript:void(0);" onClick="showhide('oGrad');return false;">          
+<b>Grad Student Info</b></a></li><div ID="oGrad"><ul>                          
+<li><a href="http://gradschool.ufl.edu/students/critical-dates-and-deadlines.  
+html" target="_blank">Calendars/Deadlines</a></li>                             
+<li><a href="http://gradschool.ufl.edu/students/catalog.html"                  
+target="_blank">Catalog - Graduate</a></li>                                    
+<li><a href="http://gradschool.ufl.edu/gimsportal/gatorlink/portal.asp"        
+target="_blank">Grad School Info<br>   Systems (GIMS)</a></li>                 
+<li><a href="http://www.lists.ufl.edu/archives/gradstudent-l.html"             
+target="_blank">Graduate Student<br>   Listserve</a></li>                      
+</ul></div><script language="JavaScript">doBox('oGrad');</script>              
+<li class="hideToggle"><a class="hideToggle" id="oPersl"                       
+href="javascript:void(0);" onClick="showhide('oPers');"></a><a                 
+class="hideToggle2"                                                            
+href="javascript:void(0);" onClick="showhide('oPers');return false;">          
+<b>Personal Info</b></a></li><div ID="oPers"><ul>                              
+<li><a href="http://www.registrar.ufl.edu/directoryinfo.html"                  
+target="_blank">Address Updates</a></li>                                       
+<li><a href="http://www.registrar.ufl.edu/directoryinfo.html"                  
+target="_blank">Emergency Contacts</a></li>                                    
+<li><a href="http://www.registrar.ufl.edu/enrollment.html"                     
+target="blank">Enrollment/Degree<br>   Verification Info</a>                   
+</li><li><a href="http://election.dos.state.fl.us/regtovote/regform.shtml"     
+target="_blank">Voter Registration</a></li></ul></div>                         
+<script language="JavaScript">doBox('oPers');</script>                         
+<li class="hideToggle"><a class="hideToggle" id="oSvcsl"                       
+href="javascript:void(0);" onClick="showhide('oSvcs');"></a><a                 
+href="javascript:void(0);" onClick="showhide('oSvcs');return false;">          
+<b>Other Info</b></a></li><div ID="oSvcs"><ul>                                 
+<li><a href="http://www.admissions.ufl.edu" target="_blank">Admissions</a>     
+</li><li><a href="http://www.crc.ufl.edu" target="blank">Career Resource Ctr   
+</a></li><li><a href="http://infosec.ufl.edu/athome" target="blank">Computing  
+Tips</a></li>                                                                  
+<li><a href="http://www.dso.ufl.edu" target="blank">Dean of                    
+Students Ofc</a></li>                                                          
+<li><a href="/isishelp.html" target="_new">ISIS Help</a></li>                  
+<li><a href="http://www.registrar.ufl.edu/catalog/directory.html"              
+target="_blank">Office Directory</a></li>                                      
+<li><a href="http://www.registrar.ufl.edu/ferpahub.html"                       
+target="_blank">Privacy Info - FERPA</a></li>                                  
+<li><a href="http://www.bsd.ufl.edu/textadoption/studentbooks/default.asp"     
+target="_blank">Textbook Search</a></li>                                       
+<li><a href="http://veterans.ufl.edu/"                                         
+target="_blank">Veterans Info</a></li>                                         
+<li><a href="http://webmail.ufl.edu/" target="_blank">Webmail</a></li>         
+</ul></div>                                                                    
+<script language="JavaScript">doBox('oSvcs');</script>                         
+<li><a style="font-weight:bold;color:#CE3C00;" href="http://www.registrar.ufl.e
+du/faq.html" target="_blank">                                                  
+&nbsp;&nbsp;Frequently Asked <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+Questions</a></li>                                                             
+</ul></div><div class="mFoot"></div></div> <!-- END #LINKS -->                 
+<div id="well" >                                                               
+<div id="titlediv">                                                            
+<h1 id="isisTitle">Fall Schedule                 </h1>                         
+</div><!-- end #TITLEDIV -->                                                   
+<div id="alertISIS">                                                           
+<form method="post" action="/cgi-bin/nirvana">                                 
+<INPUT TYPE="hidden" NAME="MDASTRAN" VALUE="RSI-LOGOFF">                       
+<input type="hidden" name="LOGOUT" value="LOGOUT">                             
+<INPUT TYPE="hidden" NAME="MDASSTTE" VALUE="T0049635M0000205">                 
+<INPUT TYPE="hidden" NAME="MDASCACH" VALUE="00049635">                         
+<INPUT id="logoutbutton" TYPE="submit" value="Logout"                          
+ onclick="javascript:DeleteCookie('UF_GSM','/','.ufl.edu');                    
+this.form.submit();"></FORM>                                                   
+</div>                                                                         
+<div id="wellbody">                                                            
+<h2><a class="hideToggle" id="pheadl"                                          
+href="javascript:void(0);" onClick="showhide('phead');swapLabel('phead');">    
+</a><a style="color:#0b2f80;"                                                  
+href="javascript:void(0);" onClick="showhide('phead');return false;">          
+Personal Information</a></h2>                                                  
+                                                                               
+<style type="text/css">                                                        
+table#phead  {                                                                 
+width: 418px;                                                                  
+margin:10px auto;                                                              
+padding:0;                                                                     
+}                                                                              
+#reg_sched {                                                                   
+  padding: 15px;                                                               
+}                                                                              
+#reg_sched table {                                                             
+  margin-bottom: 10px;                                                         
+}                                                                              
+</style> <TABLE id="phead"><TR><TD class="label">Name:</TD><TD class="data">CIESLEWSKI PAWEL O </TD>
+ 
+ <TD class="label">Birthdate:</TD><TD class="data">11/12/1992</TD></TR><TR>
+ 
+ <TD class="label">College:</TD><TD class="data"> ENGINEERING </TD>
+ 
+ <TD class="label">Major:</TD><TD class="data">ELECTRICAL AND COMPUTER ENGINEERING </TD></TR></TABLE>
+ 
+ <h2>Your Schedule - Fall 2015 </h2>
+ <div id="reg_sched">
+ <TABLE> <TH>Section</th><th>Type</th><TH>Course</th><th>Credits</th> <TH>Days</th><th>Periods</th> <TH>Bldg</th><th>Room</th> 
+ </tr><tr>
+ <TD> 1093</TD><TD> X </TD><TD>COP5615 </TD><TD> 03 </TD>
+ <TD> T </TD><TD>2-3 </TD><TD>NEB </TD><TD> 100 </TD></TR>
+ <TR><TD> </TD><TD></TD><TD></TD><TD></TD><TD> R </TD><TD>3 </TD><TD>NEB </TD><TD> 100 </TD></TR>
+ <TD> 26D2</TD><TD> X </TD><TD>EEL5721 </TD><TD> 03 </TD>
+ <TD COLSPAN="2">Time to be arranged</TD><TD></TD><TD> </TD></TR><TR>
+ <TD> 7256</TD><TD> X </TD><TD>CEN5035 </TD><TD> 03 </TD>
+ <TD>M W F </TD><TD>5 </TD><TD>CSE </TD><TD> E118 </TD></TR>
+ <tr><td class="label" colspan="3">Total Credits: </TD><TD>009<td class="label" colspan="5"></TD></TR></TABLE>
+ <a href="http://campusmap.ufl.edu/#/class/COP5615,T,2-3,NEB,100,R,3,NEB,100;CEN5035,MWF,5,CSE,E118;" target="map">View Campus Map w/My Schedule</a>
+  </FORM> <br /> 
+<a href="javascript:document.ICSFORM.submit();"> 
+Export My Schedule in iCalendar (.ics) format 
+<img border="0" src="/images/eagle/calendar.gif"  
+alt="Export My Schedule in iCalendar format"></a> 
+<form method="post" name="ICSFORM"  
+action="/cgi-bin/eaglec/UFallSchedule.ics"> 
+<input type="hidden" name="MDASTRAN" value="RSI-FICSCD"> 
+<INPUT TYPE="hidden" NAME="MDASSTTE" VALUE="T0049635M0000205"> 
+<INPUT TYPE="hidden" NAME="MDASCACH" VALUE="00049635"> 
+</form> 
+<!-- RSI-SCHEDF --> 
+<br /><center> 
+<form method="post" action="/cgi-bin/nirvana"> 
+<input type="hidden" name="MDASTRAN" value="RSI-SCHEDF"> 
+<INPUT TYPE="hidden" NAME="MDASSTTE" VALUE="T0049635M0000205"> 
+<INPUT TYPE="hidden" NAME="MDASCACH" VALUE="00049635"> 
+<input type="submit"  
+value="View your Weekly Planner Schedule" class="submitButton"> 
+</form></center> 
+<center><b>You may print this page as a receipt</b></center> 
+ 
+ 
+ 
+<script language="JavaScript"> 
+doBox('phead'); 
+</script> 
+</div> <!-- END #WELLBODY --> 
+</div> <!-- END #WELL --> 
+</div> <!-- END #ISISMID --> 
+ 
+ 
+ 
+<style type="text/css"> 
+@media print { 
+div, h1, table, tr, th, td { 
+ background: white !important; 
+ color: black !important; 
+ border: 0px solid white !important; 
+ } 
+img, a, input { 
+ display: none; 
+ } 
+td { 
+ border: 1px solid black !important; 
+ } 
+ } 
+</style> 
+
+
+</body>
+</html>
+
