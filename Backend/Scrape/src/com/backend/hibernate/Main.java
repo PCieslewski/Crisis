@@ -18,7 +18,7 @@ public class Main {
 		
 		//want to return person object
 		Parse.parseSchedule(getWebpageSourceCode(enterCredentials()));
-		
+		//randomComment
 //		Schedule empty = new Schedule();
 //		Person will = new Person("LIVESEY WILLIAM T", "06/27/1993",
 //				"COMPUTER ENGINEERING", "ENGINEERING", 21);
