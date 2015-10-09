@@ -1,4 +1,4 @@
-package com.backend.hibernate;
+package com.backend.authenticator;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,7 +16,7 @@ public class Parse {
 	
 	//Simple Method to parse a schedule and return a Person Object
 	//TODO: Currently only prints without returning object
-	static void parseSchedule(String schedule){
+	public static void parseSchedule(String schedule){
 		
 		Document doc = Jsoup.parse(schedule, "");
 		Iterator<Element> itr;
