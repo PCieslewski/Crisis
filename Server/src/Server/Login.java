@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.backend.authenticator.Authenticator;
+import com.backend.authenticator.LoginCredentials;
+
 /**
  * Servlet implementation class Login
  */
@@ -41,11 +44,15 @@ public class Login extends HttpServlet {
 		String fname = request.getParameter("fname").toString();
 		String lname = request.getParameter("lname").toString();
 		
+		LoginCredentials lc = new LoginCredentials(fname,lname);
+		
 		PrintWriter pr = response.getWriter();
-		pr.println("First Name : " + fname);
-		pr.println("Last Name : " + lname);
-		pr.println("Test Complete.\n");
-		pr.println("SERVER WARNING : Will sucks at fantasy football.");
+		
+		pr.println(Authenticator.getSchedule(lc));
+		//pr.println("First Name : " + fname);
+		//pr.println("Last Name : " + lname);
+		//pr.println("Test Complete.\n");
+		//pr.println("SERVER WARNING : Will sucks at fantasy football.");
 		
 		//doGet(request, response);
 	}

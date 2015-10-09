@@ -11,9 +11,7 @@ public class Authenticator {
 	
 	private static final String WEBPAGE_URL = "https://www.isis.ufl.edu/cgi-bin/nirvana?MDASTRAN=RSI-FSCHED";
 	
-	public static String getSchedule() {
-		
-		LoginCredentials login = LoginCredentials.console();
+	public static String getSchedule(LoginCredentials login) {
 		
 		String ufTitle = "UF Authentication - GatorLink Login » University of Florida"; 
 		WebDriver driver = new FirefoxDriver();

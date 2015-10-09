@@ -11,7 +11,9 @@ public class Main {
 
 	public static void main(String args[]) {
 		
-		Parse.parseSchedule(Authenticator.getSchedule());
+		Parse.parseSchedule(Authenticator.getSchedule(LoginCredentials.console()));
+		
+		System.exit(0);
 
 //		Schedule empty = new Schedule();
 //		Person will = new Person("LIVESEY WILLIAM T", "06/27/1993",
