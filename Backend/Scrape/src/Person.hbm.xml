@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.backend.hibernate.Person" table="Person_Object">
+      <meta attribute="class-description">
+         This class contains the employee detail. 
+      </meta>
+      <id name="id" type="int" column="id">
+         <generator class="native"/>
+      </id>
+      <property name="birthday" column="birthday" type="string"/>
+      <property name="college" column="college" type="string"/>
+      <property name="major" column="major" type="string"/>
+	  <property name="name" column="name" type="string"/> 
+	  	
+	  	<!-- might have to create table classList -->
+	  	<list name="classList" table="ClassList">
+            <key column="puid" />
+            <list-index column="listOrder" />
+            <composite-element class="com.backend.hibernate.YourClass">
+                <property name="section" />
+                <property name="type" />         
+				<property name="course" />
+ 				<property name="credits" /> 
+ 					
+ 					
+ 					<!--
+ 					<list name="classTimeAndLocation" table="ClassTimeAndLocation">
+ 						<key column="ppuid" />
+ 						<list-index column="listOrder" />
+ 					-->
+ 					
+<!-- 						 	CAUSES A ERROR?!?!?! online says maybe missing getter/setter
+<nested-composite-element name="arr2" class="com.backend.hibernate.ClassTimeAndLocation">
+ 						 	<property name="day" column="DAY"/>
+			                <property name="period" column="PERIOD"/>         
+							<property name="building" column="BUILDING"/>
+			 				<property name="room" column="ROOM"/> 
+ 						</nested-composite-element>
+ 						 	-->
+ 				  
+ 						
+            </composite-element>
+        </list>
+	  	 
+	</class>
+</hibernate-mapping>

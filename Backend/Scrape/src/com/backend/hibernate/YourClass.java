@@ -2,7 +2,7 @@ package com.backend.hibernate;
 
 import java.util.List;
 
-public class Class {
+public class YourClass {
 
 	private String section;
 	private String type;
@@ -10,11 +10,19 @@ public class Class {
 	private String credits;
 	private List<ClassTimeAndLocation> classTimeAndLocation;
 
-	public Class() {
+	public YourClass() {
 
 	}
 
-	public Class(String section, String type, String course, String credits,
+	public YourClass(String section, String type, String course, String credits) {
+		this.section = section;
+		this.type = type;
+		this.course = course;
+		this.credits = credits;
+//		this.classTimeAndLocation = classTimeAndLocation;
+	}
+	
+	public YourClass(String section, String type, String course, String credits,
 			List<ClassTimeAndLocation> classTimeAndLocation) {
 		this.section = section;
 		this.type = type;

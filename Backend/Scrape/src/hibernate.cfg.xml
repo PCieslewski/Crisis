@@ -29,7 +29,9 @@
 	   	<property name ="current_session_context_class">thread</property>
 	   		
 	   <!-- Mention here all the model claaes along with their package name -->
-	   <mapping class="com.backend.hibernate.Person"/>
+	   
+<!--	   <mapping class="com.backend.hibernate.Person"/> -->
+			<mapping resource="Person.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
 	   
