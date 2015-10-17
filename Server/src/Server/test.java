@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class test
@@ -28,8 +29,25 @@ public class test extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String stuff = "This is awesome!";
-		request.setAttribute("stuff", stuff); 
+		HttpSession session = request.getSession(true);
+		
+		String stuff;
+		int numVisits;
+		
+		if(session.isNew()){
+			stuff = "New around here arn't you?";
+			session.setAttribute("numVisits", 1);
+			numVisits = 1;
+		}
+		else{
+			stuff = "Welcome back!";
+			numVisits = (int)session.getAttribute("numVisits");
+			numVisits++;
+			session.setAttribute("numVisits", numVisits);
+		}
+		
+		request.setAttribute("stuff", stuff);
+		request.setAttribute("numVisits", numVisits);
 		
 		request.getRequestDispatcher("test2.jsp").forward(request, response);
 		

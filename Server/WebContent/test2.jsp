@@ -24,7 +24,7 @@
     <tbody>
       <tr>
         <td><%= request.getAttribute("stuff") %></td>
-        <td><%= new String("Pawel") %></td>
+        <td><%= request.getAttribute("numVisits") %></td>
         <td>john@example.com</td>
       </tr>
       <tr>

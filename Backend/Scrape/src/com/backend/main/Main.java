@@ -11,7 +11,12 @@ public class Main {
 
 	public static void main(String args[]) {
 		
-		Parse.parseSchedule(Authenticator.getSchedule(LoginCredentials.console()));
+		try {
+			Parse.parseSchedule(Authenticator.getScheduleOnline(LoginCredentials.console()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		System.exit(0);
 
