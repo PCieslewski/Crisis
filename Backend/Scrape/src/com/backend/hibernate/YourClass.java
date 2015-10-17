@@ -107,4 +107,40 @@ public class YourClass {
 		this.id = id;
 	}
 	
+	//This method expands the notation such as "2-3" into "2 3 4"
+	public String getExpandedPeriod(){
+		
+		if(this.period.contains("-")){
+			
+			String[] periodStrings = this.period.split("-");
+			int startPeriod = Integer.parseInt(periodStrings[0]);
+			int endPeriod = Integer.parseInt(periodStrings[1]);
+			
+			StringBuilder sb = new StringBuilder();
+			
+			for(int i = startPeriod; i< endPeriod; i++){
+				sb.append(i + " ");
+			}
+			sb.append(endPeriod);
+			
+			return sb.toString();
+			
+		}
+
+		return this.period;
+		
+	}
+	
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.section + " ");
+		sb.append(this.type + " ");
+		sb.append(this.course + " ");
+		sb.append(this.day + " ");
+		sb.append(this.period + " ");
+		sb.append(this.building + " ");
+		sb.append(this.room + " ");
+		return sb.toString();
+	}
+	
 }

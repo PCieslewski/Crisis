@@ -120,4 +120,11 @@ public class Person {
 		this.pendingFriends = pendingFriends;
 	}
 	
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(name + "\n" + birthday + "\n" + major + "\n" + college + "\n");
+		sb.append(schedule);
+		return sb.toString();
+	}
+	
 }
