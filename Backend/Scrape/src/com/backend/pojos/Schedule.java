@@ -1,7 +1,10 @@
 package com.backend.pojos;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import com.backend.pojos.YourClass;
 
 public class Schedule {
 
@@ -44,8 +47,27 @@ public class Schedule {
 			results.append(NEW_LINE + "Room: " + classList.get(i).getRoom());
 			results.append(NEW_LINE + "*****************************");
 		}
-		
 		return results.toString();
+	}
+	
+	//This method gets the class at a given day or time. It does this by
+	//iterating through all classes checking the day and period.
+	public String getClassAt(String day, String period){
+		Iterator<YourClass> itr = this.classList.iterator();
+			
+		while(itr.hasNext()){
+			//Get next class.
+			YourClass c = (YourClass) itr.next();
+			//Is it the right day?
+			if(c.getDay().equals(day)){
+				//Is it the right time?
+				if(c.getExpandedPeriod().contains(period)){
+					return c.getCourse();
+				}
+			}
+		}
+		//If no classes match, return empty string.
+		return "";
 	}
 	
 }

@@ -128,18 +128,8 @@ public class Person {
 		results.append(NEW_LINE + "Hashed password: " + passwordHash);
 		results.append(NEW_LINE + "*****************************");
 		results.append(NEW_LINE + "CLASS SCHEDULE FOR PERSON:");
-		for(int i = 0; i < schedule.getClassList().size(); i++) {
-			results.append(NEW_LINE + "CLASS #" + (i+1));
-			results.append(NEW_LINE + "Section: " + schedule.getClassList().get(i).getSection());
-			results.append(NEW_LINE + "Type: " + schedule.getClassList().get(i).getType());
-			results.append(NEW_LINE + "Course: " + schedule.getClassList().get(i).getCourse());
-			results.append(NEW_LINE + "Credits: " + schedule.getClassList().get(i).getCredits());
-			results.append(NEW_LINE + "Day: " + schedule.getClassList().get(i).getDay());
-			results.append(NEW_LINE + "Period: " + schedule.getClassList().get(i).getPeriod());
-			results.append(NEW_LINE + "Building: " + schedule.getClassList().get(i).getBuilding());
-			results.append(NEW_LINE + "Room: " + schedule.getClassList().get(i).getRoom());
-			results.append(NEW_LINE + "*****************************");
-		}
+		results.append(schedule);
+		
 		return results.toString();
 	}
 	
