@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.backend.authenticator.Authenticator;
+import com.backend.authenticator.LoginCredentials;
+
 /**
  * Servlet implementation class Login
  */
@@ -38,14 +41,14 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String fname = request.getParameter("fname").toString();
-		String lname = request.getParameter("lname").toString();
+		String username = request.getParameter("username").toString().toLowerCase();
+		String password = request.getParameter("password").toString();
+		
+		LoginCredentials lc = new LoginCredentials(username,password);
 		
 		PrintWriter pr = response.getWriter();
-		pr.println("First Name : " + fname);
-		pr.println("Last Name : " + lname);
-		pr.println("Test Complete.\n");
-		pr.println("SERVER WARNING : Will sucks at fantasy football.");
+		
+		pr.println(Authenticator.getSchedule(lc));
 		
 		//doGet(request, response);
 	}

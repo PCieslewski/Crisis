@@ -21,11 +21,20 @@ public class Main {
 
 	public static void main(String args[]) {
 		LoginCredentials lc = LoginCredentials.console();
-		String rawText = Authenticator.getSchedule(lc);
+		String rawText = "";
+		
+		try {
+			rawText = Authenticator.getScheduleOnline(lc);
+		} catch (InvalidCredentialsException e) {
+			e.printStackTrace();
+		} catch (GatorlinkTimeoutException e) {
+			e.printStackTrace();
+		}
 		
 		Person will = Parse.makeAPerson(lc, rawText);
 		
 		persistPerson(will);
+
 	}
 	
 	private static void persistPerson(Person bob) {
