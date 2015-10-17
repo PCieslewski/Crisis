@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name="com.backend.hibernate.Person" table="Person_Object">
+   <class name="com.backend.hibernate.Person" table="Person_Object2">
       <meta attribute="class-description">
          This class contains the employee detail. 
       </meta>
@@ -17,34 +17,37 @@
 	  <property name="name" column="name" type="string"/> 
 	  	
 	  	<!-- might have to create table classList -->
-	  	<list name="classList" table="ClassList">
-            <key column="puid" />
+
+	  	<component name="Schedule" class="com.backend.hibernate.Schedule">
+	  		<property name="zzz" column="zzz" type="string"/> 
+	  		<!--
+	  			<list name="tempList" table="tempStuff">
+	  			<key column="yo" />
+	  			<list-index column="listOrder2" />
+	  			<composite-element class="com.backend.hibernate.Temp">
+	  				<property name="yo" column="yo" type="string"/> 
+	  			</composite-element>
+	  			</list>
+	  			-->
+	  			
+	  		<list name="classList" table="Yourclass">
+            <key column="id" />
             <list-index column="listOrder" />
             <composite-element class="com.backend.hibernate.YourClass">
-                <property name="section" />
-                <property name="type" />         
-				<property name="course" />
- 				<property name="credits" /> 
- 					
- 					
- 					<!--
- 					<list name="classTimeAndLocation" table="ClassTimeAndLocation">
- 						<key column="ppuid" />
- 						<list-index column="listOrder" />
- 					-->
- 					
-<!-- 						 	CAUSES A ERROR?!?!?! online says maybe missing getter/setter
-<nested-composite-element name="arr2" class="com.backend.hibernate.ClassTimeAndLocation">
- 						 	<property name="day" column="DAY"/>
-			                <property name="period" column="PERIOD"/>         
-							<property name="building" column="BUILDING"/>
-			 				<property name="room" column="ROOM"/> 
- 						</nested-composite-element>
- 						 	-->
- 				  
- 						
+                <property name="section" column="section" type="string"/>
+                <property name="type" column="type" type="string"/>         
+				<property name="course" column="course" type="string"/>
+ 				<property name="credits" column="credits" type="string"/> 	
+ 				<property name="day" column="day" type="string"/>
+ 				<property name="period" column="period" type="string"/>
+ 				<property name="building" column="building" type="string"/>
+ 				<property name="room" column="room" type="string"/>
             </composite-element>
         </list>
-	  	 
+	  	
+	  	</component>
+
 	</class>
+	
+	
 </hibernate-mapping>

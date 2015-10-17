@@ -8,7 +8,13 @@ public class YourClass {
 	private String type;
 	private String course;
 	private String credits;
-	private List<ClassTimeAndLocation> classTimeAndLocation;
+	private String day;
+	private String period;
+	private String building;
+	private String room;
+	
+	private int id;
+//	private List<ClassTimeAndLocation> classTimeAndLocation;
 
 	public YourClass() {
 
@@ -19,16 +25,6 @@ public class YourClass {
 		this.type = type;
 		this.course = course;
 		this.credits = credits;
-//		this.classTimeAndLocation = classTimeAndLocation;
-	}
-	
-	public YourClass(String section, String type, String course, String credits,
-			List<ClassTimeAndLocation> classTimeAndLocation) {
-		this.section = section;
-		this.type = type;
-		this.course = course;
-		this.credits = credits;
-		this.classTimeAndLocation = classTimeAndLocation;
 	}
 
 	public String getSection() {
@@ -63,12 +59,52 @@ public class YourClass {
 		this.credits = credits;
 	}
 
-	public List<ClassTimeAndLocation> getClassTimeAndLocation() {
-		return classTimeAndLocation;
+//	public List<ClassTimeAndLocation> getClassTimeAndLocation() {
+//		return classTimeAndLocation;
+//	}
+//
+//	public void setClassTimeAndLocation(List<ClassTimeAndLocation> classTimeAndLocation) {
+//		this.classTimeAndLocation = classTimeAndLocation;
+//	}
+	
+	public String getDay() {
+		return day;
+	}
+	
+	public void setDay(String day) {
+		this.day = day;
+	}
+	
+	public String getPeriod() {
+		return period;
+	}
+	
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+	
+	public String getBuilding() {
+		return building;
+	}
+	
+	public void setBuilding(String building) {
+		this.building = building;
+	}
+	
+	public String getRoom() {
+		return room;
+	}
+	
+	public void setRoom(String room) {
+		this.room = room;
 	}
 
-	public void setClassTimeAndLocation(List<ClassTimeAndLocation> classTimeAndLocation) {
-		this.classTimeAndLocation = classTimeAndLocation;
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

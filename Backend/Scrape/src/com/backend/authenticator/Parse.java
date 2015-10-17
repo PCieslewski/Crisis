@@ -20,13 +20,71 @@ public class Parse {
 	
 	//Simple Method to parse a schedule and return a Person Object
 	//TODO: Currently only prints without returning object
+//	public static List<String> parseSchedule(String schedule){
+//		
+//		List<String> parsedInfo = new ArrayList<String>();
+////		String[] parsedInfo;
+//		int parsedInfoIndex = 0;
+//		
+//		Person will = new Person();
+//		
+//		Document doc = Jsoup.parse(schedule, "");
+//		Iterator<Element> itr;
+//		
+//		//Parse the table with personal info
+//		Element personalTable = doc.getElementById("phead");
+//		itr = personalTable.select("td").iterator();
+//		
+//		//j is used to keep track of line number
+//		//this can be hard coded since it's the same for everyone
+////		int j = 0;
+//		while(itr.hasNext()){
+//			String actualInfo = itr.next().text();
+//			if(actualInfo.length() > 0) {
+//				parsedInfo.add(parsedInfoIndex, actualInfo);
+//				parsedInfoIndex++;
+//			}
+////			if(j == 1) {
+////				will.setName(actualInfo);
+////			}
+////			else if(j == 3) {
+////				will.setBirthday(actualInfo);
+////			}
+////			else if(j == 5) {
+////				will.setCollege(actualInfo);
+////			}
+////			else if(j == 7) {
+////				will.setMajor(actualInfo);
+////			}
+////			j++;
+//		}
+//		
+//		//Parse the table with the schedule elements
+//		Element schedTable = doc.getElementById("reg_sched");
+//		itr = schedTable.select("td").iterator();
+//		int i = 0;
+//		String sectionNumber;
+//		
+//		while(itr.hasNext()){
+//			String actualInfo = itr.next().text();
+//			if(actualInfo.length() > 0) {
+//				parsedInfo.add(parsedInfoIndex, actualInfo);
+//				parsedInfoIndex++;
+//			}
+////			if(isSectionNumber(actualInfo)) {
+////				System.out.println("section # :" + actualInfo);
+////				sectionNumber = actualInfo;
+////			}
+//////			System.out.println("i: " + i +  "    " + itr.next().text());
+////			i++;
+//		}
+//		return parsedInfo;
+//	}
+	
 	public static List<String> parseSchedule(String schedule){
-		
+	
 		List<String> parsedInfo = new ArrayList<String>();
-//		String[] parsedInfo;
-		int parsedInfoIndex = 0;
-		
-		Person will = new Person();
+		String addParsedInfo;
 		
 		Document doc = Jsoup.parse(schedule, "");
 		Iterator<Element> itr;
@@ -35,48 +93,18 @@ public class Parse {
 		Element personalTable = doc.getElementById("phead");
 		itr = personalTable.select("td").iterator();
 		
-		//j is used to keep track of line number
-		//this can be hard coded since it's the same for everyone
-//		int j = 0;
 		while(itr.hasNext()){
-			String actualInfo = itr.next().text();
-			if(actualInfo.length() > 0) {
-				parsedInfo.add(parsedInfoIndex, actualInfo);
-				parsedInfoIndex++;
-			}
-//			if(j == 1) {
-//				will.setName(actualInfo);
-//			}
-//			else if(j == 3) {
-//				will.setBirthday(actualInfo);
-//			}
-//			else if(j == 5) {
-//				will.setCollege(actualInfo);
-//			}
-//			else if(j == 7) {
-//				will.setMajor(actualInfo);
-//			}
-//			j++;
+			addParsedInfo = itr.next().text();
+			parsedInfo.add(addParsedInfo);
 		}
 		
 		//Parse the table with the schedule elements
 		Element schedTable = doc.getElementById("reg_sched");
 		itr = schedTable.select("td").iterator();
-		int i = 0;
-		String sectionNumber;
 		
 		while(itr.hasNext()){
-			String actualInfo = itr.next().text();
-			if(actualInfo.length() > 0) {
-				parsedInfo.add(parsedInfoIndex, actualInfo);
-				parsedInfoIndex++;
-			}
-//			if(isSectionNumber(actualInfo)) {
-//				System.out.println("section # :" + actualInfo);
-//				sectionNumber = actualInfo;
-//			}
-////			System.out.println("i: " + i +  "    " + itr.next().text());
-//			i++;
+			addParsedInfo = itr.next().text();
+			parsedInfo.add(addParsedInfo);
 		}
 		return parsedInfo;
 	}

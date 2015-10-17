@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name="FUCK")
 public class Person {
 	
 	private String name;
@@ -18,13 +16,12 @@ public class Person {
 	private String major;
 	
 	private String college;
-	
-//	@Id
+
 	private int id; //added so we can use it as primary key 
 	
-//	private Schedule schedule;
+//	private List<YourClass> classList = new ArrayList<YourClass>(); // move into sched
 	
-	private List<YourClass> classList = new ArrayList<YourClass>();
+	private Schedule schedule;
 	
 	public Person() {
 		
@@ -35,7 +32,7 @@ public class Person {
 		this.birthday = birthday;
 		this.major = major;
 		this.college = college;
-		this.classList = classList;
+//		this.classList = classList;
 //		this.schedule = schedule;
 	}
 	
@@ -88,20 +85,12 @@ public class Person {
 		this.id = id;
 	}
 	
-	public List<YourClass> getClassList() {
-		return classList;
+	public Schedule getSchedule() {
+		return schedule;
 	}
 	
-	public void setClassList(List<YourClass> classList) {
-		this.classList = classList;
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
 	}
-	
-//	public Schedule getSchedule() {
-//		return schedule;
-//	}
-//	
-//	public void setSchedule(Schedule schedule) {
-//		this.schedule = schedule;
-//	}
 	
 }

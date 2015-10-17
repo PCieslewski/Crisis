@@ -14,6 +14,8 @@ public class HibernateUtil {
 	   }
 	   catch (Throwable ex) {
 		   System.err.println("Session factory wasn't created " + ex);
+		   System.out.println("*****");
+		   ex.printStackTrace();
 	   }
    }
    
