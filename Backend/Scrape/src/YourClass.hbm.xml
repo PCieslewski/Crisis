@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.backend.pojos.YourClass" table="Yourclass">
+      
+	<composite-id>
+      <key-property access="field" column="id" name="id" type="int"/>
+      <key-property access="field" column="day" name="day" type="string"/>
+      <key-property access="field" column="period" name="period" type="string"/>
+   	</composite-id>
+      	
+	  <property name="section" column="section" type="string"/>
+	  <property name="type" column="type" type="string"/>         
+	  <property name="course" column="course" type="string"/>
+	  <property name="credits" column="credits" type="string"/> 	
+	  <property name="building" column="building" type="string"/>
+	  <property name="room" column="room" type="string"/>
+	  	
+	</class>
+</hibernate-mapping>

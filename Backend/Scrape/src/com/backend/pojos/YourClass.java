@@ -1,8 +1,8 @@
-package com.backend.hibernate;
+package com.backend.pojos;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class YourClass {
+public class YourClass implements Serializable {
 
 	private String section;
 	private String type;
@@ -14,7 +14,6 @@ public class YourClass {
 	private String room;
 	
 	private int id;
-//	private List<ClassTimeAndLocation> classTimeAndLocation;
 
 	public YourClass() {
 
@@ -58,14 +57,6 @@ public class YourClass {
 	public void setCredits(String credits) {
 		this.credits = credits;
 	}
-
-//	public List<ClassTimeAndLocation> getClassTimeAndLocation() {
-//		return classTimeAndLocation;
-//	}
-//
-//	public void setClassTimeAndLocation(List<ClassTimeAndLocation> classTimeAndLocation) {
-//		this.classTimeAndLocation = classTimeAndLocation;
-//	}
 	
 	public String getDay() {
 		return day;

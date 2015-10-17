@@ -1,11 +1,6 @@
-package com.backend.hibernate;
+package com.backend.pojos;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 public class Person {
 	
@@ -118,6 +113,34 @@ public class Person {
 	
 	public void setPendingFriends(List<String> pendingFriends) {
 		this.pendingFriends = pendingFriends;
+	}
+	
+	public String toString() {	
+		StringBuilder results = new StringBuilder();
+	    String NEW_LINE = System.getProperty("line.separator");
+		
+		results.append("BASIC INFO FOR PERSON:");
+		results.append(NEW_LINE + "Name: " + name);
+		results.append(NEW_LINE + "Birthday: " + birthday);
+		results.append(NEW_LINE + "Major: " + major);
+		results.append(NEW_LINE + "College: " + college);
+		results.append(NEW_LINE + "Gatorlink: " + gatorLink);
+		results.append(NEW_LINE + "Hashed password: " + passwordHash);
+		results.append(NEW_LINE + "*****************************");
+		results.append(NEW_LINE + "CLASS SCHEDULE FOR PERSON:");
+		for(int i = 0; i < schedule.getClassList().size(); i++) {
+			results.append(NEW_LINE + "CLASS #" + (i+1));
+			results.append(NEW_LINE + "Section: " + schedule.getClassList().get(i).getSection());
+			results.append(NEW_LINE + "Type: " + schedule.getClassList().get(i).getType());
+			results.append(NEW_LINE + "Course: " + schedule.getClassList().get(i).getCourse());
+			results.append(NEW_LINE + "Credits: " + schedule.getClassList().get(i).getCredits());
+			results.append(NEW_LINE + "Day: " + schedule.getClassList().get(i).getDay());
+			results.append(NEW_LINE + "Period: " + schedule.getClassList().get(i).getPeriod());
+			results.append(NEW_LINE + "Building: " + schedule.getClassList().get(i).getBuilding());
+			results.append(NEW_LINE + "Room: " + schedule.getClassList().get(i).getRoom());
+			results.append(NEW_LINE + "*****************************");
+		}
+		return results.toString();
 	}
 	
 }

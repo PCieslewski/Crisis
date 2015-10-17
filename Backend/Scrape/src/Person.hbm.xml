@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name="com.backend.hibernate.Person" table="Person_Object2">
+   <class name="com.backend.pojos.Person" table="Person_Object2">
       <id name="id" type="int" column="id">
          <generator class="native"/>
       </id>
@@ -27,11 +27,11 @@
 			<element column="pendingFriends" type="string"/>
 	  	</list>
 	  	
-	  	<component name="Schedule" class="com.backend.hibernate.Schedule">
+	  	<component name="Schedule" class="com.backend.pojos.Schedule">
 	  		<list name="classList" table="Yourclass">
 	            <key column="id" />
 	            <list-index column="listOrder" />
-	            <composite-element class="com.backend.hibernate.YourClass">
+	            <composite-element class="com.backend.pojos.YourClass">
 	                <property name="section" column="section" type="string"/>
 	                <property name="type" column="type" type="string"/>         
 					<property name="course" column="course" type="string"/>

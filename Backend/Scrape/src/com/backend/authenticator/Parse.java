@@ -1,8 +1,8 @@
 package com.backend.authenticator;
 
-import com.backend.hibernate.Person;
-import com.backend.hibernate.Schedule;
-import com.backend.hibernate.YourClass;
+import com.backend.pojos.Person;
+import com.backend.pojos.Schedule;
+import com.backend.pojos.YourClass;
 
 import java.io.BufferedReader;
 import java.io.File;
