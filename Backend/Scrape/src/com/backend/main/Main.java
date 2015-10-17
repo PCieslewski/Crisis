@@ -54,7 +54,7 @@ public class Main {
 	        
 	    for(Iterator iterator = list.iterator(); iterator.hasNext();) {
 	     	bruce = (Person) iterator.next();
-	       	System.out.println("bday: " + bruce.getBirthday());
+//	       	System.out.println("bday: " + bruce.getBirthday());
 //	       	System.out.println(bruce.getSchedule().getClassList().get(0).getCourse());
 	    }
 	        
