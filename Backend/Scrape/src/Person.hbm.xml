@@ -5,9 +5,6 @@
 
 <hibernate-mapping>
    <class name="com.backend.hibernate.Person" table="Person_Object2">
-      <meta attribute="class-description">
-         This class contains the employee detail. 
-      </meta>
       <id name="id" type="int" column="id">
          <generator class="native"/>
       </id>
@@ -15,39 +12,37 @@
       <property name="college" column="college" type="string"/>
       <property name="major" column="major" type="string"/>
 	  <property name="name" column="name" type="string"/> 
+	  <property name="gatorLink" column="gatorLink" type="string"/> 
+	  <property name="passwordHash" column="passwordHash" type="string"/> 
 	  	
-	  	<!-- might have to create table classList -->
-
+	  	<list name="friends" table="friends">
+	  		<key column="id"/>
+			<index column="type"/>	  		
+			<element column="friends" type="string"/>
+	  	</list>
+	  
+	  	<list name="pendingFriends" table="pendingFriends">
+	  		<key column="id"/>
+			<index column="type"/>	  		
+			<element column="pendingFriends" type="string"/>
+	  	</list>
+	  	
 	  	<component name="Schedule" class="com.backend.hibernate.Schedule">
-	  		<property name="zzz" column="zzz" type="string"/> 
-	  		<!--
-	  			<list name="tempList" table="tempStuff">
-	  			<key column="yo" />
-	  			<list-index column="listOrder2" />
-	  			<composite-element class="com.backend.hibernate.Temp">
-	  				<property name="yo" column="yo" type="string"/> 
-	  			</composite-element>
-	  			</list>
-	  			-->
-	  			
 	  		<list name="classList" table="Yourclass">
-            <key column="id" />
-            <list-index column="listOrder" />
-            <composite-element class="com.backend.hibernate.YourClass">
-                <property name="section" column="section" type="string"/>
-                <property name="type" column="type" type="string"/>         
-				<property name="course" column="course" type="string"/>
- 				<property name="credits" column="credits" type="string"/> 	
- 				<property name="day" column="day" type="string"/>
- 				<property name="period" column="period" type="string"/>
- 				<property name="building" column="building" type="string"/>
- 				<property name="room" column="room" type="string"/>
-            </composite-element>
-        </list>
-	  	
+	            <key column="id" />
+	            <list-index column="listOrder" />
+	            <composite-element class="com.backend.hibernate.YourClass">
+	                <property name="section" column="section" type="string"/>
+	                <property name="type" column="type" type="string"/>         
+					<property name="course" column="course" type="string"/>
+	 				<property name="credits" column="credits" type="string"/> 	
+	 				<property name="day" column="day" type="string"/>
+	 				<property name="period" column="period" type="string"/>
+	 				<property name="building" column="building" type="string"/>
+	 				<property name="room" column="room" type="string"/>
+	            </composite-element>
+       		 </list>
 	  	</component>
-
+	  	
 	</class>
-	
-	
 </hibernate-mapping>

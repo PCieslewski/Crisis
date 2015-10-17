@@ -7,8 +7,6 @@ public class Schedule {
 
 	private List<YourClass> classList = new ArrayList<YourClass>();
 	private int id;
-	private String zzz;
-	private List<Temp> temp;
 	
 	public Schedule() {
 		
@@ -28,22 +26,6 @@ public class Schedule {
 	
 	public void setId(int id) {
 		this.id = id;
-	}
-	
-	public String getZzz() {
-		return zzz;
-	}
-	
-	public void setZzz(String zzz) {
-		this.zzz = zzz;
-	}
-
-	public List<Temp> getTemp() {
-		return temp;
-	}
-	
-	public void setTemp(List<Temp> temp) {
-		this.temp = temp;
 	}
 	
 }

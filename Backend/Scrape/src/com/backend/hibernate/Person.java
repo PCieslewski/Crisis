@@ -17,11 +17,17 @@ public class Person {
 	
 	private String college;
 
-	private int id; //added so we can use it as primary key 
-	
-//	private List<YourClass> classList = new ArrayList<YourClass>(); // move into sched
+	private int id; 
 	
 	private Schedule schedule;
+
+	private String gatorLink;
+	
+	private String passwordHash;
+	
+	private List<String> friends;
+	
+	private List<String> pendingFriends;
 	
 	public Person() {
 		
@@ -32,19 +38,8 @@ public class Person {
 		this.birthday = birthday;
 		this.major = major;
 		this.college = college;
-//		this.classList = classList;
-//		this.schedule = schedule;
 	}
-	
-//	public Person(String name, String birthday, String major, String college, int id) {
-//		this.name = name;
-//		this.birthday = birthday;
-//		this.major = major;
-//		this.college = college;
-//		this.id = id;
-////		this.schedule = schedule;
-//	}
-//	
+
 	public String getName() {
 		return name;
 	}
@@ -91,6 +86,38 @@ public class Person {
 	
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
+	}
+	
+	public String getGatorLink() {
+		return gatorLink;
+	}
+	
+	public void setGatorLink(String gatorLink) {
+		this.gatorLink = gatorLink;
+	}
+	
+	public String getPasswordHash() {
+		return passwordHash;
+	}
+	
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
+	
+	public List<String> getFriends() {
+		return friends;
+	}
+	
+	public void setFriends(List<String> friends) {
+		this.friends = friends;
+	}
+	
+	public List<String> getPendingFriends() {
+		return pendingFriends;
+	}
+	
+	public void setPendingFriends(List<String> pendingFriends) {
+		this.pendingFriends = pendingFriends;
 	}
 	
 }

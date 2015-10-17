@@ -1,6 +1,8 @@
 package com.backend.authenticator;
 
 import com.backend.hibernate.Person;
+import com.backend.hibernate.Schedule;
+import com.backend.hibernate.YourClass;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,69 +19,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 public class Parse {
-	
-	//Simple Method to parse a schedule and return a Person Object
-	//TODO: Currently only prints without returning object
-//	public static List<String> parseSchedule(String schedule){
-//		
-//		List<String> parsedInfo = new ArrayList<String>();
-////		String[] parsedInfo;
-//		int parsedInfoIndex = 0;
-//		
-//		Person will = new Person();
-//		
-//		Document doc = Jsoup.parse(schedule, "");
-//		Iterator<Element> itr;
-//		
-//		//Parse the table with personal info
-//		Element personalTable = doc.getElementById("phead");
-//		itr = personalTable.select("td").iterator();
-//		
-//		//j is used to keep track of line number
-//		//this can be hard coded since it's the same for everyone
-////		int j = 0;
-//		while(itr.hasNext()){
-//			String actualInfo = itr.next().text();
-//			if(actualInfo.length() > 0) {
-//				parsedInfo.add(parsedInfoIndex, actualInfo);
-//				parsedInfoIndex++;
-//			}
-////			if(j == 1) {
-////				will.setName(actualInfo);
-////			}
-////			else if(j == 3) {
-////				will.setBirthday(actualInfo);
-////			}
-////			else if(j == 5) {
-////				will.setCollege(actualInfo);
-////			}
-////			else if(j == 7) {
-////				will.setMajor(actualInfo);
-////			}
-////			j++;
-//		}
-//		
-//		//Parse the table with the schedule elements
-//		Element schedTable = doc.getElementById("reg_sched");
-//		itr = schedTable.select("td").iterator();
-//		int i = 0;
-//		String sectionNumber;
-//		
-//		while(itr.hasNext()){
-//			String actualInfo = itr.next().text();
-//			if(actualInfo.length() > 0) {
-//				parsedInfo.add(parsedInfoIndex, actualInfo);
-//				parsedInfoIndex++;
-//			}
-////			if(isSectionNumber(actualInfo)) {
-////				System.out.println("section # :" + actualInfo);
-////				sectionNumber = actualInfo;
-////			}
-//////			System.out.println("i: " + i +  "    " + itr.next().text());
-////			i++;
-//		}
-//		return parsedInfo;
-//	}
 	
 	public static List<String> parseSchedule(String schedule){
 	
@@ -107,24 +46,6 @@ public class Parse {
 			parsedInfo.add(addParsedInfo);
 		}
 		return parsedInfo;
-	}
-	
-	/**
-	 * We know a section number has to be length 4 and all numbers
-	 * 
-	 * @param str takes in parsed string from web page
-	 * @return true/false if it is a course code
-	 */
-	private static boolean isSectionNumber(String str) {
-		if(str.length() != 4) {
-			return false;
-		}
-		for(int i = 0; i < str.length(); i++) {
-			if(((int)str.charAt(i) > 57) || ((int)str.charAt(i) < 48)) {
-				return false;
-			}
-		}
-		return true;
 	}
 	
 	//Method to read a file and convert it to a string
@@ -160,4 +81,94 @@ public class Parse {
 		return "";
 	}
 
+	private static Person getBasicInfo(List<String> parsedInfo, LoginCredentials lc) {
+		Person will = new Person();
+		will.setName(parsedInfo.get(1));
+		will.setBirthday(parsedInfo.get(3));
+		will.setCollege(parsedInfo.get(5));
+		will.setMajor(parsedInfo.get(7));
+		
+		will.setGatorLink(lc.getUsername());
+		
+		String hashedPassword = hashPassword(lc.getPassword());
+		will.setPasswordHash(hashedPassword);
+		
+		return will;
+	}
+	
+	private static String hashPassword(String unencrypted) {
+		return org.apache.commons.codec.digest.DigestUtils.sha256Hex(unencrypted); 
+	}
+	
+	public static Person extractPersonInfo(List<String> parsedInfo, LoginCredentials lc) {
+		Person will = getBasicInfo(parsedInfo, lc);
+		List<YourClass> classList = new ArrayList<YourClass>();
+		YourClass currentClass = new YourClass();
+		
+		int counter = 1;
+		int index = 8;
+		
+		String prevSection = "";
+		String prevType = "";
+		String prevCourse = "";
+		String prevCredits = "";
+		
+		while(!parsedInfo.get(index).equals("Total Credits:")) {
+			if(counter %8 == 1) {
+				if(!parsedInfo.get(index).equals("")) {
+					prevSection = parsedInfo.get(index);
+				}
+				currentClass.setSection(prevSection);
+			}
+			else if(counter %8 == 2) {
+				if(!parsedInfo.get(index).equals("")) {
+					prevType = parsedInfo.get(index);
+				}
+				currentClass.setType(prevType);
+			}
+			else if(counter %8 == 3) {
+				if(!parsedInfo.get(index).equals("")) {
+					prevCourse = parsedInfo.get(index);
+				}
+				currentClass.setCourse(prevCourse);
+			}
+			else if(counter %8 == 4) {
+				if(!parsedInfo.get(index).equals("")) {
+					prevCredits = parsedInfo.get(index);
+				}
+				currentClass.setCredits(prevCredits);
+			}
+			else if(counter %8 == 5) {
+				currentClass.setDay(parsedInfo.get(index));
+			}
+			else if(counter %8 == 6) {
+				currentClass.setPeriod(parsedInfo.get(index));
+			}
+			else if(counter %8 == 7) {
+				currentClass.setBuilding(parsedInfo.get(index));
+			}
+			else if(counter %8 == 0) {
+				currentClass.setRoom(parsedInfo.get(index));
+	
+				classList.add(currentClass);
+				currentClass = new YourClass();
+				
+				counter = 0;
+			}
+			index++;
+			counter++;
+		}
+		Schedule sched = new Schedule();
+		sched.setClassList(classList);
+		will.setSchedule(sched);
+		return will;
+	}
+	
+	public static Person makeAPerson(LoginCredentials lc, String rawScheduleInput) {
+		List<String> parsedRawText = parseSchedule(rawScheduleInput);
+		Person will = extractPersonInfo(parsedRawText, lc);
+		
+		return will;
+	}
+	
 }
