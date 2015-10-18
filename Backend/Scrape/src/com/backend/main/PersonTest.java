@@ -25,14 +25,20 @@ public class PersonTest {
 		
 		Person will = Parse.makeAPerson(lc, rawText);
 		
-		Person test = Persist.getPersonFromGatorLink("LOLDNE");
-		System.out.println(test);
+		will.addToPending("abc");
+		will.addToPending("trest");
+		will.addToPending("test");
+		will.addToPending("test");
 		
-		//System.out.println(will + "\n\n");
+		System.out.println(will.getPendingFriends());
 		
-		//System.out.println(will.getSchedule().getClassAt("T", "2"));
-		//System.out.println(will.getSchedule().getClassAt("T", "5"));
-		//System.out.println(will.getSchedule().getClassAt("R", "3"));
+		Person will2 = Persist.getPersonFromGatorLink(lc.getUsername());
+		
+		will2.addToPending("testing");
+		
+		System.out.println(will2.getPendingFriends());
+		
+		
 		
 		
 		
