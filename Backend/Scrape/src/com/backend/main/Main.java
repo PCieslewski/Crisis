@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String args[]) {
 		LoginCredentials lc = LoginCredentials.console();
 		String rawText = "";
-		
+//		Persist.deletePerson("pawel");
 		try {
 			rawText = Authenticator.getScheduleOnline(lc);
 		} catch (InvalidCredentialsException e) {
@@ -22,9 +22,20 @@ public class Main {
 		
 		Person will = Parse.makeAPerson(lc, rawText);
 		
-		System.out.println(Persist.getPersonFromGatorLink("steelerfan2010"));
+		System.out.println(will);
 		
-		Persist.deletePerson("steelerfan2010");
+		Persist.persistPerson(will);
+		
+		
+		
+//		try {
+//			System.out.println(Persist.getIdFromGatorLink("steel"));
+//		} catch (UserNotFoundException e) {
+//			e.printStackTrace();
+//		}
+		
+		Person bob = Persist.getPersonFromGatorLink("pawel");
+		System.out.println(bob);
 	}
 	
 }

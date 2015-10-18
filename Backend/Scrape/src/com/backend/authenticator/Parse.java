@@ -104,6 +104,7 @@ public class Parse {
 		Person will = getBasicInfo(parsedInfo, lc);
 		List<YourClass> classList = new ArrayList<YourClass>();
 		YourClass currentClass = new YourClass();
+		boolean areYouInAnOnlineClassBecausePawelWantedABetterName = false;
 		
 		int counter = 1;
 		int index = 8;
@@ -112,6 +113,12 @@ public class Parse {
 		String prevType = "";
 		String prevCourse = "";
 		String prevCredits = "";
+		
+		System.out.println("__________________________");
+		for(int i = 0; i < parsedInfo.size(); i++) {
+			System.out.println(parsedInfo.get(i));
+		}
+		System.out.println("__________________________");
 		
 		while(!parsedInfo.get(index).equals("Total Credits:")) {
 			if(counter %8 == 1) {
@@ -139,16 +146,43 @@ public class Parse {
 				currentClass.setCredits(prevCredits);
 			}
 			else if(counter %8 == 5) {
+				System.out.println("for pawel: " + parsedInfo.get(index));
+				if(parsedInfo.get(index).equals("Time to be arranged")) {
+//					currentClass.setDay(parsedInfo.get(index));
+					System.out.println("for pawel (inside if): " + parsedInfo.get(index));
+					areYouInAnOnlineClassBecausePawelWantedABetterName = true;
+					currentClass.setPeriod("");
+					counter++;
+				}
+				else {
+					areYouInAnOnlineClassBecausePawelWantedABetterName = false;
+				}
 				currentClass.setDay(parsedInfo.get(index));
 			}
 			else if(counter %8 == 6) {
-				currentClass.setPeriod(parsedInfo.get(index));
+				if(areYouInAnOnlineClassBecausePawelWantedABetterName) {
+					currentClass.setPeriod("");
+				}
+				else {
+					currentClass.setPeriod(parsedInfo.get(index));
+				}
 			}
 			else if(counter %8 == 7) {
-				currentClass.setBuilding(parsedInfo.get(index));
+				if(areYouInAnOnlineClassBecausePawelWantedABetterName) {
+					currentClass.setBuilding("");
+				}
+				else {
+					currentClass.setBuilding(parsedInfo.get(index));
+				}
 			}
 			else if(counter %8 == 0) {
-				currentClass.setRoom(parsedInfo.get(index));
+				if(areYouInAnOnlineClassBecausePawelWantedABetterName) {
+					currentClass.setRoom("");
+				}
+				else {
+					currentClass.setRoom(parsedInfo.get(index));
+				}
+				
 	
 				classList.add(currentClass);
 				currentClass = new YourClass();

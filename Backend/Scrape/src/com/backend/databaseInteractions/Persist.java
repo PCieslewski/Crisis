@@ -11,6 +11,9 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.backend.Util.HibernateUtil;
+import com.backend.authenticator.Authenticator;
+import com.backend.authenticator.GatorlinkTimeoutException;
+import com.backend.authenticator.InvalidCredentialsException;
 import com.backend.pojos.Person;
 import com.backend.pojos.Schedule;
 import com.backend.pojos.YourClass;
@@ -29,7 +32,7 @@ public class Persist {
 		}
 	}
 	
-	private static boolean doesPersonExist(String gatorLink) {
+	public static boolean doesPersonExist(String gatorLink) {
 		Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
 		SessionFactory factory = cfg.buildSessionFactory();
@@ -50,7 +53,7 @@ public class Persist {
 	   return true;
 	}
 	
-	private static int getIdFromGatorLink(String gatorLink) {
+	public static int getIdFromGatorLink(String gatorLink) throws UserNotFoundException {
 		Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
 		SessionFactory factory = cfg.buildSessionFactory();
@@ -63,6 +66,11 @@ public class Persist {
 	    List list = query.list();
 	    t.commit();
 	    session.close();
+	    
+	    if(list.size() == 0) {
+	    	System.out.println("not in DB!");
+	    	throw new UserNotFoundException();
+	    }
 	    
 	    int id = (Integer) list.get(0);
 
@@ -123,15 +131,27 @@ public class Persist {
 	}
 	
 	public static Person getPersonFromGatorLink(String gatorLink) {
-		int id = getIdFromGatorLink(gatorLink);
-		Person will = getAllPersonInfoFromId(id);
+		Person will = new Person();
+		try {
+			int id = getIdFromGatorLink(gatorLink);
+			will = getAllPersonInfoFromId(id);
+		} 
+		catch (UserNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		return will;
 	}
 	
 	public static void deletePerson(String gatorLink) {
-		int id = getIdFromGatorLink(gatorLink);
-		//go to respective tables to remove objects
+		int id = 0;
+		try {
+			id = getIdFromGatorLink(gatorLink);
+		} 
+		catch (UserNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		
 		Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
