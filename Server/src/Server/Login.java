@@ -24,11 +24,20 @@ public class Login extends HttpServlet {
        
     public Login() {
         super();
+
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		request.getRequestDispatcher("index.html").forward(request, response);
+		
+		Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
+		if(isLoggedIn != null && isLoggedIn == true){
+			request.getRequestDispatcher("ScheduleServ").forward(request, response);
+		}
+		else{
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,15 +56,20 @@ public class Login extends HttpServlet {
 			String rawScheduleString = Authenticator.getScheduleOnline(lc);
 			Person student = Parse.makeAPerson(lc, rawScheduleString);
 			Persist.persistPerson(student);
-			request.setAttribute("student", student);
-			request.getRequestDispatcher("Schedule.jsp").forward(request, response);
+			
+			session.setAttribute("student", student);
+			session.setAttribute("isLoggedIn", true);
+			
+			request.getRequestDispatcher("ScheduleServ").forward(request, response);
 			
 		} catch (InvalidCredentialsException e) {
-			pr.println("Invalid Creds");
-			e.printStackTrace();
+			System.out.println("A user has input bad user credentials.");
+			request.setAttribute("invalidCredentials", true);
+			doGet(request, response);
 		} catch (GatorlinkTimeoutException e) {
-			pr.println("Gatorlink Timeout");
-			e.printStackTrace();
+			pr.println("GatorLink login has timed out for a user.");
+			request.setAttribute("timeout", true);
+			doGet(request, response);
 		}
 		
 	}

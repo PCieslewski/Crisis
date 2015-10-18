@@ -31,7 +31,7 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="@">Logout</a></li>
+					<li><a href="Logout">Logout</a></li>
 				</ul>
 			</div>
 		</div>
@@ -55,15 +55,13 @@
 			<tbody>
 			
 				<%
-				Person student = (Person)request.getAttribute("student");
 				String days[] = {"SU","M","T","W","R","F","SA"};
+				Person student = (Person)session.getAttribute("student");
 				for(int i = 1; i <= 14; i++){
 				%>
 				<tr>
 					<th><%=i %></th>
 					<% for(int j = 0; j < 7; j++){ %>
-					<% //System.out.println(days[2].equals("T")); %>
-					<% //System.out.println(Integer.toString(3)); %>
 					<td><%=student.getSchedule().getClassAt(days[j].toString(),Integer.toString(i))%></td>
 					<% } %>
 				</tr>
