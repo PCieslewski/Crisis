@@ -5,6 +5,7 @@ import com.backend.authenticator.GatorlinkTimeoutException;
 import com.backend.authenticator.InvalidCredentialsException;
 import com.backend.authenticator.LoginCredentials;
 import com.backend.authenticator.Parse;
+import com.backend.databaseInteractions.Persist;
 import com.backend.pojos.Person;
 
 public class PersonTest {
@@ -24,11 +25,14 @@ public class PersonTest {
 		
 		Person will = Parse.makeAPerson(lc, rawText);
 		
-		System.out.println(will + "\n\n");
+		Person test = Persist.getPersonFromGatorLink("LOLDNE");
+		System.out.println(test);
 		
-		System.out.println(will.getSchedule().getClassAt("T", "2"));
-		System.out.println(will.getSchedule().getClassAt("T", "5"));
-		System.out.println(will.getSchedule().getClassAt("R", "3"));
+		//System.out.println(will + "\n\n");
+		
+		//System.out.println(will.getSchedule().getClassAt("T", "2"));
+		//System.out.println(will.getSchedule().getClassAt("T", "5"));
+		//System.out.println(will.getSchedule().getClassAt("R", "3"));
 		
 		
 		

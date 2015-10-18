@@ -27,6 +27,31 @@
 				<input name="password" type="Password" class="form-control"
 					placeholder="Password">
 			</div>
+			
+			<!-- If the login credentials fail, display error. -->
+			<%
+				Boolean invalidCredentials = (Boolean) request.getAttribute("invalidCredentials");
+				if (invalidCredentials != null && invalidCredentials == true) {
+			%>
+			<div class="alert alert-danger">
+				<strong>Invalid Login Credentials.</strong>
+			</div>
+			<%
+				}
+			%>
+			
+			<!-- If the login credentials fail, display error. -->
+			<%
+				Boolean timeout = (Boolean) request.getAttribute("timeout");
+				if (timeout != null && timeout == true) {
+			%>
+			<div class="alert alert-danger">
+				<strong>Something went wrong. Please try again!</strong>
+			</div>
+			<%
+				}
+			%>
+			
 			<input type="submit" value="Login" class="btn btn-primary btn-block">
 		</form>
 	</div>
