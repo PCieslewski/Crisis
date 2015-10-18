@@ -59,7 +59,7 @@ public class Schedule {
 			//Get next class.
 			YourClass c = (YourClass) itr.next();
 			//Is it the right day?
-			if(c.getDay().equals(day)){
+			if(c.getDay().contains(day)){
 				//Is it the right time?
 				if(c.getExpandedPeriod().contains(period)){
 					return c.getCourse();

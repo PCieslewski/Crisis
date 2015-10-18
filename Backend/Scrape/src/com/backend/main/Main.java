@@ -34,8 +34,8 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		Person bob = Persist.getPersonFromGatorLink("pawel");
-		System.out.println(bob);
+//		Person bob = Persist.getPersonFromGatorLink("pawel");
+//		System.out.println(bob);
 	}
 	
 }

@@ -30,15 +30,15 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		
-		Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
-		if(isLoggedIn != null){
-			if(isLoggedIn == true){
-				request.getRequestDispatcher("ScheduleServ").forward(request, response);
-			}
-		}
-		else{
+//		Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
+//		if(isLoggedIn != null){
+//			if(isLoggedIn == true){
+//				request.getRequestDispatcher("ScheduleServ").forward(request, response);
+//			}
+//		}
+//		else{
 			request.getRequestDispatcher("index.jsp").forward(request, response);
-		}
+//		}
 	
 	}
 
