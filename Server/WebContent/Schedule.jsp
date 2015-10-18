@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.backend.pojos.Person"%>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -52,53 +53,22 @@
 				</tr>
 			</thead>
 			<tbody>
+			
+				<%
+				Person student = (Person)request.getAttribute("student");
+				String days[] = {"SU","M","T","W","R","F","SA"};
+				for(int i = 1; i <= 14; i++){
+				%>
 				<tr>
-					<th>1</th>
-					<td> </td>
-					<td> </td>
-					<td> </td>
-					<td>COP5615</td>
+					<th><%=i %></th>
+					<% for(int j = 0; j < 7; j++){ %>
+					<% //System.out.println(days[2].equals("T")); %>
+					<% //System.out.println(Integer.toString(3)); %>
+					<td><%=student.getSchedule().getClassAt(days[j].toString(),Integer.toString(i))%></td>
+					<% } %>
 				</tr>
-				<tr>
-					<th>2</th>
-					<td> </td>
-				</tr>
-				<tr>
-					<th>3</th>
-				</tr>
-				<tr>
-					<th>4</th>
-				</tr>
-				<tr>
-					<th>5</th>
-				</tr>
-				<tr>
-					<th>6</th>
-				</tr>
-				<tr>
-					<th>7</th>
-				</tr>
-				<tr>
-					<th>8</th>
-				</tr>
-				<tr>
-					<th>9</th>
-				</tr>
-				<tr>
-					<th>10</th>
-				</tr>
-				<tr>
-					<th>11</th>
-				</tr>
-				<tr>
-					<th>E1</th>
-				</tr>
-				<tr>
-					<th>E2</th>
-				</tr>
-				<tr>
-					<th>E3</th>
-				</tr>
+				<% } %>
+				
 			</tbody>
 		</table>
 	</div>
