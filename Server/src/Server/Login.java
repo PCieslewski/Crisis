@@ -30,15 +30,13 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		
-//		Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
-//		if(isLoggedIn != null){
-//			if(isLoggedIn == true){
-//				request.getRequestDispatcher("ScheduleServ").forward(request, response);
-//			}
-//		}
-//		else{
+		Person student = (Person) session.getAttribute("student");
+		if(student != null){
+				request.getRequestDispatcher("/ScheduleServ").forward(request, response);
+		}
+		else{
 			request.getRequestDispatcher("index.jsp").forward(request, response);
-//		}
+		}
 	
 	}
 
@@ -62,7 +60,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("student", student);
 			session.setAttribute("isLoggedIn", true);
 			
-			request.getRequestDispatcher("ScheduleServ").forward(request, response);
+			request.getRequestDispatcher("/ScheduleServ").forward(request, response);
 			
 		} catch (InvalidCredentialsException e) {
 			System.out.println("A user has input bad user credentials.");
