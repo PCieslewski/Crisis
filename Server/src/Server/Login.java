@@ -24,7 +24,6 @@ public class Login extends HttpServlet {
        
     public Login() {
         super();
-
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,7 +57,6 @@ public class Login extends HttpServlet {
 			Persist.persistPerson(student);
 			
 			session.setAttribute("student", student);
-			session.setAttribute("isLoggedIn", true);
 			
 			request.getRequestDispatcher("/ScheduleServ").forward(request, response);
 			
