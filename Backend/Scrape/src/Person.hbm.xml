@@ -15,13 +15,13 @@
 	  <property name="gatorLink" column="gatorLink" type="string"/> 
 	  <property name="passwordHash" column="passwordHash" type="string"/> 
 	  	
-	  	<list name="friends" table="friends">
+	  	<list name="friends" table="friends" lazy="false">
 	  		<key column="id"/>
 			<index column="type"/>	  		
 			<element column="friends" type="string"/>
 	  	</list>
 	  
-	  	<list name="pendingFriends" table="pendingFriends">
+	  	<list name="pendingFriends" table="pendingFriends" lazy="false">
 	  		<key column="id"/>
 			<index column="type"/>	  		
 			<element column="pendingFriends" type="string"/>

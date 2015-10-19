@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crisis Management Scheduler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+</head>
+
+<style>
+body { background-color:#CCFFFF;
+	/*background-image: url('kate.jpg');*/
+	/*background-image: url('abc.gif');*/
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+
+</style>
+
+
+<body>
+   <!--
+    <div class="container-fluid">
+        <h1>Will is a beast</h1>
+        <div class ="row">
+            <div class="col-md-4" style="background-color: #FF9999">Left</div>
+            <div class="col-md-4" style="background-color: #99FF99">Middle</div>
+            <div class="col-md-4" style="background-color: #9999FF">Right</div>
+        </div>
+    </div>
+    -->
+
+    <!-- Top navigation bar -->
+   <nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+           <div class="navbar-header">
+               <a href="file:///C:/Users/Owner/Desktop/Crisis/Frontend/index.html" class="navbar-brand">CRISIS MANAGER</a> 
+           </div>
+
+           <div>
+               <ul class="nav navbar-nav">
+			  <!--<a href='/angular/default.asp' class='w3-hide-small' title='Angular Tutorial'>ANGULAR</a>-->
+                   <li class = "active"><a href="file:///C:/Users/Owner/Desktop/Crisis/Frontend/logIn.html">Log In</a></li>
+                   <li><a href="file:///C:/Users/Owner/Desktop/Crisis/Frontend/mySchedule.html">My Schedule</a></li>
+                   <!-- <li><a href="file:///C:/Users/Neil/Desktop/Crisis/Frontend/mySchedule.html">Make a Meeting</a></li> -->
+
+
+                   <li class="dropdown">
+                       <a href="@" class="dropdown-toggle" data-toggle="dropdown">Friends' Schedules <span class="caret"></span></a>
+                       <ul class="dropdown-menu">
+                           <li><a href="@">Pawel Cieslewski</a></li>
+                           <li><a href="@">NG38</a></li>
+                       </ul>
+                   </li>
+               </ul>
+
+               <ul class="nav navbar-nav navbar-right">
+                   <li><a href="@">Logout</a></li>
+               </ul>
+           </div>
+       </div>
+   </nav>
+
+   <!-- Login form -->
+   <div ng-app = "" class="container" style = "border:1px solid black;">
+       <h2>Log In</h2>
+            <form role="form">
+                   <div class="form-group">
+                      <!--<input type="Username" class="form-control" placeholder="Username">-->
+					  <p> Username: <input type ="text" class = "form-control" ng-model = "Username" placeholder = "Enter Username"> </p> 
+                   </div>
+                   <div class="form-group">
+                       <!--<input type="Password" class="form-control" placeholder="Password">-->
+					   <p> Password: <input type ="text" class = "form-control" ng-model = "Password" placeholder = "Enter Password"> </p>
+                   </div>
+                   <div class="checkbox">
+                       <label>
+                            <input type="checkbox" value="remember-me">Remember me
+                       </label>
+                   </div>
+            </form>
+       <button class="btn btn-primary btn-block">log in</button>
+	   
+	   <p> Username stored in this variable: {{Username}} </p>
+	   <p> Password stored in this variable: {{Password}} </p>
+	   
+   </div>
+</body>
+</html>

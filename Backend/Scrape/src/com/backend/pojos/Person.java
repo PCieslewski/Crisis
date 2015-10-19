@@ -1,5 +1,6 @@
 package com.backend.pojos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
@@ -25,7 +26,8 @@ public class Person {
 	private List<String> pendingFriends;
 	
 	public Person() {
-		
+		this.friends = new ArrayList<String>();
+		this.pendingFriends = new ArrayList<String>();
 	}
 	
 	public Person(String name, String birthday, String major, String college, List<YourClass> classList) {
@@ -33,6 +35,8 @@ public class Person {
 		this.birthday = birthday;
 		this.major = major;
 		this.college = college;
+		this.friends = new ArrayList<String>();
+		this.pendingFriends = new ArrayList<String>();
 	}
 
 	public String getName() {
@@ -131,6 +135,24 @@ public class Person {
 		results.append(schedule);
 		
 		return results.toString();
+	}
+	
+	public void addToPending(String gatorlink){
+		if(this.pendingFriends.contains(gatorlink)){
+			return; //If the friend is already in the list, do nothing.
+		}
+		else{
+			this.pendingFriends.add(gatorlink);
+		}
+	}
+	
+	public void addToFriends(String gatorlink){
+		if(this.friends.contains(gatorlink)){
+			return; //If the friend is already in the list, do nothing.
+		}
+		else{
+			this.friends.add(gatorlink);
+		}
 	}
 	
 }
