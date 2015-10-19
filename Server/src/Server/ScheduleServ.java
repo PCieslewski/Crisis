@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.backend.pojos.Person;
+
 @WebServlet("/ScheduleServ")
 public class ScheduleServ extends HttpServlet {
 	
@@ -21,6 +23,13 @@ public class ScheduleServ extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);
+		
+		Person student = (Person) session.getAttribute("student");
+		if(student == null){
+				response.sendRedirect(request.getContextPath() + "/Login");
+				return;
+		}
+		
 		request.getRequestDispatcher("Schedule.jsp").forward(request, response);
 		
 	}
