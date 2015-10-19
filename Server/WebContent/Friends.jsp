@@ -10,6 +10,27 @@
 </head>
 <body>
 
+	<!-- Top navigation bar -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">CRISIS MANAGER</a>
+			</div>
+
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="ScheduleServ">My Schedule</a></li>
+					<li class="active"><a href="FriendServ">Friends</a></li>
+					<li><a href="@">Make a Meeting</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="Logout">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 	<div class="container">
 		<h2>Friends</h2>
 		<h2></h2>
