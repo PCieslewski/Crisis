@@ -14,124 +14,73 @@
 	
 	<link href='https://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
 
-	<style>
-		html {
-		
-	        background: url(backgroundImage.jpeg) no-repeat center center fixed;
-	        -webkit-background-size: cover;
-	        -moz-background-size: cover;
-	        -o-background-size: cover;
-	        background-size: cover;
-	    }
+	<link rel=stylesheet href="css/login.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
+	<link rel=stylesheet href="sharpCalendar/css/jquery.sharpCalendar.css" type="text/css" media="screen">
+	<link rel=stylesheet href="css/reset.css" type="text/css" media="screen">
+	<link rel=stylesheet href="css/main.css" type="text/css" media="screen">
         
-        .crisisBox {
-        	border: 3px solid #BC0000;
-	        margin-left: 15px;
-	        font-family: 'Syncopate', sans-serif;
-	        color: white;
-	        float:left;
-        }
-        
-        .crisis {
-        	font-family: 'Syncopate', sans-serif;
-	        color: white;
-	        float:left;
-        }
-        
-        .topRow {
-        	margin-left: 25px;
-	        margin-right: 25px;
-	    	margin-top: 25px;
-	    	margin-bottom: 25px;
-	        display: inline-block;
-        }
-        
-        .loginBox {
-	        height: 400px;
-	        width: 300px;
-	        background: #212121;
-	        position: fixed;
-	        top: 50%;
-	        left: 50%;
-	        margin-top: -200px;
-	        margin-left: -150px;
-	        
-	        border-radius: 5px;
-        }
-        
-        .inputBoxes {
-	        margin-left: 25px;
-	        margin-right: auto;
-	        height: 35px;
-	        width: 250px;
-	        border-radius: 5px;
-
-	        font-family: 'Syncopate', sans-serif;
-	        color: black;
-        }
-        
-        .submitButton {      		
-       		margin-left: 25px;
-	        margin-right: auto;
-	        height: 35px;
-	        width: 250px;
-	        background-color: #BC0000;
-	        border-color: #BC0000;
-	        color: white;
-	        font-family: 'Syncopate', sans-serif;
-        }
-        
-        .submitButton:hover {
-        	background: #383;
-        	border-color: #383;
-        }
-            
-        .forgotPassword {
-        	text-align: center;
-        	color: #00CC00;
-        	font-family: 'Syncopate', sans-serif;
-        }
-        
-        .colorTheme1 {
-        	color: #BC0000;
-        }
-        
-        .colorTheme2 {
-        	color: white;
-        }
-        
-        .button {
-        	color: red;
-        }
-        
-        ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-	  		color:    black;
-		}
-		:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-		    color:    black;
-		    opacity:  .5;
-		}
-		::-moz-placeholder { /* Mozilla Firefox 19+ */
-		    color:    black;
-		    opacity:  .5;
-		}
-		:-ms-input-placeholder { /* Internet Explorer 10-11 */
-		    color:    black;
-		}
-	        
-	    .error {
-	    	color: white;
-	    	text-align: center;
-	    	background-color: #BC0000;
-	    	
-	    
-	    	
-	    }
-	        
-	</style>
-
 </head>
 <body>
+
+	<input type="hidden" id="selectedDates" value="2014-8-13,2014-8-10,2014-8-27,2014-7-27,2014-9-25,2014-9-20"/>
+        <div id="page" class="page">
+            <section id="main">
+
+
+                <div class="wrapperHor">
+
+                </div>
+
+
+            </section>
+        </div>
+        <!-- jQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- SharpCalendar -->
+        <script src="sharpCalendar/script/jquery.sharpCalendar.js"></script>
+        <!-- libs -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.11/jquery.mousewheel.js"></script>
+        <script src="scripts/main.js"></script>
+        <script>
+            $(".wrapperHor").SC({
+                selectedDatesObj: 'selectedDates',
+                animate: true,
+                useWheel: true,
+                vertical: false,
+                sizes: 'auto',
+                callbackDelay: 500,
+                years: 1,
+                months: 3,
+                days: 5,
+                invert: false,
+                combineMonthYear: false,
+                showDayArrows: false,
+                showDayNames: true,
+                monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                doubleDigitsDays: true,
+                allowSelectSpans: true,
+                callback:function(cal) {
+                  $("#wtf").html("Selected date: " + cal.currentDate);
+                }
+		    });
+        </script>
+        <script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-36251023-1']);
+		  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
+
 	<!-- Login form -->
 	<div class="loginBox">
 		
@@ -141,7 +90,7 @@
 			</div>
 			<img src="logo.png" width="35%" align="right">
 		</div>
-		<br>
+		<br><br><br>
 		<form role="form" class="form-inline" action="Login" name="loginForm" method="post">
 			<div class="form-group has-feedback">
 				<input name="username" type="Username" class="inputBoxes"

@@ -1,0 +1,112 @@
+html {
+		
+	        background: url(backgroundImage.jpeg) no-repeat center center fixed;
+	        -webkit-background-size: cover;
+	        -moz-background-size: cover;
+	        -o-background-size: cover;
+	        background-size: cover;
+	    }
+        
+        .crisisBox {
+        	border: 3px solid #BC0000;
+	        margin-left: 15px;
+	        font-family: 'Syncopate', sans-serif;
+	        color: white;
+	        float:left;
+	        font-size: 30px;
+	        
+	        margin-top: 13px;
+        }
+        
+        .crisis {
+        	font-family: 'Syncopate', sans-serif;
+	        color: white;
+	        float:left;
+        }
+        
+        .topRow {
+        	margin-left: 25px;
+	        margin-right: 25px;
+	    	margin-top: 25px;
+	    	margin-bottom: 25px;
+	        display: inline-block;
+        }
+        
+        .loginBox {
+	        height: 375px;
+	        width: 300px;
+	        background: #212121;
+	        position: fixed;
+	        top: 60%;
+	        left: 50%;
+	        margin-top: -200px;
+	        margin-left: -150px;
+	        
+	        border-radius: 5px;
+        }
+        
+        .inputBoxes {
+	        margin-left: 25px;
+	        margin-right: auto;
+	        height: 35px;
+	        width: 250px;
+	        border-radius: 5px;
+
+	        font-family: 'Syncopate', sans-serif;
+	        color: black;
+        }
+        
+        .submitButton {      		
+       		margin-left: 25px;
+	        margin-right: auto;
+	        height: 35px;
+	        width: 250px;
+	        background-color: #BC0000;
+	        border-color: #BC0000;
+	        color: white;
+	        font-family: 'Syncopate', sans-serif;
+        }
+        
+        .submitButton:hover {
+        	background: #383;
+        	border-color: #383;
+        }
+            
+        .forgotPassword {
+        	text-align: center;
+        	color: #00CC00;
+        	font-family: 'Syncopate', sans-serif;
+        }
+        
+        .colorTheme1 {
+        	color: #BC0000;
+        }
+        
+        .colorTheme2 {
+        	color: white;
+        }
+        
+        .button {
+        	color: red;
+        }
+        
+        ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+	  		color:    black;
+		}
+		:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		    color:    black;
+		    opacity:  .5;
+		}
+		::-moz-placeholder { /* Mozilla Firefox 19+ */
+		    color:    black;
+		    opacity:  .5;
+		}
+		:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		    color:    black;
+		}
+	        
+	    .error {
+	    	color: white;
+	    	text-align: center;
+	    	background-color: #BC0000;
+	    }
