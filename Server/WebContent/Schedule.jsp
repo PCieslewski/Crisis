@@ -38,30 +38,82 @@
 	</nav>
 
 	<div class="container">
-		<h2 align="center">Current Schedule</h2>
+		<h2 align="center">Weekly Schedule</h2>
+		<br><br>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th align="center">Period</th>
-					<th align="center">Sunday</th>
+					<th align="center">Time</th>
 					<th align="center">Monday</th>
 					<th align="center">Tuesday</th>
 					<th align="center">Wednesday</th>
 					<th align="center">Thursday</th>
 					<th align="center">Friday</th>
-					<th align="center">Saturday</th>
 				</tr>
 			</thead>
 			<tbody>
 			
+				<%!
+					public static String convertToTime(int i) {
+						if(i == 1) {
+							return "7:25am";
+						}
+						else if(i == 2) {
+							return "8:30am";
+						}
+						else if(i == 3) {
+							return "9:35am";
+						}
+						else if(i == 4) {
+							return "10:40am";
+						}
+						else if(i == 5) {
+							return "11:45am";
+						}
+						else if(i == 6) {
+							return "12:50pm";
+						}
+						else if(i == 7) {
+							return "1:55pm";
+						}
+						else if(i == 8) {
+							return "3:00pm";
+						}
+						else if(i == 9) {
+							return "4:05pm";
+						}
+						else if(i == 10) {
+							return "5:10pm";
+						}
+						else if(i == 11) {
+							return "6:15pm";
+						}
+						else if(i == 12) {
+							return "7:20pm";
+						}
+						else if(i == 13) {
+							return "8:20pm";
+						}
+						else if(i == 14) {
+							return "9:20pm";
+						}
+						else {
+							return "error";
+						}
+					}
+				%>
+			
 				<%
-				String days[] = {"SU","M","T","W","R","F","SA"};
+				String days[] = {"M","T","W","R","F"};
 				Person student = (Person)session.getAttribute("student");
 				for(int i = 1; i <= 14; i++){
 				%>
+				
 				<tr>
 					<th><%=i %></th>
-					<% for(int j = 0; j < 7; j++){ %>
+					<th><%=convertToTime(i) %></th>
+					<% for(int j = 0; j < 5; j++){ %>
 					<td><%=student.getSchedule().getClassAt(days[j].toString(),Integer.toString(i))%></td>
 					<% } %>
 				</tr>
