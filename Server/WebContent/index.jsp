@@ -127,7 +127,7 @@
 			<%
 				}
 			%>
-			<br><br><br>
+			<br><br><br><br>
 			<div class="form-group has-feedback">
 				<input type="submit" value="Log In" class="btn btn-default submitButton">
 				<i class="form-control-feedback glyphicon glyphicon-log-in colorTheme2"></i>

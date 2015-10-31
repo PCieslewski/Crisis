@@ -41,8 +41,10 @@ html {
 	        left: 50%;
 	        margin-top: -200px;
 	        margin-left: -150px;
-	        
-	        border-radius: 5px;
+	              
+	        -webkit-box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
+		    -moz-box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
+		    box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
         }
         
         .inputBoxes {
