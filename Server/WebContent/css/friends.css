@@ -1,0 +1,99 @@
+html {
+	background: url(backgroundImage.jpeg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+        
+.container {
+	height: 475px;
+	width: 368px;
+	background: #212121;
+	position: fixed;
+	top: 65%;
+	left: 15%;
+	margin-top: -400px;
+	margin-left: -150px;
+
+	-webkit-box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
+	-moz-box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
+	box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
+
+	float: left;
+}
+
+.people {
+	height: 335px;
+	width: 300px;
+	margin-left: 18px;
+	overflow: auto;
+}
+
+.addFriend {
+	height: 335px;
+	width: 300px;
+	margin-left: 18px;
+	overflow: auto;
+}
+
+.nav-pills > li.active > a,
+	.nav-pills > li.active > a:hover,
+	.nav-pills > li.active > a:focus{
+		color: #white;
+		background-color: #BC0000;
+	}
+
+.text {
+	color: white;
+	font-color: white;
+	font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.addFriendButton {
+	background-color: #BC0000;
+    border-color: #BC0000;
+}
+
+.addFriendButton:hover {
+	background: #383;
+	border-color: #383;
+}
+
+.stuff {
+	float: left;
+}
+
+.myButtons {
+	position: absolute;
+	right: 10px;
+	top: 18px;
+}
+
+.accept:hover {
+	color: green;
+}
+
+.reject:hover {
+	color: #BC0000;
+}
+
+.success {
+	color: #254117;
+   	text-align: center;
+   	background-color: #98FF98;
+}
+
+.error {
+   	color: #800517;
+   	text-align: center;
+   	background-color: #E77471;
+}
+
+.temp {
+	float: right;
+	color: white;
+	font-size: 64px;
+}
