@@ -3,6 +3,9 @@ package com.backend.pojos;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class Person {
 	
 	private String name;
@@ -37,6 +40,12 @@ public class Person {
 		this.college = college;
 		this.friends = new ArrayList<String>();
 		this.pendingFriends = new ArrayList<String>();
+	}
+	
+	//Static method to return a person object from a JSON string. Do not use with "new."
+	public static Person personFromJson(String personJson){
+		Gson gson = new GsonBuilder().create();
+		return gson.fromJson(personJson, Person.class);
 	}
 
 	public String getName() {
@@ -146,6 +155,12 @@ public class Person {
 		}
 	}
 	
+	public void removeFromPending(String gatorlink){
+		while(pendingFriends.contains(gatorlink)){
+			pendingFriends.remove(gatorlink);
+		}
+	}
+	
 	public void addToFriends(String gatorlink){
 		if(this.friends.contains(gatorlink)){
 			return; //If the friend is already in the list, do nothing.
@@ -153,6 +168,17 @@ public class Person {
 		else{
 			this.friends.add(gatorlink);
 		}
+	}
+	
+	public void removeFromFriends(String gatorlink){
+		while(friends.contains(gatorlink)){
+			friends.remove(gatorlink);
+		}
+	}
+	
+	public String getJson(){
+		Gson gson = new GsonBuilder().create();
+		return gson.toJson(this);
 	}
 	
 }
