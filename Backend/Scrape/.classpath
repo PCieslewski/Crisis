@@ -51,5 +51,7 @@
 	<classpathentry kind="lib" path="lib/websocket-common-9.2.11.v20150529.jar"/>
 	<classpathentry kind="lib" path="lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -33,7 +33,11 @@ public class FriendServ extends HttpServlet {
 		
 		if(fglink != null){
 			
-			if(Persist.doesPersonExist(fglink)){
+			if(fglink.equals(student.getGatorLink())){
+				request.setAttribute("friendExists", false);
+				System.out.println("User cannot add themselves to friends list.");
+			}
+			else if(Persist.doesPersonExist(fglink)){
 				Person friend = Persist.getPersonFromGatorLink(fglink);
 				
 				System.out.println("HERE0");
