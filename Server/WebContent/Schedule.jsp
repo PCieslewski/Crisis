@@ -6,12 +6,9 @@
 <title>Crisis Management Scheduler</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -39,11 +36,12 @@
 
 	<div class="container">
 		<h2 align="center">Weekly Schedule</h2>
-		<br><br>
+		<br>
+		<br>
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th align="center">Period</th>
+					<th align="center" id="demo">Period</th>
 					<th align="center">Time</th>
 					<th align="center">Monday</th>
 					<th align="center">Tuesday</th>
@@ -53,7 +51,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			
+
 				<%!
 					public static String convertToTime(int i) {
 						if(i == 1) {
@@ -103,13 +101,13 @@
 						}
 					}
 				%>
-			
+
 				<%
 				String days[] = {"M","T","W","R","F"};
 				Person student = (Person)session.getAttribute("student");
 				for(int i = 1; i <= 14; i++){
 				%>
-				
+
 				<tr>
 					<th><%=i %></th>
 					<th><%=convertToTime(i) %></th>
@@ -118,9 +116,15 @@
 					<% } %>
 				</tr>
 				<% } %>
-				
+
 			</tbody>
 		</table>
 	</div>
+	
+<script>
+var student = <%= student.getJson() %>;
+document.getElementById("demo").innerHTML = student.name;
+</script>
+	
 </body>
 </html>

@@ -16,7 +16,7 @@ public class GsonTest2 {
 		
 		LoginCredentials lc = LoginCredentials.console();
 		String rawText = "";
-//		Persist.deletePerson("pawel");
+
 		try {
 			rawText = Authenticator.getScheduleOnline(lc);
 		} catch (InvalidCredentialsException e) {
