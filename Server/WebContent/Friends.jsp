@@ -124,10 +124,9 @@
 
 				<script>
 				$(document).on("click", "#addFriendButton", function() {
-					var fglink = $('input:text[id=friendGatorlink]').val();
 				    $.post("AddFriend",
 				    {
-				    	friendGatorlink: fglink
+				    	friendGatorlink: $('input:text[id=friendGatorlink]').val()
 				    },
 				    function(responseText) {
 				        $("#test").text(responseText);
@@ -135,8 +134,9 @@
 				    });
 				});
 				</script>
+
 				<div>
-					<input id="friendGatorlink" type="text" class="form-control"  placeholder="Enter Friend's Gatorlink">
+					<input id="friendGatorlink" type="text" class="form-control" placeholder="Enter Friend's Gatorlink">
 				</div>
 				<div id="test"></div>
 				<button id="addFriendButton" class="btn btn-default btn-block addFriendButton text">Add Friend</button>
