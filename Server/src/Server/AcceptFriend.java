@@ -28,7 +28,8 @@ public class AcceptFriend extends HttpServlet {
 	    response.setCharacterEncoding("UTF-8");
 		
 	    HttpSession session = request.getSession(true);
-		Person student = (Person) session.getAttribute("student");
+	    String studentGatorlink = (String) session.getAttribute("studentGatorlink");
+		Person student = (Person) Persist.getPersonFromGatorLink(studentGatorlink);
 	    
 		String friendGatorlink = (String) request.getParameter("gatorlink");
 		Person friend = (Person) Persist.getPersonFromGatorLink(friendGatorlink);

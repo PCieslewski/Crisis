@@ -26,7 +26,8 @@ public class AddFriend extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);
-		Person student = (Person) session.getAttribute("student");
+	    String studentGatorlink = (String) session.getAttribute("studentGatorlink");
+		Person student = (Person) Persist.getPersonFromGatorLink(studentGatorlink);
 		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");

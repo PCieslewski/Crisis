@@ -28,9 +28,14 @@ public class RejectFriend extends HttpServlet {
 	    response.setCharacterEncoding("UTF-8");
 		
 	    HttpSession session = request.getSession(true);
-		Person student = (Person) session.getAttribute("student");
+	    String studentGatorlink = (String) session.getAttribute("studentGatorlink");
+		Person student = (Person) Persist.getPersonFromGatorLink(studentGatorlink);
 	    
 		String friendGatorlink = (String) request.getParameter("gatorlink");
+		
+		System.out.println("TESTING!!!!!!!!!!!!!!");
+		System.out.println(student.getName());
+		System.out.println(student.getPendingFriends());
 		
 		if(student.getPendingFriends().contains(friendGatorlink)){ //Check if the friend is actually pending
 			student.removeFromPending(friendGatorlink); //Remove the friend from the pending list

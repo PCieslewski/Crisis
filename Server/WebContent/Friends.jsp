@@ -11,8 +11,84 @@
 <link rel=stylesheet href="css/friends.css" type="text/css" media="screen">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
 
+<script>
+function updatePending(list) {
+    var len = list.length;
+    document.getElementById('pendingFriends').innerHTML = '';
+    
+    for(var i=0; i<len; i++){
+    	document.getElementById('pendingFriends').innerHTML += 
+    	'<a href="#" class="list-group-item">'+
+			'<div class="">'+ 
+				'<h4 class="list-group-item-heading">'+list[i]+'</h4>'+
+				'<p class="list-group-item-text"> a </p>'+
+			'</div>'+
+			'<div class="myButtons">'+
+				'<button class="accept" role="button" onclick="acceptFriend(\''+list[i]+'\');">'+
+					'<span class="glyphicon glyphicon-ok"></span>'+
+				'</button>'+
+				'<button class="reject" role="button" onclick="rejectFriend(\''+list[i]+'\');">'+
+					'<span class="glyphicon glyphicon-remove"></span>'+
+				'</button>'+
+			'</div>'+
+		'</a>';
+    }
+}
+
+function updateFriends(list) {
+	var len = list.length;
+    document.getElementById('normalFriends').innerHTML = '';
+    
+    for(var i=0; i<len; i++){
+    	document.getElementById('normalFriends').innerHTML += 
+    	'<a href="#" class="list-group-item">'+
+			'<h4 class="list-group-item-heading">'+list[i]+'</h4>'+
+			'<p class="list-group-item-text">Fun</p>'+
+		'</a>';
+    }
+}
+
+function acceptFriend(gatorlink) {
+	$.ajax({
+        type: "POST", //Type of post
+        url: "AcceptFriend", //Where it is sent (Which servlet)
+        dataType: "json",
+        data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+        success: function (msg) { //Msg is returned FROM THE SERVER!
+			updateAll();
+        }
+    });
+}
+
+function rejectFriend(gatorlink) {
+	$.ajax({
+        type: "POST", //Type of post
+        url: "RejectFriend", //Where it is sent (Which servlet)
+        dataType: "json",
+        data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+        success: function (msg) { //Msg is returned FROM THE SERVER!
+			updateAll();
+        }
+    });
+}
+
+function updateAll() {
+	$.ajax({
+        type: "GET", //Type of post
+        url: "GetPersonJson", //Where it is sent (Which servlet)
+        dataType: "json",
+        //data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+        success: function (msg) { //Msg is returned FROM THE SERVER!
+			updatePending(msg.pendingFriends);
+        	updateFriends(msg.friends);
+        }
+    });
+}
+
+</script>
+
 </head>
-<body>
+<body onload="updateAll();">
 
 	<!-- Top navigation bar -->
 	<nav class="navbar navbar-inverse">
@@ -47,40 +123,14 @@
 			<div id="friends" class="tab-pane fade">
 				<br>
 				<br>
-				<div class="list-group people">
+				<div class="list-group people" id="normalFriends">
 					<a href="#" class="list-group-item">
 						<h4 class="list-group-item-heading">Will Livesey</h4>
 						<p class="list-group-item-text">Steelerfan2010</p>
-					</a> <a href="#" class="list-group-item">
+					</a> 
+					<a href="#" class="list-group-item">
 						<h4 class="list-group-item-heading">Pawel Cieslewski</h4>
 						<p class="list-group-item-text">Pawel</p>
-					</a> <a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">Neil Garg</h4>
-						<p class="list-group-item-text">NG38</p>
-					</a> <a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">Neil Garg</h4>
-						<p class="list-group-item-text">NG38</p>
-					</a> <a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">Neil Garg</h4>
-						<p class="list-group-item-text">NG38</p>
-					</a> <a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">Neil Garg</h4>
-						<p class="list-group-item-text">NG38</p>
-					</a> <a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">Neil Garg</h4>
-						<p class="list-group-item-text">NG38</p>
-					</a> <a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">Neil Garg</h4>
-						<p class="list-group-item-text">NG38</p>
-					</a> <a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">Neil Garg</h4>
-						<p class="list-group-item-text">NG38</p>
-					</a> <a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">Neil Garg</h4>
-						<p class="list-group-item-text">NG38</p>
-					</a> <a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">Neil Garg</h4>
-						<p class="list-group-item-text">NG38</p>
 					</a>
 				</div>
 			</div>
@@ -88,35 +138,7 @@
 			<div id="pending" class="tab-pane fade">
 				<br>
 				<br>
-				<div class="people">
-					<a href="#" class="list-group-item">
-						<div class="">
-							<h4 class="list-group-item-heading">Big Jake</h4>
-							<p class="list-group-item-text">Dog123</p>
-						</div>
-						<div class="myButtons">
-							<button class="accept" role="button">
-								<span class="glyphicon glyphicon-ok"></span>
-							</button>
-							<button class="reject" role="button">
-								<span class="glyphicon glyphicon-remove"></span>
-							</button>
-						</div>
-					</a> <a href="#" class="list-group-item">
-						<div class="">
-							<h4 class="list-group-item-heading">Big Jake</h4>
-							<p class="list-group-item-text">Dog123</p>
-						</div>
-						<div class="myButtons">
-							<button class="accept" role="button">
-								<span class="glyphicon glyphicon-ok"></span>
-							</button>
-							<button class="reject" role="button">
-								<span class="glyphicon glyphicon-remove"></span>
-							</button>
-						</div>
-					</a>
-				</div>
+				<div class="pendingFriends" id="pendingFriends"></div>
 			</div>
 
 			<div id="addFriends" class="tab-pane fade in active addFriend text">
@@ -137,6 +159,7 @@
 				            	$("#test").text("Failure");
 				            	$("#friendGatorlink").val("");
 				            }
+				        	updateAll();
 				        }
 				    });
 				}
