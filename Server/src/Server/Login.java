@@ -57,25 +57,43 @@ public class Login extends HttpServlet {
 		
 		PrintWriter pr = response.getWriter();
 		
-		try {
-			
-			String rawScheduleString = Authenticator.getScheduleOnline(lc);
-			Person student = Parse.makeAPerson(lc, rawScheduleString);
-			Persist.persistPerson(student);
-			
-			session.setAttribute("student", student);
-			
-			response.sendRedirect(request.getContextPath() + "/ScheduleServ");
-			//request.getRequestDispatcher("/ScheduleServ").forward(request, response);
-			
-		} catch (InvalidCredentialsException e) {
-			System.out.println("A user has input bad user credentials.");
-			request.setAttribute("invalidCredentials", true);
-			doGet(request, response);
-		} catch (GatorlinkTimeoutException e) {
-			pr.println("GatorLink login has timed out for a user.");
-			request.setAttribute("timeout", true);
-			doGet(request, response);
+		Person temp = Persist.getPersonFromGatorLink(username);
+		//If the person already exists, get them from the DB.
+		if(temp.getName() != null){
+			if(temp.getPasswordHash().equals(org.apache.commons.codec.digest.DigestUtils.sha256Hex(password))){
+				session.setAttribute("student", temp);
+				session.setAttribute("studentGatorlink", username);
+				System.out.println(temp.getPendingFriends());
+				response.sendRedirect(request.getContextPath() + "/ScheduleServ");
+			}
+			else{
+				System.out.println("A user has input bad user credentials.");
+				request.setAttribute("invalidCredentials", true);
+				doGet(request, response);
+			}
+		}
+		//Else fetch them from the gatorlink website.
+		else{
+			try {
+				
+				String rawScheduleString = Authenticator.getScheduleOnline(lc);
+				Person student = Parse.makeAPerson(lc, rawScheduleString);
+				Persist.persistPerson(student);
+				
+				session.setAttribute("student", student);
+				session.setAttribute("studentGatorlink", username);
+				response.sendRedirect(request.getContextPath() + "/ScheduleServ");
+				//request.getRequestDispatcher("/ScheduleServ").forward(request, response);
+				
+			} catch (InvalidCredentialsException e) {
+				System.out.println("A user has input bad user credentials.");
+				request.setAttribute("invalidCredentials", true);
+				doGet(request, response);
+			} catch (GatorlinkTimeoutException e) {
+				pr.println("GatorLink login has timed out for a user.");
+				request.setAttribute("timeout", true);
+				doGet(request, response);
+			}
 		}
 		
 	}

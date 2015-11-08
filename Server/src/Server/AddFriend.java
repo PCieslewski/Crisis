@@ -26,40 +26,38 @@ public class AddFriend extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);
-		Person student = (Person) session.getAttribute("student");
+	    String studentGatorlink = (String) session.getAttribute("studentGatorlink");
+		Person student = (Person) Persist.getPersonFromGatorLink(studentGatorlink);
 		
-		response.setContentType("text/plain");
+		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 		
-		String fglink = (String) request.getParameter("friendGatorlink");
+		String fglink = (String) request.getParameter("gatorlink");
 		System.out.println(fglink);
 		
 		if(fglink != null){
 			
 			if(fglink.equals(student.getGatorLink())){
-				response.getWriter().write("Failure");
 				System.out.println("User cannot add themselves to friends list.");
+				response.getWriter().write("{\"error\": 1}"); //Return a JSON with error.
 			}
 			else if(Persist.doesPersonExist(fglink)){
 				Person friend = Persist.getPersonFromGatorLink(fglink);
-				
-				System.out.println(friend.getGatorLink());
-				
 				friend.addToPending(student.getGatorLink());
 				
 				//This is pretty terrible. Maybe we could use an update?
 				Persist.deletePerson(friend.getGatorLink());
 				Persist.persistPerson(friend);
 				
-			    response.getWriter().write("Success");
+				response.getWriter().write("{\"error\": 0}"); //Return a JSON with success.
 			}
 			else{
-				response.getWriter().write("Failure");
+				response.getWriter().write("{\"error\": 1}"); //Return a JSON with error.
 			}
 			
 		}
 		else{
-			response.getWriter().write("Failure");
+			response.getWriter().write("{\"error\": 1}"); //Return a JSON with error.
 		}
 		
 	}
