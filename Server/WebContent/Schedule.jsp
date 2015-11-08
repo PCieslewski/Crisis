@@ -37,11 +37,6 @@
 	<table id="myTable" class="table table-striped">
 	</table>
 	
-	<div id="temp">
-	    <input type="button" id="2" value="mod" onclick="Javascript:mod()">
-	    to create a Table and add some data using JavaScript
-	</div>
-	
 	<script>
 	function addTable() {
 	    var table = document.getElementById("myTable");
@@ -51,13 +46,12 @@
 	    table.appendChild(tableBody);
 	
 	    var daysOfWeek = ["Period/Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-	    
+
 	    for(var header = 0; header < 6; header++) {
 		    var th = document.createElement('TH');
 		    th.innerHTML = daysOfWeek[header];
 		    tableBody.appendChild(th);
 	    }
-	
 	    for (var rows = 0; rows < 14; rows++) {
 	       var tr = document.createElement('TR');
 	       tableBody.appendChild(tr);
@@ -74,7 +68,6 @@
 	           tr.appendChild(td);
 	       }
 	    }
-	    myTableDiv.appendChild(table);
 	}
 	
 	function daySplitter(days) {
@@ -246,16 +239,13 @@
 			return "9:20pm";
 		}
 		else {
+		    alert("B!");
 			return "error";
 		}
 	}
 	
 	function main2() {
-		alert("test");
 		addTable();
-		
-		
-		alert("fuck");
 		mod();
 	}
 	</script>
