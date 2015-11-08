@@ -8,16 +8,14 @@
 
 <script>
 function getPersonInfo() {
-	console.log($('#gatorlinkInput').val());
     $.ajax({
         type: "POST", //Type of post
         url: "GetPersonJson", //Where it is sent (Which servlet)
-        dataType: "json", //datatype
-        data: {gatorlink:$('#gatorlinkInput').val()},
-        success: function (msg) {
-        	console.log("HELLO!");
+        dataType: "json",
+        data: {gatorlink:$('#gatorlinkInput').val()}, //This is sent TO THE SERVER
+        success: function (msg) { //Msg is returned FROM THE SERVER!
             if (msg.failure != 1) {
-                $("#demo").text(JSON.stringify(msg));
+                $("#demo").text(msg.name);
             } else {
                 alert("Bad Gatorlink!");
             }

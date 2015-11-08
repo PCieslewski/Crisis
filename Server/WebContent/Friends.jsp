@@ -121,25 +121,32 @@
 
 			<div id="addFriends" class="tab-pane fade in active addFriend text">
 				<br><br><br><br><br><br>
-
+				
 				<script>
-				$(document).on("click", "#addFriendButton", function() {
-				    $.post("AddFriend",
-				    {
-				    	friendGatorlink: $('input:text[id=friendGatorlink]').val()
-				    },
-				    function(responseText) {
-				        $("#test").text(responseText);
-				        $("#friendGatorlink").val("");
+				function addFriend() {
+				    $.ajax({
+				        type: "POST", //Type of post
+				        url: "AddFriend", //Where it is sent (Which servlet)
+				        dataType: "json",
+				        data: {gatorlink:$('#friendGatorlink').val()}, //This is sent TO THE SERVER
+				        success: function (msg) { //Msg is returned FROM THE SERVER!
+				            if (msg.error != 1) {
+				                $("#test").text("Success");
+				                $("#friendGatorlink").val("");
+				            } else {
+				            	$("#test").text("Failure");
+				            	$("#friendGatorlink").val("");
+				            }
+				        }
 				    });
-				});
+				}
 				</script>
 
 				<div>
 					<input id="friendGatorlink" type="text" class="form-control" placeholder="Enter Friend's Gatorlink">
 				</div>
 				<div id="test"></div>
-				<button id="addFriendButton" class="btn btn-default btn-block addFriendButton text">Add Friend</button>
+				<button onclick="addFriend()" class="btn btn-default btn-block addFriendButton text">Add Friend</button>
 
 			</div>
 		</div>
