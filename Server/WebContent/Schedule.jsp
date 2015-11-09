@@ -159,10 +159,27 @@
 	    }
 	}
 	
-	function mod() {
-		<% Person student = (Person)session.getAttribute("student"); %>
-		var student = <%= student.getJson() %>;
-		for(var i = 0; i < student.schedule.classList.length; i++) {
+	function mod() {	
+		$.ajax({
+	        type: "GET", //Type of post
+	        url: "GetPersonJson", //Where it is sent (Which servlet)
+	        dataType: "json",
+	        //data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+	        success: function (msg) { //Msg is returned FROM THE SERVER!
+				var student = msg;
+				for(var i = 0; i < student.schedule.classList.length; i++) {
+					var courseCode = student.schedule.classList[i].course;
+					var days = student.schedule.classList[i].day;
+					var periods = student.schedule.classList[i].period;
+					
+					var all = work(courseCode, days, periods);
+					updateTable(all);
+				}
+				addInPeriods();
+	        }
+	    });
+		
+		/*for(var i = 0; i < student.schedule.classList.length; i++) {
 			var courseCode = student.schedule.classList[i].course;
 			var days = student.schedule.classList[i].day;
 			var periods = student.schedule.classList[i].period;
@@ -170,7 +187,7 @@
 			var all = work(courseCode, days, periods);
 			updateTable(all);
 		}
-		addInPeriods();
+		addInPeriods();*/
 	}
 	
 	function addInPeriods() {
