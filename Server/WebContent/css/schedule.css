@@ -1,0 +1,87 @@
+table {
+    background: #505050;
+    -webkit-box-shadow: -5px 5px 5px rgba(0,0,0,0.8);
+    -moz-box-shadow: -5px 5px 5px rgba(0,0,0,0.8);
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.8);
+
+
+    border: 3px solid #BC0000;
+
+}
+
+.temp {
+    background: url(backgroundImage.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.yo {	
+	width: 75%;
+	margin: auto;
+}
+
+th {
+
+}
+
+td:hover {
+    background: #BC0000;
+}
+
+.one {
+    background: #C0C0C0;
+}
+
+.two {
+    background: #B8B8B8;
+}
+
+.three {
+    background: #B0B0B0;
+}
+
+.four {
+    background: #A8A8A8;
+}
+
+.five {
+    background: #A0A0A0;
+}
+
+.six {
+    background: #989898;
+}
+
+.seven {
+    background: #909090;
+}
+
+.eight {
+    background: #888888;
+}
+
+.nine {
+    background: #808080;
+}
+
+.ten {
+    background: #787878;
+}
+
+.eleven {
+    background: #707070;
+}
+
+.twelve {
+    background: #686868;
+}
+
+.thirteen {
+    background: #606060;
+}
+
+.fourteen {
+    background: #585858;
+}

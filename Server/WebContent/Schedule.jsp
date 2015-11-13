@@ -10,33 +10,39 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+<link rel=stylesheet href="css/schedule.css" type="text/css" media="screen">
+
 </head>
-<body onload="main2();">
-
-	<!-- Top navigation bar -->
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand">CRISIS MANAGER</a>
-			</div>
-
-			<div>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="ScheduleServ">My Schedule</a></li>
-					<li><a href="FriendServ">Friends</a></li>
-					<li><a href="@">Make a Meeting</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="Logout">Logout</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+<body onload="main();">
+	<div class="temp">
+		
+		<!-- Top navigation bar -->
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand">CRISIS MANAGER</a>
+				</div>
 	
-	<table id="myTable" class="table table-striped">
-	</table>
+				<div>
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="ScheduleServ">My Schedule</a></li>
+						<li><a href="FriendServ">Friends</a></li>
+						<li><a href="@">Make a Meeting</a></li>
+					</ul>
 	
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="Logout">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	
+		<h2 align="center" class="text">Weekly Schedule</h2>
+        <br><br>
+	
+		<table id="myTable" class="yo">
+		</table>
+	</div>
 	<script>
 	function addTable() {
 	    var table = document.getElementById("myTable");
@@ -154,7 +160,7 @@
 	        return (time + 4 * numberOfPeriods);
 	    }
 	    else {
-	        alert("Error: in getTableIndex method");
+	       //alert("Error: in getTableIndex method");
 	        return -1;
 	    }
 	}
@@ -175,7 +181,7 @@
 					var all = work(courseCode, days, periods);
 					updateTable(all);
 				}
-				addInPeriods();
+				addInPeriods(); 
 	        }
 	    });
 		
@@ -256,14 +262,60 @@
 			return "9:20pm";
 		}
 		else {
-		    alert("B!");
 			return "error";
 		}
 	}
 	
-	function main2() {
+	function main() {
 		addTable();
 		mod();
+		for(var i = 1; i < 85; i++) { //1 - <85
+			var cell = document.getElementById(i);
+			cell.innerHTML = "POOPs";
+			if(i % 14 == 1) {
+				$(cell).addClass("one"); //one
+			}
+			else if(i % 14 == 2) {
+				$(cell).addClass("two");
+			}
+			else if(i % 14 == 3) {
+				$(cell).addClass("three");
+			}
+			else if(i % 14 == 4) {
+				$(cell).addClass("four");
+			}
+			else if(i % 14 == 5) {
+				$(cell).addClass("five");
+			}
+			else if(i % 14 == 6) {
+				$(cell).addClass("six");
+			}
+			else if(i % 14 == 7) {
+				$(cell).addClass("seven");
+			}
+			else if(i % 14 == 8) {
+				$(cell).addClass("eight");
+			}
+			else if(i % 14 == 9) {
+				$(cell).addClass("nine");
+			}
+			else if(i % 14 == 10) {
+				$(cell).addClass("ten");
+			}
+			else if(i % 14 == 11) {
+				$(cell).addClass("eleven");
+			}
+			else if(i % 14 == 12) {
+				$(cell).addClass("twelve");
+			}
+			else if(i % 14 == 13) {
+				$(cell).addClass("thirteen");
+			}
+			else if(i % 14 == 0) {
+				$(cell).addClass("fourteen");
+			}
+		}
+			
 	}
 	</script>
 </body>
