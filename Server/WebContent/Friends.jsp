@@ -85,6 +85,22 @@ function updateAll() {
     });
 }
 
+//WILL LOOK HERE ----------------------------------------------------------------FOR WILL
+function asyncGetPerson(gatorlink) {
+	$.ajax({
+        type: "POST", //Type of post
+        url: "GetPersonJson", //Where it is sent (Which servlet)
+        dataType: "json",
+        data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+        success: function (msg) { //Msg is returned FROM THE SERVER!
+			
+        	var student = msg; //student is the person we queried for given gatorlink string.
+        	console.log(student.name);
+        	
+        }
+    });
+}
+
 </script>
 
 </head>
