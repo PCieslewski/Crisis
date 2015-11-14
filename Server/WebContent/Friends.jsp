@@ -54,17 +54,20 @@ function updateFriends(list) {
     }
 }
 
+var people = [];
+
 function handleClick(cb, name) {
-	
 	if(cb.checked) {
-		//alert("NAME :" + name);
-		asyncGetPerson(name);
+		people.push(name);
 	}
 	else {
-		clearSchedule();
-		//remove student's schedule
+		var index = people.indexOf(name);
+		people.splice(index,1);
 	}
-	
+	clearSchedule();
+	for(var i = 0; i < people.length; i++) {
+		asyncGetPerson(people[i]);
+	}
 }
 
 //WILL LOOK HERE ----------------------------------------------------------------FOR WILL
