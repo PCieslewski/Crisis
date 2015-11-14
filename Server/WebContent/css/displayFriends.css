@@ -10,26 +10,15 @@ table {
 }
 
 
-html, body {
-    margin: 0;
-    height: 100%;
-}
 
-.text {
+
+.header {
     color: white;
+    font-size: 32px;
 }
 
-.temp {
-    background: url(backgroundImage.jpeg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    min-width: 100%;
-  	min-height: 100%;
-}
 
-.yo {	
+.yo1 {	
 	width: 75%;
 	margin: auto;
 }

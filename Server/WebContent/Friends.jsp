@@ -11,6 +11,9 @@
 <link rel=stylesheet href="css/friends.css" type="text/css" media="screen">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
 
+<link rel=stylesheet href="css/displayFriends.css" type="text/css" media="screen">
+<script src="scripts/tableStuff.js"></script><base>
+
 <script>
 function updatePending(list) {
     var len = list.length;
@@ -44,7 +47,10 @@ function updateFriends(list) {
     	'<a href="#" class="list-group-item">'+
 			'<h4 class="list-group-item-heading">'+list[i]+'</h4>'+
 			'<p class="list-group-item-text">Fun</p>'+
+			'<input class="myButtons" id="yourCheckboxID" type="checkbox" name="checkbox" value="checkbox">' +
 		'</a>';
+
+		asyncGetPerson(list[i]);
     }
 }
 
@@ -104,8 +110,7 @@ function asyncGetPerson(gatorlink) {
 </script>
 
 </head>
-<body onload="updateAll();">
-
+<body onload="updateAll(); main();">
 	<!-- Top navigation bar -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -127,6 +132,7 @@ function asyncGetPerson(gatorlink) {
 		</div>
 	</nav>
 
+<div class="col-xs-4">
 	<div class="container">
 		<br>
 		<ul class="nav nav-pills text2">
@@ -179,6 +185,8 @@ function asyncGetPerson(gatorlink) {
 				        }
 				    });
 				}
+				
+				
 				</script>
 
 				<div>
@@ -190,16 +198,23 @@ function asyncGetPerson(gatorlink) {
 			</div>
 		</div>
 	</div>
-
-	<div class="temp col-xs-6">
+	
+	</div>
+	<div class="col-xs-8">
 		<br>
-		<br>
-		<br>
-		<p>Todo:</p>
-		<p>insert friend schedule here</p>
+		<h2 align="center" class="header">Weekly Schedule</h2>
+        <br><br>
+        
+		<table id="myTable" class="yo1">
+		</table>
 	</div>
 
-
-
+	<script>
+	$(document).ready(function () {
+	   $('input[type=checkbox]').change(function() {
+	      alert($(this).attr('id') + " box clicked...");
+	   });
+	});
+	</script>
 </body>
 </html>
