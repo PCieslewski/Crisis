@@ -49,8 +49,6 @@ function updateFriends(list) {
 			'<p class="list-group-item-text">Fun</p>'+
 			'<input class="myButtons" onclick="handleClick(this, \''+list[i]+'\');" type="checkbox">' +
 		'</a>';
-
-		//asyncGetPerson(list[i]);
     }
 }
 
