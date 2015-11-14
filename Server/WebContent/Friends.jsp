@@ -210,6 +210,34 @@ function asyncGetPerson(gatorlink) {
 	</div>
 
 	<script>
+	
+//	   ______          _______
+//	  /       \      /        \
+//	/           \  /            \
+// |			 | |             |
+// |			 | |             |
+//	\           /   \           /
+//	  \_______/       \_______/
+//	         |          |
+//	         |          |
+//	         |          |
+//	         |          |
+//	         |          |
+//	         |          |
+//	         |          |
+//	         |          |
+//	         |          |
+//	         |          |
+//	         |          |
+//	       __|__________|__
+//	      /                \
+//	     | 				   |
+//	     |				   |
+//	      \		  |		  /
+//	       \______|______/
+//	      
+	     
+	   
 	$(document).ready(function () {
 	   $('input[type=checkbox]').change(function() {
 	      alert($(this).attr('id') + " box clicked...");
