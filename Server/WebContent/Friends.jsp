@@ -41,17 +41,83 @@ function updatePending(list) {
 function updateFriends(list) {
 	var len = list.length;
     document.getElementById('normalFriends').innerHTML = '';
-    
+    var a = "poop";
     for(var i=0; i<len; i++){
     	document.getElementById('normalFriends').innerHTML += 
     	'<a href="#" class="list-group-item">'+
 			'<h4 class="list-group-item-heading">'+list[i]+'</h4>'+
 			'<p class="list-group-item-text">Fun</p>'+
-			'<input class="myButtons" id="yourCheckboxID" type="checkbox" name="checkbox" value="checkbox">' +
+			'<input class="myButtons" onclick="handleClick(this, \''+list[i]+'\');" type="checkbox">' +
 		'</a>';
 
-		asyncGetPerson(list[i]);
+		//asyncGetPerson(list[i]);
     }
+}
+
+function handleClick(cb, name) {
+	
+	if(cb.checked) {
+		//alert("NAME :" + name);
+		asyncGetPerson(name);
+	}
+	else {
+		clearSchedule();
+		//remove student's schedule
+	}
+	
+}
+
+//WILL LOOK HERE ----------------------------------------------------------------FOR WILL
+function asyncGetPerson(gatorlink) {
+	$.ajax({
+        type: "POST", //Type of post
+        url: "GetPersonJson", //Where it is sent (Which servlet)
+        dataType: "json",
+        data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+        success: function (msg) { //Msg is returned FROM THE SERVER!
+			
+        	var student = msg; //student is the person we queried for given gatorlink string.
+        	addPerson(student);
+        	//ADD PERSON TO SCHEDULE
+ //       	console.log(student.name);
+        	
+        }
+    });
+}
+
+function addPerson(will) {
+	for(var i = 0; i < will.schedule.classList.length; i++) {
+		var courseCode = will.schedule.classList[i].course;
+		var days = will.schedule.classList[i].day;
+		var periods = will.schedule.classList[i].period;
+		
+		var all = work(courseCode, days, periods);
+		updateTable2(all);
+	}
+}
+
+function updateTable2(courseAndIndex) {
+    for(var i = 0; i < courseAndIndex.length; i++) {
+        var parse = courseAndIndex[i].split("@");
+        fillTable(parse[1]);
+    }
+}
+
+function fillTable(id) {
+	if(id < 15) {
+		//I'm embarrassed will be in production
+	}
+	else {
+		document.getElementById(id).className = "coolPattern";
+	}
+}
+
+function clearSchedule() {
+	 for(var i = 15; i < 85; i++) {
+		 document.getElementById(i).innerHTML = "";
+		 document.getElementById(i).className = "";
+	 }
+	 addClass();
 }
 
 function acceptFriend(gatorlink) {
@@ -91,26 +157,10 @@ function updateAll() {
     });
 }
 
-//WILL LOOK HERE ----------------------------------------------------------------FOR WILL
-function asyncGetPerson(gatorlink) {
-	$.ajax({
-        type: "POST", //Type of post
-        url: "GetPersonJson", //Where it is sent (Which servlet)
-        dataType: "json",
-        data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
-        success: function (msg) { //Msg is returned FROM THE SERVER!
-			
-        	var student = msg; //student is the person we queried for given gatorlink string.
-        	console.log(student.name);
-        	
-        }
-    });
-}
-
 </script>
 
 </head>
-<body onload="updateAll(); main();">
+<body onload="updateAll(); friendsMain(); clearSchedule">
 	<!-- Top navigation bar -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -202,7 +252,7 @@ function asyncGetPerson(gatorlink) {
 	</div>
 	<div class="col-xs-8">
 		<br>
-		<h2 align="center" class="header">Weekly Schedule</h2>
+		<h2 align="center" class="header">Friends' Schedules</h2>
         <br><br>
         
 		<table id="myTable" class="yo1">
@@ -238,11 +288,11 @@ function asyncGetPerson(gatorlink) {
 //	      
 	     
 	   
-	$(document).ready(function () {
-	   $('input[type=checkbox]').change(function() {
-	      alert($(this).attr('id') + " box clicked...");
-	   });
-	});
+//	$(document).ready(function () {
+//	   $('input[type=checkbox]').change(function() {
+//	      alert($(this).attr('id') + " box clicked...");
+//	   });
+//	});
 	</script>
 </body>
 </html>

@@ -54,6 +54,21 @@ function addTable() {
 				return noDash;
 			}	
 	    }
+	    else {
+	    	var temp = noDash.toString();
+	    	if(temp.length == 4) {
+	    		var part1 = temp.substring(0,2);
+	    		var part2 = temp.substring(2,4);
+	    		
+	    		var arr = [];
+	    		arr.push(part1);
+	    		arr.push(part2);
+	    		if((part1 == "E1") && (part2 == "E3")) {
+	    			arr.push("E2");
+	    		}
+	    		return arr;
+	    	}
+	    }
 	    return noDash;
 	}
 	
@@ -85,13 +100,13 @@ function addTable() {
 	    var time;
 	
 	    if(time2 == "E1") {
-	        time = 11;
-	    }
-	    else if(time2 == "E2") {
 	        time = 12;
 	    }
-	    else if(time2 == "E3") {
+	    else if(time2 == "E2") {
 	        time = 13;
+	    }
+	    else if(time2 == "E3") {
+	        time = 14;
 	    }
 	    else {
 	        time = parseInt(time2);
@@ -221,12 +236,9 @@ function addTable() {
 		}
 	}
 	
-	function main() {
-		addTable();
-		mod();
+	function addClass() {
 		for(var i = 1; i < 85; i++) { //1 - <85
 			var cell = document.getElementById(i);
-			//cell.innerHTML = "POOPs";
 			if(i % 14 == 1) {
 				$(cell).addClass("one"); //one
 			}
@@ -270,5 +282,16 @@ function addTable() {
 				$(cell).addClass("fourteen");
 			}
 		}
-			
+	}
+	
+	function friendsMain() {
+		addTable();
+		addInPeriods(); 
+		addClass();
+	}
+	
+	function main() {
+		addTable();
+		mod();
+		addClass();
 	}
