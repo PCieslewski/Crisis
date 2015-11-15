@@ -20,8 +20,8 @@ import com.backend.pojos.YourClass;
 
 public class Persist {
 	public static void persistPerson(Person bob) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		if(!doesPersonExist(bob.getGatorLink())) {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			session.save(bob);
 			session.getTransaction().commit();
@@ -30,23 +30,38 @@ public class Persist {
 			System.out.println("Already in DB!"); 
 			//throw error
 		}
+		session.close();
 	}
 	
 	public static boolean doesPersonExist(String gatorLink) {
 		Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
-		SessionFactory factory = cfg.buildSessionFactory();
-
-	    Session session = factory.openSession();
-
-	    Transaction t = session.beginTransaction();
-
-	    Query query = session.createQuery("from com.backend.pojos.Person pp where pp.gatorLink = '" + gatorLink + "'");
-	    List list = query.list();	    
-	    t.commit();
-	    session.close();
-  
-	   if(list.size() == 0) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = null;
+		
+		List list = null;
+		try {
+		    t = session.beginTransaction();
+	
+		    Query query = session.createQuery("from com.backend.pojos.Person pp where pp.gatorLink = '" + gatorLink + "'");
+		    list = query.list();	    
+		    t.commit();
+		}
+		catch(Exception e) {
+			if(t != null) {
+				t.rollback();
+				e.printStackTrace();
+			}
+		}
+		finally {
+			session.close();
+		}
+		
+		if(list == null) {
+			return false;
+		}
+		
+		if(list != null && list.size() == 0) {
 		   return false;
 	   }
 	   
@@ -56,17 +71,32 @@ public class Persist {
 	public static int getIdFromGatorLink(String gatorLink) throws UserNotFoundException {
 		Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
-		SessionFactory factory = cfg.buildSessionFactory();
-
-	    Session session = factory.openSession();
-
-	    Transaction t = session.beginTransaction();
-
-	    Query query = session.createQuery("SELECT pp.id from com.backend.pojos.Person pp WHERE pp.gatorLink = '" + gatorLink + "'");
-	    List list = query.list();
-	    t.commit();
-	    session.close();
-	    
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = null;
+		List list = null;
+		
+		try {
+		    t = session.beginTransaction();
+	
+		    Query query = session.createQuery("SELECT pp.id from com.backend.pojos.Person pp WHERE pp.gatorLink = '" + gatorLink + "'");
+		    list = query.list();
+		    t.commit();
+		}
+		catch(Exception e) {
+			if(t != null) {
+				t.rollback();
+				e.printStackTrace();
+			}
+		}
+		finally {
+			session.close();
+		}
+		
+		if(list == null) {
+			System.out.println("not in DB!");
+	    	throw new UserNotFoundException();
+		}
+		
 	    if(list.size() == 0) {
 	    	System.out.println("not in DB!");
 	    	throw new UserNotFoundException();
@@ -80,17 +110,27 @@ public class Persist {
 	private static Schedule getScheduleFromId(int id) {
 		Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
-		SessionFactory factory = cfg.buildSessionFactory();
-
-	    Session session = factory.openSession();
-
-	    Transaction t = session.beginTransaction();
-
-	    Query query = session.createQuery("from com.backend.pojos.YourClass yc where yc.id = '" + id + "'");
-	    List list = query.list();
-	    t.commit();
-	    session.close();
-	    
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = null;
+		List list = null;
+		
+		try {
+		    t = session.beginTransaction();
+	
+		    Query query = session.createQuery("from com.backend.pojos.YourClass yc where yc.id = '" + id + "'");
+		    list = query.list();
+		    t.commit();
+		}
+		catch(Exception e) {
+			if(t != null) {
+				t.rollback();
+				e.printStackTrace();
+			}
+		}
+		finally {
+			session.close();
+		}
+		
 	    Schedule schedule = new Schedule();
 	    List<YourClass> classList = new ArrayList<YourClass>();
 	    YourClass myClass = new YourClass();
@@ -107,17 +147,27 @@ public class Persist {
 	private static Person getAllPersonInfoFromId(int id) {
 		Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
-		SessionFactory factory = cfg.buildSessionFactory();
-
-	    Session session = factory.openSession();
-
-	    Transaction t = session.beginTransaction();
-
-	    Query query = session.createQuery("from com.backend.pojos.Person pp where pp.id = '" + id + "'");
-	    List list = query.list();
-	    t.commit();
-	    session.close();
-	   
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = null;
+		List list = null;
+		
+		try {
+		    t = session.beginTransaction();
+	
+		    Query query = session.createQuery("from com.backend.pojos.Person pp where pp.id = '" + id + "'");
+		    list = query.list();
+		    t.commit();
+		}
+		catch(Exception e) {
+			if(t != null) {
+				t.rollback();
+				e.printStackTrace();
+			}
+		}
+		finally {
+			session.close();
+		}
+		
 	    Person will = new Person();
 	    
 	    for(Iterator iterator = list.iterator(); iterator.hasNext();) {
@@ -152,20 +202,28 @@ public class Persist {
 			e.printStackTrace();
 		}
 		
-		
 		Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
-		SessionFactory factory = cfg.buildSessionFactory();
-
-	    Session session = factory.openSession();
-
-	    Transaction t = session.beginTransaction();
-	    
-	    Person will = (Person) session.get(Person.class, id);
-	    session.delete(will);
-	    
-	    t.commit();
-	    session.close();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = null;
+		
+		try {
+		    t = session.beginTransaction();
+		    
+		    Person will = (Person) session.get(Person.class, id);
+		    session.delete(will);
+		    
+		    t.commit();
+		}
+		catch(Exception e) {
+			if(t != null) {
+				t.rollback();
+				e.printStackTrace();
+			}
+		}
+		finally {
+			session.close();
+		}
 		
 	}
 }
