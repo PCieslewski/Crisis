@@ -24,7 +24,7 @@ function updatePending(list) {
     	'<a href="#" class="list-group-item">'+
 			'<div class="">'+ 
 				'<h4 class="list-group-item-heading">'+list[i]+'</h4>'+
-				'<p class="list-group-item-text"> a </p>'+
+				'<p class="list-group-item-text" id='+list[i]+'-name-pend>Full Name</p>'+
 			'</div>'+
 			'<div class="myButtons">'+
 				'<button class="accept" role="button" onclick="acceptFriend(\''+list[i]+'\');">'+
@@ -35,6 +35,7 @@ function updatePending(list) {
 				'</button>'+
 			'</div>'+
 		'</a>';
+    	updateName(list[i]);
     }
 }
 
@@ -46,9 +47,10 @@ function updateFriends(list) {
     	document.getElementById('normalFriends').innerHTML += 
     	'<a href="#" class="list-group-item">'+
 			'<h4 class="list-group-item-heading">'+list[i]+'</h4>'+
-			'<p class="list-group-item-text">Fun</p>'+
+			'<p class="list-group-item-text" id='+list[i]+'-name-friend>Full Name</p>'+
 			'<input class="myButtons" onclick="handleClick(this, \''+list[i]+'\');" type="checkbox">' +
 		'</a>';
+		updateName(list[i]);
     }
 }
  
@@ -114,6 +116,32 @@ function asyncGetPerson(gatorlink) {
         	addPerson(student, 1);
         	//ADD PERSON TO SCHEDULE
  //       	console.log(student.name);
+        	
+        }
+    });
+}
+
+function updateName(gatorlink) {
+	$.ajax({
+        type: "POST", //Type of post
+        url: "GetPersonJson", //Where it is sent (Which servlet)
+        dataType: "json",
+        data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+        success: function (msg) { //Msg is returned FROM THE SERVER!
+			
+        	var student = msg; //student is the person we queried for given gatorlink string.
+        	
+        	var nameField = document.getElementById(gatorlink+"-name-friend");
+        	if(nameField != null){
+        		nameField.innerHTML = student.name;
+        	}
+        	
+        	nameField = document.getElementById(gatorlink+"-name-pend");
+        	if(nameField != null){
+        		nameField.innerHTML = student.name;
+        	}
+        	
+        	//document.getElementById(i).innerHTML = "";
         	
         }
     });
