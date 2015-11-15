@@ -6,7 +6,6 @@ table {
 
 
     border: 3px solid #BC0000;
-
 }
 
 .coolPattern {
@@ -22,8 +21,14 @@ table {
 .header {
     color: white;
     font-size: 32px;
+    font-family: 'Lato', sans-serif;
 }
 
+.mySched {
+	color: white;
+	font-size: 24px;
+	font-family: 'Lato', sans-serif;
+}
 
 .yo1 {	
 	width: 75%;
@@ -36,6 +41,10 @@ th {
 
 td:hover {
     background: #BC0000;
+}
+
+.goodFont {
+	font-family: 'Lato', sans-serif;
 }
 
 .one {

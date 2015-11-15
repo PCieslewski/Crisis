@@ -68,6 +68,17 @@ function handleClick(cb, name) {
 	}
 }
 
+function seeMySchedule(cb) {
+	if(cb.checked) {
+//		people.push(name);
+		//asyncGetPerson()
+	}
+	else {
+//		var index = people.indexOf(name);
+//		people.splice(index,1);
+	}
+}
+
 //WILL LOOK HERE ----------------------------------------------------------------FOR WILL
 function asyncGetPerson(gatorlink) {
 	$.ajax({
@@ -166,7 +177,7 @@ function updateAll() {
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand">CRISIS MANAGER</a>
+				<a href="Surprise" class="navbar-brand">CRISIS MANAGER</a>
 			</div>
 
 			<div>
@@ -258,6 +269,12 @@ function updateAll() {
         
 		<table id="myTable" class="yo1">
 		</table>
+		
+		<br>
+		<div class="yo1 mySched" align="center">
+			<input onclick="seeMySchedule(this)" type="checkbox">
+			Click to see your schedule
+		</div>
 	</div>
 
 	<script>

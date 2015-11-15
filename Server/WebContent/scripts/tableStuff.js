@@ -170,7 +170,8 @@ function addTable() {
 		for(var periodNumber = 1; periodNumber < 15; periodNumber++) {
 
 			var updateCell = document.getElementById(periodNumber);
-
+			$(updateCell).addClass("goodFont");
+			
 			var temp = periodNumber;
 			var time = convertToTime(temp);
 			
@@ -239,6 +240,7 @@ function addTable() {
 	function addClass() {
 		for(var i = 1; i < 85; i++) { //1 - <85
 			var cell = document.getElementById(i);
+			$(cell).addClass("goodFont");
 			if(i % 14 == 1) {
 				$(cell).addClass("one"); //one
 			}

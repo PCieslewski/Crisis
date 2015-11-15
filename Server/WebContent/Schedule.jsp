@@ -21,7 +21,7 @@
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand">CRISIS MANAGER</a>
+					<a href="Surprise" class="navbar-brand">CRISIS MANAGER</a>
 				</div>
 	
 				<div>
