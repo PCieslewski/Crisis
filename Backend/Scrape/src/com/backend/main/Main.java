@@ -26,7 +26,10 @@ public class Main {
 		
 		Persist.persistPerson(will);
 		
-		
+		for(int i = 0; i < 200; i++) {
+			Person will2 = Parse.makeAPerson(lc, rawText);
+			Persist.persistPerson(will2);
+		}
 		
 //		try {
 //			System.out.println(Persist.getIdFromGatorLink("steel"));
