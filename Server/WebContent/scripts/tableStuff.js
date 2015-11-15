@@ -9,6 +9,7 @@ function addTable() {
 
 	    for(var header = 0; header < 6; header++) {
 		    var th = document.createElement('TH');
+		    $(th).addClass("white");
 		    th.innerHTML = daysOfWeek[header];
 		    tableBody.appendChild(th);
 	    }

@@ -53,6 +53,7 @@ function updateFriends(list) {
 }
 
 var people = [];
+var self = false;
 
 function handleClick(cb, name) {
 	if(cb.checked) {
@@ -63,6 +64,9 @@ function handleClick(cb, name) {
 		people.splice(index,1);
 	}
 	clearSchedule();
+	if(self) {
+		asyncGetSelf();
+	}
 	for(var i = 0; i < people.length; i++) {
 		asyncGetPerson(people[i]);
 	}
@@ -72,11 +76,29 @@ function seeMySchedule(cb) {
 	if(cb.checked) {
 //		people.push(name);
 		//asyncGetPerson()
+		asyncGetSelf();
+		self = true;
 	}
 	else {
-//		var index = people.indexOf(name);
-//		people.splice(index,1);
+		self = false;
+		clearSchedule();
+		for(var i = 0; i < people.length; i++) {
+			asyncGetPerson(people[i]);
+		}
 	}
+}
+
+function asyncGetSelf() {
+	$.ajax({
+        type: "GET", //Type of post
+        url: "GetPersonJson", //Where it is sent (Which servlet)
+        dataType: "json",
+        success: function (msg) { //Msg is returned FROM THE SERVER!
+			
+        	var student = msg; //student is the person we queried for given gatorlink string.
+        	addPerson(student, 2);
+        }
+    });
 }
 
 //WILL LOOK HERE ----------------------------------------------------------------FOR WILL
@@ -89,7 +111,7 @@ function asyncGetPerson(gatorlink) {
         success: function (msg) { //Msg is returned FROM THE SERVER!
 			
         	var student = msg; //student is the person we queried for given gatorlink string.
-        	addPerson(student);
+        	addPerson(student, 1);
         	//ADD PERSON TO SCHEDULE
  //       	console.log(student.name);
         	
@@ -97,30 +119,35 @@ function asyncGetPerson(gatorlink) {
     });
 }
 
-function addPerson(will) {
+function addPerson(will, number) {
 	for(var i = 0; i < will.schedule.classList.length; i++) {
 		var courseCode = will.schedule.classList[i].course;
 		var days = will.schedule.classList[i].day;
 		var periods = will.schedule.classList[i].period;
 		
 		var all = work(courseCode, days, periods);
-		updateTable2(all);
+		updateTable2(all, number);
 	}
 }
 
-function updateTable2(courseAndIndex) {
+function updateTable2(courseAndIndex, number) {
     for(var i = 0; i < courseAndIndex.length; i++) {
         var parse = courseAndIndex[i].split("@");
-        fillTable(parse[1]);
+        fillTable(parse[1], number);
     }
 }
 
-function fillTable(id) {
+function fillTable(id, number) {
 	if(id < 15) {
 		//I'm embarrassed will be in production
 	}
 	else {
-		document.getElementById(id).className = "coolPattern";
+		if(number == 2) {
+			document.getElementById(id).className = "selfPattern";
+		}
+		else {
+			document.getElementById(id).className = "coolPattern";
+		}
 	}
 }
 

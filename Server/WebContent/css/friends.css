@@ -23,6 +23,12 @@ html {
 	float: left;
 }
 
+.white {
+	color: white;
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+}
+
 .people {
 	height: 335px;
 	width: 300px;
