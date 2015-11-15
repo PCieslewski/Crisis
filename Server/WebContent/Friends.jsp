@@ -51,7 +51,7 @@ function updateFriends(list) {
 		'</a>';
     }
 }
-
+ 
 var people = [];
 var self = false;
 
@@ -226,7 +226,7 @@ function updateAll() {
 		<br>
 		<ul class="nav nav-pills text2">
 			<li><a data-toggle="pill" href="#friends" class="text" onclick="updateAll();">Friends</a></li>
-			<li><a data-toggle="pill" href="#pending" class="text" onclick="updateAll();">Pending Friends <span class="badge"> 2</span></a></li>
+			<li><a data-toggle="pill" href="#pending" class="text" onclick="updateAll();">Pending Friends</a></li>
 			<li class="active"><a data-toggle="pill" href="#addFriends" class="text" onclick="updateAll();">Add Friends</a></li>
 		</ul>
 

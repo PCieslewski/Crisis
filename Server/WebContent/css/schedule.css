@@ -19,6 +19,12 @@ html, body {
     color: white;
 }
 
+.white {
+	color: white;
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+}
+
 .temp {
     background: url(backgroundImage.jpeg) no-repeat center center fixed;
     -webkit-background-size: cover;
