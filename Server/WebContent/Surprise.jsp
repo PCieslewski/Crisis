@@ -16,9 +16,29 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
 
 </head>
+
+
+<!-- Top navigation bar -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="Surprise" class="navbar-brand">CRISIS MANAGER</a>
+			</div>
+
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="ScheduleServ">My Schedule</a></li>
+					<li class="active"><a href="FriendServ">Friends</a></li>
+					<li><a href="@">Make a Meeting</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="Logout">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 <div class="back">
-
-
 <h2 align="center" class="text"> Scroll down to meet the team that created Crisis </h2>
 <br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br>
