@@ -17,6 +17,7 @@
 
 </head>
 
+<div class="back">
 
 <!-- Top navigation bar -->
 	<nav class="navbar navbar-inverse">
@@ -29,7 +30,6 @@
 				<ul class="nav navbar-nav">
 					<li><a href="ScheduleServ">My Schedule</a></li>
 					<li><a href="FriendServ">Friends</a></li>
-					<li><a href="@">Make a Meeting</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -38,25 +38,49 @@
 			</div>
 		</div>
 	</nav>
-<div class="back">
-<h2 align="center" class="text"> Scroll down to meet the team that created Crisis </h2>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	<div class="back">
 
-<h2 align="center" class="text"> Pawel Cieslewski </h2>
+
+<br><br><br><br><br>
+ </div>
+<div class="boxForPawel">
+<br><br>
+	<h2 align="center" class="text"> Scroll Down to <br> Meet the Team </h2>
+<br><br>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+
+<h2 align="center" class="text nameBox"> Pawel Cieslewski </h2> <br>
 </div>
 <div class="parallax-window" data-parallax="scroll" data-image-src="css/pawel.jpg" data-position="-100px -100px">
 </div>
 
-<h2 align="center" class="text back"> Neil Garg </h2>
+<div class="boobs">
+<br>
+
+<h2 align="center" class="text back nameBox"> Neil Garg <br> </h2>
+<br>
+</div>
 <div class="parallax-window" data-parallax="scroll" data-image-src="css/ng.jpg" data-position="-100px -30px">
+<br>
 </div>
 
-<h2 align="center" class="text back"> Will Livesey </h2>
+
+<div class="boobs">
+<br>
+
+
+<h2 align="center" class="text back nameBox"> Will Livesey <br> </h2>
+<br>
+</div>
 <div class="parallax-window" data-parallax="scroll" data-image-src="css/me3.jpg" data-position="-100px -500">
-</div>
+<br>
 
+
+</div>
 
 </body>
 </html>

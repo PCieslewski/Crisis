@@ -239,7 +239,6 @@ function updateAll() {
 				<ul class="nav navbar-nav">
 					<li><a href="ScheduleServ">My Schedule</a></li>
 					<li class="active"><a href="FriendServ">Friends</a></li>
-					<li><a href="@">Make a Meeting</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
