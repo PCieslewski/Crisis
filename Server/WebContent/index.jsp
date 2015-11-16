@@ -15,7 +15,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
 
 	<link rel=stylesheet href="css/login.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
 	<link rel=stylesheet href="sharpCalendar/css/jquery.sharpCalendar.css" type="text/css" media="screen">
 	<link rel=stylesheet href="css/reset.css" type="text/css" media="screen">
 	<link rel=stylesheet href="css/main.css" type="text/css" media="screen">
@@ -36,11 +36,11 @@
             </section>
         </div>
         <!-- jQuery -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- SharpCalendar -->
         <script src="sharpCalendar/script/jquery.sharpCalendar.js"></script>
         <!-- libs -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.11/jquery.mousewheel.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.11/jquery.mousewheel.js"></script>
         <script src="scripts/main.js"></script>
         <script>
             $(".wrapperHor").SC({
@@ -75,7 +75,7 @@
 		
 		  (function() {
 		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
 		
