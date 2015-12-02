@@ -25,6 +25,24 @@ public class YourClass implements Serializable {
 		this.course = course;
 		this.credits = credits;
 	}
+	
+	public YourClass clone(){
+		
+		YourClass c = new YourClass();
+		
+		c.setSection(this.section);
+		c.setType(this.type);
+		c.setCourse(this.course);
+		c.setCredits(this.credits);
+		c.setDay(this.day);
+		c.setPeriod(this.period);
+		c.setBuilding(this.building);
+		c.setRoom(this.room);
+		c.setId(this.id);
+		
+		return c;
+		
+	}
 
 	public String getSection() {
 		return section;

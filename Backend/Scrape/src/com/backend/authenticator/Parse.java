@@ -4,6 +4,8 @@ import com.backend.pojos.Person;
 import com.backend.pojos.Schedule;
 import com.backend.pojos.YourClass;
 
+import bsh.This;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -201,8 +203,123 @@ public class Parse {
 	public static Person makeAPerson(LoginCredentials lc, String rawScheduleInput) {
 		List<String> parsedRawText = parseSchedule(rawScheduleInput);
 		Person will = extractPersonInfo(parsedRawText, lc);
+		adjustSchedule(will);
 		
 		return will;
+	}
+	
+	private static void adjustSchedule(Person person){
+		
+		//Allocate space for all needed lists.
+		List<YourClass> cl = person.getSchedule().getClassList();
+		List<YourClass> expCl = new ArrayList<YourClass>();
+		List<YourClass> newCl = new ArrayList<YourClass>(); 
+		
+		//Expand the original list by day.
+		int len = cl.size();
+		for(int i = 0; i < len; i++){
+			expCl.addAll( expandClassByDay(cl.get(i)) );
+		}
+		
+		//Expand the list again by period.
+		len = expCl.size();
+		for(int i = 0; i < len; i++){
+			newCl.addAll( expandClassByPeriod(expCl.get(i)) );
+		}
+		
+		//Set the new list as the class list.
+		person.getSchedule().setClassList(newCl);
+		
+	}
+	
+	//Expands a class into an array of classes with the different periods.
+	private static List<YourClass> expandClassByPeriod(YourClass c){
+		
+		List<YourClass> expanded = new ArrayList<YourClass>();
+		
+		String period = c.getPeriod();
+		String[] periods = expandPeriod(period);
+		int len = periods.length;
+		
+		for(int i=0; i<len; i++){
+			
+			YourClass temp = c.clone();
+			temp.setPeriod(periods[i]);
+			expanded.add(temp);
+			
+		}
+		
+		return expanded;
+		
+	}
+	
+	private static List<YourClass> expandClassByDay(YourClass c){
+			
+			List<YourClass> expanded = new ArrayList<YourClass>();
+			
+			String day = c.getDay();
+			String[] days = expandDay(day);
+			int len = days.length;
+			
+			for(int i=0; i<len; i++){
+				
+				YourClass temp = c.clone();
+				temp.setDay(days[i]);
+				expanded.add(temp);
+				
+			}
+			
+			return expanded;
+			
+		}
+	
+	//Expands a periods string such as "1-3" to ["1","2","3"]
+	private static String[] expandPeriod(String period){
+		
+		int startPeriod = 0;
+		int endPeriod = 0;
+		
+		if(period.contains("-")){
+		
+			String[] periodStrings = period.split("-");
+			startPeriod = Integer.parseInt(periodStrings[0]);
+			endPeriod = Integer.parseInt(periodStrings[1]);
+		
+		}
+		else if(period.length() == 4) {
+			startPeriod = Integer.parseInt(period.substring(0,2));
+			endPeriod = Integer.parseInt(period.substring(2,4));
+		}
+		else if(period.equals("")){
+			//Online class
+			return new String[]{""};
+		}
+		else if(period.length() <= 2){
+			startPeriod = Integer.parseInt(period);
+			endPeriod = Integer.parseInt(period);
+		}
+		else{
+			System.out.println("Bad Period String.");
+		}
+		
+		int len = endPeriod-startPeriod+1;
+		String[] periods = new String[len];
+		
+		for(int i=0; i<len; i++){
+			periods[i] = Integer.toString(startPeriod+i);
+		}
+	
+		return periods;
+		
+	}
+	
+	private static String[] expandDay(String day){
+		if(day.equals("Time to be arranged")){
+			return new String[]{"Time to be arranged"};
+		}
+		else{
+			return day.split(" ");
+		}
 	}
 	
 }
