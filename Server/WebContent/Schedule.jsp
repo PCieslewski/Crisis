@@ -43,6 +43,47 @@
 	
 		<table id="myTable" class="yo">
 		</table>
-	</div>	
+		
+		<script>
+		
+		function addEvent(day, period, title) {
+			$.ajax({
+		        type: "POST", 
+		        url: "AddEvent", 
+		        dataType: "json",
+		        data: {
+		        	'day':day,
+		        	'period':period,
+		        	'title':title
+		        },
+		        success: function (student) { //The response is the updated student object.
+		        	location.reload(); //THIS SHOULD BE CHANGED. JUST A REFRESH AS OF NOW.
+		        }
+		    });
+		}
+
+		function removeEvent(day, period) {
+			$.ajax({
+		        type: "POST", 
+		        url: "RemoveEvent", 
+		        dataType: "json",
+		        data: {
+		        	'day':day,
+		        	'period':period,
+		        },
+		        success: function (student) { //The response is the updated student object.
+		        	location.reload(); //THIS SHOULD BE CHANGED. JUST A REFRESH AS OF NOW.
+		        }
+		    });
+		}
+		
+		</script>
+		
+		<button onclick="addEvent('M','9','TEST123')">Add Event Test</button>
+		<button onclick="removeEvent('M','9')">Remove Event Test</button>
+		
+	</div>
+	
+	
 </body>
 </html>

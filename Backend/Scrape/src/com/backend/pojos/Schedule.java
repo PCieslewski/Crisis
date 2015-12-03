@@ -70,4 +70,31 @@ public class Schedule {
 		return "";
 	}
 	
+	public void addEvent(String day, String period, String title){
+		
+		YourClass event = new YourClass();
+		event.setCourse(title);
+		event.setPeriod(period);
+		event.setDay(day);
+		
+		classList.add(event);
+		
+	}
+	
+	public void removeEvent(String day, String period){
+		
+		List<YourClass> newList = new ArrayList<YourClass>();
+		
+		int len = classList.size();
+		
+		for(int i=0; i<len; i++){
+			YourClass c = classList.get(i);
+			if(  (!c.getDay().equals(day)) || (!c.getPeriod().equals(period)) ){
+				newList.add(c);
+			}
+		}
+		this.classList = newList;
+		
+	}
+	
 }

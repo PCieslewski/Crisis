@@ -34,6 +34,12 @@ public class PersonTest {
 		
 		Person will = Parse.makeAPerson(lc, rawText);
 		
+		will.getSchedule().addEvent("M", "9", "Testing123");
+		
+		System.out.println(will);
+		
+		will.getSchedule().removeEvent("M", "9");
+		
 		System.out.println(will);
 //		
 //		
