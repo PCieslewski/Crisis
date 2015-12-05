@@ -22,6 +22,7 @@ function addTable() {
 	           var td = document.createElement('TD');
 	           
 	           td.setAttribute("id", 14 * (columns) + rows + 1);
+	           td.setAttribute("class", "dialog");
 	           
 	           td.width='75';
 	           td.height='40';

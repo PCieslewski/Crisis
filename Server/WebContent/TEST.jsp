@@ -19,32 +19,8 @@
 <script src="scripts/tableStuff.js"></script>
 
   <script>
-  
-  var myId;
-  
-  function openBox(x) {
-	  console.log("old: " + myId);
-	  myId = x;
-	  console.log("new: " + myId);
-	  
-	  var content = document.getElementById(x);
-	  var popUp = document.getElementById("pass");
-	 
-	 
-	  if(content.innerHTML == "") {
-		  popUp.innerHTML = "No class at this time";
-		
-			  $('#dialog').dialog();
-			  $("#dialog2").dialog('close');
-	  }
-	  else {
-		  popUp.innerHTML = content.innerHTML;
-
-		  $('#dialog2').dialog();
-		  $("#dialog").dialog('close');
-	  }
-	  
-	  
+  function openBox() {
+	  $('#dialog').dialog();
   }
 
   $("#dialog").dialog({
@@ -59,34 +35,11 @@
     }
     });
 
-function addContent(theId) {
+function myFunction() {
     $('.myTarget').text($('.inputBoxes').val());
     $('.myTarget2').text($('.inputBoxes2').val());
     $('.myTarget3').text($('.inputBoxes3').val());
-    
-    var theBox = document.getElementById(theId);
-    theBox.innerHTML = $('.inputBoxes').val();
- 
-    var day = getDayFromId(theId);
-    var period = getPeriodFromId(theId);
-    
-    addEvent(day, period, $('.inputBoxes').val());
-    
     $("#dialog").dialog('close');
-}
-
-function removeContent(theId) {
-	alert("ID: " + theId);
-	var theBox = document.getElementById(theId);
-	alert("ID after: " + theId);
-    theBox.innerHTML = "";
-    
-    var day = getDayFromId(theId);
-    var period = getPeriodFromId(theId);
-    
-    removeEvent(day, period);
-    
-	$("#dialog2").dialog('close');
 }
 
 function addTable() {
@@ -111,13 +64,10 @@ function addTable() {
        for (var columns = 0; columns < 6; columns++) {
     	   
            var td = document.createElement('TD');
-           addContent
-           td.setAttribute("id", 14 * (columns) + rows + 1);
            
-           var num = (14 * (columns) + rows + 1);
-           if(columns != 0) {
-           	td.setAttribute('onclick', "openBox(" + num + ")");
-           }
+           td.setAttribute("id", 14 * (columns) + rows + 1);
+           td.setAttribute('onclick', "openBox()");
+           
            td.width='75';
            td.height='40';
            td.align="center";
@@ -126,115 +76,12 @@ function addTable() {
        }
     }
 }
-
-function getDayFromId(someId) {
-	if((someId > 14) && (someId < 29)) {
-		return "M";
-	}
-	else if((someId > 28) && (someId < 43)) {
-		return "T";
-	}
-	else if((someId > 42) && (someId < 57)) {
-		return "W";
-	}
-	else if((someId > 56) && (someId < 71)) {
-		return "R";
-	}
-	else if((someId > 70) && (someId < 85)) {
-		return "F";
-	}
-	else {
-		return "ERROR";
-	}
-}
-
-function getPeriodFromId(someId) {
-	if(someId %14 == 1) {
-		return "1";
-	}	
-	else if(someId %14 == 2) {
-		return "2";
-	}
-	else if(someId %14 == 3) {
-		return "3";
-	}
-	else if(someId %14 == 4) {
-		return "4";
-	}
-	else if(someId %14 == 5) {
-		return "5";
-	}
-	else if(someId %14 == 6) {
-		return "6";
-	}
-	else if(someId %14 == 7) {
-		return "7";
-	}
-	else if(someId %14 == 8) {
-		return "8";
-	}
-	else if(someId %14 == 9) {
-		return "9";
-	}
-	else if(someId %14 == 10) {
-		return "10";
-	}
-	else if(someId %14 == 11) {
-		return "11";
-	}
-	else if(someId %14 == 12) {
-		return "E1";
-	}
-	else if(someId %14 == 13) {
-		return "E2";
-	}
-	else if(someId %14 == 0) {
-		return "E3";
-	}
-}
   </script>
   
-  <script>
-		
-		function addEvent(day, period, title) {
-			$.ajax({
-		        type: "POST", 
-		        url: "AddEvent", 
-		        dataType: "json",
-		        data: {
-		        	'day':day,
-		        	'period':period,
-		        	'title':title
-		        },
-		        success: function (student) { //The response is the updated student object.
-		        	location.reload(); //THIS SHOULD BE CHANGED. JUST A REFRESH AS OF NOW.
-		        }
-		    });
-		}
-		function removeEvent(day, period) {
-			$.ajax({
-		        type: "POST", 
-		        url: "RemoveEvent", 
-		        dataType: "json",
-		        data: {
-		        	'day':day,
-		        	'period':period,
-		        },
-		        success: function (student) { //The response is the updated student object.
-		        	location.reload(); //THIS SHOULD BE CHANGED. JUST A REFRESH AS OF NOW.
-		        }
-		    });
-		}
-		
-		</script>
-		
 </head>
 <style>
     #dialog {
         display:none;
-    }
-    #hide {
-    	display:none;
     }
 </style>
 <body onload="main();">
@@ -267,7 +114,11 @@ function getPeriodFromId(someId) {
 		<table id="myTable" class="yo">
 		</table>
 
-	<div id="dialog" title="Add Event">
+	<div id="dialog" title="Basic dialog">
+		<div>
+	        Currently: <span id="pass"></span>
+	    </div>
+	    <br>
 	        <div class="form-group has-feedback">
 	            <input name="username" type="Username" class="inputBoxes"
 	                   placeholder="Event Name">
@@ -283,20 +134,14 @@ function getPeriodFromId(someId) {
 	            <input name="username" type="Username" class="inputBoxes3"
 	                   placeholder="Room">
 	     </div>
-	        <button class="formSaver" onclick="addContent(myId)">Create Event</button>
+	        <button class="formSaver" onclick="myFunction()">Create Event2</button>
 	</div>
-	
-	<div id="dialog2" title="Remove Event">
-		<div>
-	        Current Event: <span id="pass"></span>
-	    </div>
-	    
-	    <br>
-	      
-	    <button class="reject" role="button" onclick="removeContent(myId)">
-					<span class="glyphicon glyphicon-remove"></span> Click to remove event
-				</button>
-	</div>
+
+	<p id="test">"fucking work</p>
+
+	<div>Event Name: <span class="myTarget"></span> <br>
+    Building: <span class="myTarget2"></span> <br>
+    Room: <span class="myTarget3">here</span></div>
     
     </div>
 </body>
