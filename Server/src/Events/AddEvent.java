@@ -36,13 +36,10 @@ public class AddEvent extends HttpServlet {
 		String day = (String) request.getParameter("day");
 		String period = (String) request.getParameter("period");
 		String title = (String) request.getParameter("title");
+		String building = (String) request.getParameter("building");
+		String room = (String) request.getParameter("room");
 		
-		System.out.println("Got here.");
-		System.out.println(day);
-		System.out.println(period);
-		System.out.println(title);
-		
-		student.getSchedule().addEvent(day, period, title); //Add the event.
+		student.getSchedule().addEvent(day, period, title, building, room); //Add the event.
 		
 		Persist.deletePerson(student.getGatorLink()); //Update the person in the DB
 		Persist.persistPerson(student);

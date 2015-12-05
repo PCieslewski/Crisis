@@ -34,7 +34,7 @@ public class PersonTest {
 		
 		Person will = Parse.makeAPerson(lc, rawText);
 		
-		will.getSchedule().addEvent("M", "9", "Testing123");
+		will.getSchedule().addEvent("M", "9", "Testing123","NEB","101");
 		
 		System.out.println(will);
 		

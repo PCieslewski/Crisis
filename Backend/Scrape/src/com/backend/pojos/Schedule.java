@@ -70,12 +70,14 @@ public class Schedule {
 		return "";
 	}
 	
-	public void addEvent(String day, String period, String title){
+	public void addEvent(String day, String period, String title, String building, String room){
 		
 		YourClass event = new YourClass();
 		event.setCourse(title);
 		event.setPeriod(period);
 		event.setDay(day);
+		event.setBuilding(building);
+		event.setRoom(room);
 		
 		classList.add(event);
 		

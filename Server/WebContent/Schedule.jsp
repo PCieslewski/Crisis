@@ -70,7 +70,7 @@ function addContent(theId) {
     var day = getDayFromId(theId);
     var period = getPeriodFromId(theId);
     
-    addEvent(day, period, $('.inputBoxes').val());
+    addEvent(day, period, $('.inputBoxes').val(), $('.inputBoxes2').val(), $('.inputBoxes3').val());
     
     $("#dialog").dialog('close');
 }
@@ -196,7 +196,7 @@ function getPeriodFromId(someId) {
   
   <script>
 		
-		function addEvent(day, period, title) {
+		function addEvent(day, period, title, building, room) {
 			$.ajax({
 		        type: "POST", 
 		        url: "AddEvent", 
@@ -204,7 +204,9 @@ function getPeriodFromId(someId) {
 		        data: {
 		        	'day':day,
 		        	'period':period,
-		        	'title':title
+		        	'title':title,
+		        	'building':building,
+		        	'room':room
 		        },
 		        success: function (student) { //The response is the updated student object.
 		        	location.reload(); //THIS SHOULD BE CHANGED. JUST A REFRESH AS OF NOW.
