@@ -7,14 +7,13 @@ html {
 }
         
 .container {
-	height: 475px;
-	width: 368px;
+	height: 40%;
+	width: 75%;
 	background: #212121;
-	position: fixed;
-	top: 65%;
-	left: 15%;
-	margin-top: -400px;
-	margin-left: -150px;
+	
+	
+	margin: auto;
+
 
 	-webkit-box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
 	-moz-box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
