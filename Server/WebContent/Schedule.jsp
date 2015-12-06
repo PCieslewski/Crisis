@@ -39,7 +39,7 @@
 	  }
 	  else {
 		  popUp.innerHTML = content.innerHTML;
-
+		  getDetails(x);
 		  $('#dialog2').dialog();
 		  $("#dialog").dialog('close');
 	  }
@@ -76,9 +76,8 @@ function addContent(theId) {
 }
 
 function removeContent(theId) {
-	alert("ID: " + theId);
+	
 	var theBox = document.getElementById(theId);
-	alert("ID after: " + theId);
     theBox.innerHTML = "";
     
     var day = getDayFromId(theId);
@@ -228,6 +227,36 @@ function getPeriodFromId(someId) {
 		    });
 		}
 		
+		function getDetails(tableId) {	
+			var day = getDayFromId(tableId);
+			var period = getPeriodFromId(tableId);
+			
+			$.ajax({
+		        type: "GET", //Type of post
+		        url: "GetPersonJson", //Where it is sent (Which servlet)
+		        dataType: "json",
+		        //data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+		        success: function (msg) { //Msg is returned FROM THE SERVER!
+					var student = msg;
+					for(var i = 0; i < student.schedule.classList.length; i++) {
+						var courseCode = student.schedule.classList[i].course;
+						var days = student.schedule.classList[i].day;
+						var periods = student.schedule.classList[i].period;
+						
+						if((day == days) && (period == periods)) {
+							var buildingVar = document.getElementById("building");
+							var roomVar = document.getElementById("room");
+							buildingVar.innerHTML = student.schedule.classList[i].building;
+							roomVar.innerHTML = student.schedule.classList[i].room;
+						}
+						
+						
+					}
+					
+		        }
+		    });		  
+
+		}
 		</script>
 		
 </head>
@@ -288,9 +317,11 @@ function getPeriodFromId(someId) {
 	        <button class="formSaver" onclick="addContent(myId)">Create Event</button>
 	</div>
 	
-	<div id="dialog2" title="Remove Event">
+	<div id="dialog2" title="Remove Event" >
 		<div>
-	        Current Event: <span id="pass"></span>
+	        Event: <span id="pass"></span> <br>
+	        Building: <span id="building"></span> <br>
+	        Room: <span id="room"></span>
 	    </div>
 	    
 	    <br>
