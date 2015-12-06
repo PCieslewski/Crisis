@@ -220,8 +220,103 @@ function updateAll() {
         success: function (msg) { //Msg is returned FROM THE SERVER!
 			updatePending(msg.pendingFriends);
         	updateFriends(msg.friends);
+        	updatePendingMeetings(msg.pendingMeetings)
         }
     });
+}
+
+function addPendingEvent(gatorlinks, day, period, title, building, room) {
+	$.ajax({
+        type: "POST", 
+        url: "AddPendingEvent", 
+        dataType: "json",
+        data: {
+        	'gatorlinks':gatorlinks,
+        	'day':day,
+        	'period':period,
+        	'title':title,
+        	'building':building,
+        	'room':room
+        },
+        success: function (student) { //The response is the updated student object.
+        	updateAll();
+        }
+    });
+}
+
+function removePendingEvent(day, period, title, building, room) {
+	$.ajax({
+        type: "POST", 
+        url: "RemovePendingEvent", 
+        dataType: "json",
+        data: {
+        	'day':day,
+        	'period':period,
+        	'title':title,
+        	'building':building,
+        	'room':room
+        },
+        success: function (student) { //The response is the updated student object.
+        	updateAll();
+        }
+    });
+}
+
+function addEvent(day, period, title, building, room) {
+	$.ajax({
+        type: "POST", 
+        url: "AddEvent", 
+        dataType: "json",
+        data: {
+        	'day':day,
+        	'period':period,
+        	'title':title,
+        	'building':building,
+        	'room':room
+        },
+        success: function (student) { //The response is the updated student object.
+        	removePendingEvent(day, period, title, building, room);
+        }
+    });
+}
+
+function acceptMeeting(day, period, title, building, room){
+	addEvent(day, period, title, building, room);
+}
+
+function rejectMeeting(day, period, title, building, room){
+	removePendingEvent(day, period, title, building, room);
+}
+
+function updatePendingMeetings(list) {
+    var len = list.length;
+    document.getElementById('meetings').innerHTML = '';
+    
+    for(var i=0; i<len; i++){
+    	//var event = JSON.stringify(list[i].event);
+    	var day = list[i].event.day;
+    	var period = list[i].event.period;
+    	var title = list[i].event.course;
+    	var building = list[i].event.building;
+    	var room = list[i].event.room;
+    	var args = '\''+day+'\',\''+period+'\',\''+title+'\',\''+building+'\',\''+room+'\'';
+    	
+    	document.getElementById('meetings').innerHTML += 
+    	'<a href="#" class="list-group-item">'+
+			'<div class="">'+ 
+				'<h4 class="list-group-item-heading">'+list[i].event.course+'</h4>'+
+				'<p class="list-group-item-text">'+list[i].whoInvitedYou+'</p>'+
+			'</div>'+
+			'<div class="myButtons">'+
+				'<button class="accept" role="button" onclick="acceptMeeting('+args+');">'+
+					'<span class="glyphicon glyphicon-ok"></span>'+
+				'</button>'+
+				'<button class="reject" role="button" onclick="rejectMeeting('+args+');">'+
+					'<span class="glyphicon glyphicon-remove"></span>'+
+				'</button>'+
+			'</div>'+
+		'</a>';
+    }
 }
 
 </script>
@@ -254,6 +349,7 @@ function updateAll() {
 		<ul class="nav nav-pills text2">
 			<li><a data-toggle="pill" href="#friends" class="text" onclick="updateAll();">Friends</a></li>
 			<li><a data-toggle="pill" href="#pending" class="text" onclick="updateAll();">Pending Friends</a></li>
+			<li><a data-toggle="pill" href="#pendingMeetings" class="text" onclick="updateAll();">Pending Meetings</a></li>
 			<li class="active"><a data-toggle="pill" href="#addFriends" class="text" onclick="updateAll();">Add Friends</a></li>
 			<li><a data-toggle="pill" href="#pendingMeetings" class="text" onclick="updateAll();">Pending Meetings</a></li>
 		</ul>
@@ -278,6 +374,30 @@ function updateAll() {
 				<br>
 				<br>
 				<div class="pendingFriends" id="pendingFriends"></div>
+			</div>
+			
+			<div id="pendingMeetings" class="tab-pane fade">
+				<br>
+				<br>
+				<div class="list-group people" id="meetings">
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">Crisis Meeting</h4>
+						<p class="list-group-item-text">M - 7 - NEB - 101</p>
+						<div class="myButtons">
+							<button class="accept" role="button" onclick="">
+								<span class="glyphicon glyphicon-ok"></span>
+							</button>
+							<button class="reject" role="button" onclick="">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
+						</div>
+						
+					</a> 
+					<a href="#" class="list-group-item">
+						<h4 class="list-group-item-heading">Pawel Cieslewski</h4>
+						<p class="list-group-item-text">Pawel</p>
+					</a>
+				</div>
 			</div>
 
 			<div id="addFriends" class="tab-pane fade in active addFriend text">
@@ -332,6 +452,10 @@ function updateAll() {
 			<input onclick="seeMySchedule(this)" type="checkbox">
 			Click to see your schedule
 		</div>
+		
+		<button role="button" onclick="addPendingEvent('[pawel, karaverge]','M','10','PARTY','NEB','101');updateAll();">AddPendTEST</button>
+		<button role="button" onclick="removePendingEvent('M','10','PARTY','NEB','101');updateAll();">RemovePendTEST</button>
+		
 	</div>
 
 	<script>
@@ -369,5 +493,6 @@ function updateAll() {
 //	   });
 //	});
 	</script>
+	
 </body>
 </html>
