@@ -14,6 +14,7 @@ import com.backend.Util.HibernateUtil;
 import com.backend.authenticator.Authenticator;
 import com.backend.authenticator.GatorlinkTimeoutException;
 import com.backend.authenticator.InvalidCredentialsException;
+import com.backend.pojos.PendingMeeting;
 import com.backend.pojos.Person;
 import com.backend.pojos.Schedule;
 import com.backend.pojos.YourClass;
@@ -22,6 +23,11 @@ public class Persist {
 	public static void persistPerson(Person bob) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		if(!doesPersonExist(bob.getGatorLink())) {
+			List<PendingMeeting> pendingMeetings = new ArrayList<PendingMeeting>();
+			PendingMeeting a = new PendingMeeting();
+			a.setWhoInvitedYou("NG");
+			pendingMeetings.add(a);
+			bob.setPendingMeetings(pendingMeetings);
 			session.beginTransaction();
 			session.save(bob);
 			session.getTransaction().commit();

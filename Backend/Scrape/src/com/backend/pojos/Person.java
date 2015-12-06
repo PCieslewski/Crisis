@@ -28,6 +28,10 @@ public class Person {
 	
 	private List<String> pendingFriends;
 	
+	private List<PendingMeeting> pendingMeetings;
+	
+	private int meetId;
+	
 	public Person() {
 		this.friends = new ArrayList<String>();
 		this.pendingFriends = new ArrayList<String>();
@@ -126,6 +130,22 @@ public class Person {
 	
 	public void setPendingFriends(List<String> pendingFriends) {
 		this.pendingFriends = pendingFriends;
+	}
+	
+	public List<PendingMeeting> getPendingMeetings() {
+		return pendingMeetings;
+	}
+	
+	public void setPendingMeetings(List<PendingMeeting> pendingMeetings) {
+		this.pendingMeetings = pendingMeetings;
+	}
+	
+	public int getMeetId() {
+		return meetId;
+	}
+	
+	public void setMeetId(int meetId) {
+		this.meetId = meetId;
 	}
 	
 	public String toString() {	

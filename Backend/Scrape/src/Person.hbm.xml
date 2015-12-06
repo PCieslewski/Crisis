@@ -43,6 +43,29 @@
 	            </composite-element>
        		 </list>
 	  	</component>
+
+	
+	  	<list name="pendingMeetings" table="Meetings">
+	            <key column="id" />
+	            <list-index column="listOrder" />
+	    		<composite-element class="com.backend.pojos.PendingMeeting">
+	                <property name="meetingId" column="meetingId" type="int"/>
+	                
+	                <nested-composite-element name="event" class="com.backend.pojos.YourClass">
+	                	<property name="section" column="section" type="string"/>
+	                	<property name="type" column="type" type="string"/>         
+						<property name="course" column="course" type="string"/>
+	 					<property name="credits" column="credits" type="string"/> 	
+	 					<property name="day" column="day" type="string"/>
+	 					<property name="period" column="period" type="string"/>
+	 					<property name="building" column="building" type="string"/>
+	 					<property name="room" column="room" type="string"/>
+	                </nested-composite-element>
+	              
+	                
+	                <property name="whoInvitedYou" column="whoInvitedYou" type="string"/>
+	    		</composite-element>
+	  	</list>
 	  	
 	</class>
 </hibernate-mapping>
