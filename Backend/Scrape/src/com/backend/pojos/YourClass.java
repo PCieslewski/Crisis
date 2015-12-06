@@ -43,6 +43,28 @@ public class YourClass implements Serializable {
 		return c;
 		
 	}
+	
+	//Overload the equals operator to only check 5 fields.
+	public boolean equals(YourClass yc){
+		
+		if(!yc.getCourse().equals(this.course)){
+			return false;
+		}
+		if(!yc.getDay().equals(this.day)){
+			return false;
+		}
+		if(!yc.getPeriod().equals(this.period)){
+			return false;
+		}
+		if(!yc.getBuilding().equals(this.building)){
+			return false;
+		}
+		if(!yc.getRoom().equals(this.room)){
+			return false;
+		}
+		
+		return true;
+	}
 
 	public String getSection() {
 		return section;

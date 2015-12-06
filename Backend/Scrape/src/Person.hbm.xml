@@ -45,7 +45,7 @@
 	  	</component>
 
 	
-	  	<list name="pendingMeetings" table="Meetings">
+	  	<list name="pendingMeetings" table="Meetings" lazy="false">
 	            <key column="id" />
 	            <list-index column="listOrder" />
 	    		<composite-element class="com.backend.pojos.PendingMeeting">

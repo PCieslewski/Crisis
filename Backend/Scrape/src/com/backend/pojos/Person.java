@@ -35,6 +35,7 @@ public class Person {
 	public Person() {
 		this.friends = new ArrayList<String>();
 		this.pendingFriends = new ArrayList<String>();
+		this.pendingMeetings = new ArrayList<PendingMeeting>();
 	}
 	
 	public Person(String name, String birthday, String major, String college, List<YourClass> classList) {
@@ -44,12 +45,7 @@ public class Person {
 		this.college = college;
 		this.friends = new ArrayList<String>();
 		this.pendingFriends = new ArrayList<String>();
-	}
-	
-	//Static method to return a person object from a JSON string. Do not use with "new."
-	public static Person personFromJson(String personJson){
-		Gson gson = new GsonBuilder().create();
-		return gson.fromJson(personJson, Person.class);
+		this.pendingMeetings = new ArrayList<PendingMeeting>();
 	}
 
 	public String getName() {
@@ -194,6 +190,31 @@ public class Person {
 		while(friends.contains(gatorlink)){
 			friends.remove(gatorlink);
 		}
+	}
+	
+	public void addToPendingMeeting(PendingMeeting pm){
+		this.pendingMeetings.add(pm);
+	}
+	
+	//This is a WEIRD function. Takes in your class instead of pending meeting. Talk to Pawel if need help. 
+	public void removeFromPendingMeeting(YourClass yc){
+		ArrayList<PendingMeeting> newPendingMeetings = new ArrayList<PendingMeeting>();
+		
+		int len = this.pendingMeetings.size();
+		for(int i=0; i<len; i++){
+			if(!pendingMeetings.get(i).getEvent().equals(yc)){
+				newPendingMeetings.add(pendingMeetings.get(i));
+			}
+		}
+		
+		this.pendingMeetings = newPendingMeetings;
+		
+	}
+	
+	//Static method to return a person object from a JSON string. Do not use with "new."
+	public static Person personFromJson(String personJson){
+		Gson gson = new GsonBuilder().create();
+		return gson.fromJson(personJson, Person.class);
 	}
 	
 	public String getJson(){
