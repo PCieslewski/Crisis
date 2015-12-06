@@ -351,7 +351,6 @@ function updatePendingMeetings(list) {
 			<li><a data-toggle="pill" href="#pending" class="text" onclick="updateAll();">Pending Friends</a></li>
 			<li><a data-toggle="pill" href="#pendingMeetings" class="text" onclick="updateAll();">Pending Meetings</a></li>
 			<li class="active"><a data-toggle="pill" href="#addFriends" class="text" onclick="updateAll();">Add Friends</a></li>
-			<li><a data-toggle="pill" href="#pendingMeetings" class="text" onclick="updateAll();">Pending Meetings</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -402,9 +401,7 @@ function updatePendingMeetings(list) {
 
 			<div id="addFriends" class="tab-pane fade in active addFriend text">
 				<br><br><br><br><br><br>
-				
-				<div id="pendingMeetings" class="tab-pane fade"></div>
-				
+								
 				<script>
 				function addFriend() {
 				    $.ajax({
