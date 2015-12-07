@@ -7,13 +7,11 @@ html {
 }
         
 .container {
-	height: 40%;
-	width: 75%;
+	height: 60%;
+	width: 82%;
 	background: #212121;
 	
-	
 	margin: auto;
-
 
 	-webkit-box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
 	-moz-box-shadow: -3px 3px 3px rgba(0,0,0,0.8);
@@ -30,15 +28,15 @@ html {
 
 .people {
 	height: 335px;
-	width: 300px;
-	margin-left: 18px;
+	width: 75%;
+	margin-left: 10%;
 	overflow: auto;
 }
 
 .addFriend {
 	height: 335px;
-	width: 300px;
-	margin-left: 18px;
+	width: 75%;
+	margin-left: 10%;
 	overflow: auto;
 }
 

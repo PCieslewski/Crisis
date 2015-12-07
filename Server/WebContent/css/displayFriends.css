@@ -28,6 +28,10 @@ table {
   );
 }
 
+.hideMe {
+	display: none;
+}
+
 .header {
     color: white;
     font-size: 32px;

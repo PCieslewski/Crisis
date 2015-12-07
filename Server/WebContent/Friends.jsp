@@ -8,6 +8,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <link rel=stylesheet href="css/friends.css" type="text/css" media="screen">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
 
@@ -54,6 +58,7 @@ function updateFriends(list) {
     }
 }
  
+var myId;
 var people = [];
 var self = false;
 
@@ -194,7 +199,21 @@ function acceptFriend(gatorlink) {
         dataType: "json",
         data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
         success: function (msg) { //Msg is returned FROM THE SERVER!
-			updateAll();
+			updateFriendList();
+        }
+    });
+}
+
+function updateFriendList() {
+	$.ajax({
+        type: "GET", //Type of post
+        url: "GetPersonJson", //Where it is sent (Which servlet)
+        dataType: "json",
+        //data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+        success: function (msg) { //Msg is returned FROM THE SERVER!
+			updatePending(msg.pendingFriends);
+        	updateFriends(msg.friends);
+        	updatePendingMeetings(msg.pendingMeetings)
         }
     });
 }
@@ -219,7 +238,7 @@ function updateAll() {
         //data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
         success: function (msg) { //Msg is returned FROM THE SERVER!
 			updatePending(msg.pendingFriends);
-        	updateFriends(msg.friends);
+        	//updateFriends(msg.friends);
         	updatePendingMeetings(msg.pendingMeetings)
         }
     });
@@ -240,6 +259,10 @@ function addPendingEvent(gatorlinks, day, period, title, building, room) {
         },
         success: function (student) { //The response is the updated student object.
         	updateAll();
+        	//redraw
+        	
+        	var index = getTableIndex(day, period) + 14;
+        	fillTable(index,2);
         }
     });
 }
@@ -319,31 +342,184 @@ function updatePendingMeetings(list) {
     }
 }
 
+function getDayFromId(someId) {
+	if((someId > 14) && (someId < 29)) {
+		return "M";
+	}
+	else if((someId > 28) && (someId < 43)) {
+		return "T";
+	}
+	else if((someId > 42) && (someId < 57)) {
+		return "W";
+	}
+	else if((someId > 56) && (someId < 71)) {
+		return "R";
+	}
+	else if((someId > 70) && (someId < 85)) {
+		return "F";
+	}
+	else {
+		return "ERROR";
+	}
+}
+
+function getPeriodFromId(someId) {
+	if(someId %14 == 1) {
+		return "1";
+	}	
+	else if(someId %14 == 2) {
+		return "2";
+	}
+	else if(someId %14 == 3) {
+		return "3";
+	}
+	else if(someId %14 == 4) {
+		return "4";
+	}
+	else if(someId %14 == 5) {
+		return "5";
+	}
+	else if(someId %14 == 6) {
+		return "6";
+	}
+	else if(someId %14 == 7) {
+		return "7";
+	}
+	else if(someId %14 == 8) {
+		return "8";
+	}
+	else if(someId %14 == 9) {
+		return "9";
+	}
+	else if(someId %14 == 10) {
+		return "10";
+	}
+	else if(someId %14 == 11) {
+		return "11";
+	}
+	else if(someId %14 == 12) {
+		return "E1";
+	}
+	else if(someId %14 == 13) {
+		return "E2";
+	}
+	else if(someId %14 == 0) {
+		return "E3";
+	}
+}
+
+function makeMeeting(id) {
+	var day = getDayFromId(id);
+	var period = getPeriodFromId(id);
+	
+	addPendingEvent(people, day, period, $('.title').val(), $('.building').val(), $('.room').val())
+	
+	var fix = "[";
+	fix += people.toString();
+	fix += "]";
+	
+	addPendingEvent(fix, day, period, $('.title').val(), $('.building').val(), $('.room').val())
+	
+	$('#dialog').dialog('close');
+}
+
+function openBox(x) {
+	myId = x;
+	
+	var theBox = document.getElementById(x);
+	var reason = document.getElementById("reason");
+	
+	if(theBox.className == "selfPattern") {
+		reason.innerHTML = "Sorry, you can't have a meeting at this time. You have a previous event already scheduled.";
+		$('#dialog2').dialog();
+		$('#dialog').dialog('close');
+	}
+	else if(theBox.className == "coolPattern") {
+		reason.innerHTML = "Sorry, you can't have a meeting at this time. A friend has a previous event already scheduled.";
+		$('#dialog2').dialog();
+		$('#dialog').dialog('close');
+	}
+	else if(!self) {
+		reason.innerHTML = "You must make your schedule visable before adding meetings!";
+		$('#dialog2').dialog();
+		$('#dialog').dialog('close');
+	}
+	else {
+		$('#dialog').dialog();
+		$('#dialog2').dialog('close');
+	}
+	
+}
+
+$("#dialog").dialog({
+  autoOpen: false,
+  show: {
+      effect: "blind",
+      duration: 1000
+  },
+  hide: {
+      effect: "explode",
+      duration: 1000
+  }
+  });
+  
+
 </script>
 
 </head>
-<body onload="updateAll(); friendsMain(); clearSchedule">
+<body onload="updateFriendList(); friendsMain(); clearSchedule">
 	<!-- Top navigation bar -->
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a href="Surprise" class="navbar-brand">CRISIS MANAGER</a>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a href="Surprise" class="navbar-brand">CRISIS MANAGER</a>
+				</div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li><a href="ScheduleServ">My Schedule</a></li>
+						<li class="active"><a href="FriendServ">Friends</a></li>
+                        <li><a href="Surprise">About Us</a></li>
+                        <li><a href="Help.html">Help</a></li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="Logout">Logout</a></li>
+					</ul>
+				</div>
 			</div>
+		</nav>
+	
+<div class="hideMe">
+	<div id="dialog" title="Add a Meeting">
+	        <div class="form-group has-feedback">
+	            <input name="username" type="Username" class="title"
+	                   placeholder="Event Name">
+	        </div>
+	
+	        <div class="form-group has-feedback">
+	            <input name="password" type="Username" class="building"
+	                   placeholder="Building">
+	        </div>
+	
+	
+	    <div class="form-group has-feedback">
+	            <input name="username" type="Username" class="room"
+	                   placeholder="Room">
+	     </div>
+	        <button class="formSaver" onclick="makeMeeting(myId)">Make Meeting</button>
+	</div>
+	
+	<div id="dialog2" title="Time Unavailable" >
+		<div>
+	        <span id="reason"></span> <br>
+	    </div>
+	</div>
+</div>
 
-			<div>
-				<ul class="nav navbar-nav">
-					<li><a href="ScheduleServ">My Schedule</a></li>
-					<li class="active"><a href="FriendServ">Friends</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="Logout">Logout</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
+<div class="col-xs-1"></div>
+	
 <div class="col-xs-4">
+<br><br><br><br><br><br><br><br><br><br>
 	<div class="container">
 		<br>
 		<ul class="nav nav-pills text2">
@@ -372,7 +548,8 @@ function updatePendingMeetings(list) {
 			<div id="pending" class="tab-pane fade">
 				<br>
 				<br>
-				<div class="pendingFriends" id="pendingFriends"></div>
+				<div class="pendingFriends people" id="pendingFriends"></div>
+				<br>
 			</div>
 			
 			<div id="pendingMeetings" class="tab-pane fade">
@@ -399,8 +576,8 @@ function updatePendingMeetings(list) {
 				</div>
 			</div>
 
-			<div id="addFriends" class="tab-pane fade in active addFriend text">
-				<br><br><br><br><br><br>
+			<div id="addFriends" class="tab-pane fade in active people text">
+				<br><br><br><br><br><br><br>
 								
 				<script>
 				function addFriend() {
@@ -430,13 +607,14 @@ function updatePendingMeetings(list) {
 				</div>
 				<div id="test"></div>
 				<button onclick="addFriend()" class="btn btn-default btn-block addFriendButton text">Add Friend</button>
-
+				
+			
 			</div>
 		</div>
 	</div>
 	
 	</div>
-	<div class="col-xs-8">
+	<div class="col-xs-7">
 		<br>
 		<h2 align="center" class="header">Friends' Schedules</h2>
         <br><br>
@@ -450,11 +628,11 @@ function updatePendingMeetings(list) {
 			Click to see your schedule
 		</div>
 		
-		<button role="button" onclick="addPendingEvent('[pawel, karaverge]','M','10','PARTY','NEB','101');updateAll();">AddPendTEST</button>
-		<button role="button" onclick="removePendingEvent('M','10','PARTY','NEB','101');updateAll();">RemovePendTEST</button>
 		
 	</div>
 
+	
+	
 	<script>
 	
 //	   ______          _______

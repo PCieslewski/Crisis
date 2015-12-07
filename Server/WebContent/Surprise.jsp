@@ -20,24 +20,25 @@
 <div class="back">
 
 <!-- Top navigation bar -->
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a href="Surprise" class="navbar-brand">CRISIS MANAGER</a>
-			</div>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a href="Surprise" class="navbar-brand">CRISIS MANAGER</a>
+				</div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li><a href="ScheduleServ">My Schedule</a></li>
+						<li><a href="FriendServ">Friends</a></li>
+                        <li class="active"><a href="Surprise">About Us</a></li>
+                        <li><a href="Help.html">Help</a></li>
+					</ul>
 
-			<div>
-				<ul class="nav navbar-nav">
-					<li><a href="ScheduleServ">My Schedule</a></li>
-					<li><a href="FriendServ">Friends</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="Logout">Logout</a></li>
-				</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="Logout">Logout</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</nav>
+		</nav>
 	
 	<div class="back">
 

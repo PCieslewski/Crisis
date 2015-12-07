@@ -23,6 +23,11 @@ function addTable() {
 	           
 	           td.setAttribute("id", 14 * (columns) + rows + 1);
 	           td.setAttribute("class", "dialog");
+	          
+	           var num = (14 * (columns) + rows + 1);
+	           if(columns != 0) {
+	           	td.setAttribute('onclick', "openBox(" + num + ")");
+	           }
 	           
 	           td.width='75';
 	           td.height='40';
@@ -152,6 +157,37 @@ function addTable() {
 					
 					var all = work(courseCode, days, periods);
 					updateTable(all);
+				}
+				addInPeriods(); 
+	        }
+	    });
+		
+		/*for(var i = 0; i < student.schedule.classList.length; i++) {
+			var courseCode = student.schedule.classList[i].course;
+			var days = student.schedule.classList[i].day;
+			var periods = student.schedule.classList[i].period;
+			
+			var all = work(courseCode, days, periods);
+			updateTable(all);
+		}
+		addInPeriods();*/
+	}
+	
+	function mod2() {	
+		$.ajax({
+	        type: "GET", //Type of post
+	        url: "GetPersonJson", //Where it is sent (Which servlet)
+	        dataType: "json",
+	        //data: {'gatorlink':gatorlink}, //This is sent TO THE SERVER
+	        success: function (msg) { //Msg is returned FROM THE SERVER!
+				var student = msg;
+				for(var i = 0; i < student.schedule.classList.length; i++) {
+					var courseCode = student.schedule.classList[i].course;
+					var days = student.schedule.classList[i].day;
+					var periods = student.schedule.classList[i].period;
+					
+					var all = work(courseCode, days, periods);
+//					updateTable(all);
 				}
 				addInPeriods(); 
 	        }

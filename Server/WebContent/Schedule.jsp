@@ -43,8 +43,6 @@
 		  $('#dialog2').dialog();
 		  $("#dialog").dialog('close');
 	  }
-	  
-	  
   }
 
   $("#dialog").dialog({
@@ -208,7 +206,8 @@ function getPeriodFromId(someId) {
 		        	'room':room
 		        },
 		        success: function (student) { //The response is the updated student object.
-		        	location.reload(); //THIS SHOULD BE CHANGED. JUST A REFRESH AS OF NOW.
+		        	//location.reload(); //THIS SHOULD BE CHANGED. JUST A REFRESH AS OF NOW.
+		        	mod();
 		        }
 		    });
 		}
@@ -222,7 +221,8 @@ function getPeriodFromId(someId) {
 		        	'period':period,
 		        },
 		        success: function (student) { //The response is the updated student object.
-		        	location.reload(); //THIS SHOULD BE CHANGED. JUST A REFRESH AS OF NOW.
+		        	//location.reload(); //THIS SHOULD BE CHANGED. JUST A REFRESH AS OF NOW.
+		        	mod();
 		        }
 		    });
 		}
@@ -271,19 +271,20 @@ function getPeriodFromId(someId) {
 <body onload="main();">
 	<div class="temp">
 		
-		<!-- Top navigation bar -->
+	<!-- Top navigation bar -->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a href="Surprise" class="navbar-brand">CRISIS MANAGER</a>
 				</div>
-	
 				<div>
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="ScheduleServ">My Schedule</a></li>
 						<li><a href="FriendServ">Friends</a></li>
+                        <li><a href="Surprise">About Us</a></li>
+                        <li><a href="Help.html">Help</a></li>
 					</ul>
-	
+
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="Logout">Logout</a></li>
 					</ul>
@@ -297,7 +298,7 @@ function getPeriodFromId(someId) {
 	
 		<table id="myTable" class="yo">
 		</table>
-
+<div class="hideMe">
 	<div id="dialog" title="Add Event">
 	        <div class="form-group has-feedback">
 	            <input name="username" type="Username" class="inputBoxes"

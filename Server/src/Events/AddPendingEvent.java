@@ -87,10 +87,10 @@ public class AddPendingEvent extends HttpServlet {
 		
 		//TEMP DISABLE!!!!!!
 		
-//		student.getSchedule().addEvent(day, period, title, building, room); //Add the event.
-//		Persist.deletePerson(student.getGatorLink()); //Update the person in the DB
-//		Persist.persistPerson(student);
-//		response.getWriter().write(student.getJson()); //Return a JSON with the updated person.
+		student.getSchedule().addEvent(day, period, title, building, room); //Add the event.
+		Persist.deletePerson(student.getGatorLink()); //Update the person in the DB
+		Persist.persistPerson(student);
+		response.getWriter().write(student.getJson()); //Return a JSON with the updated person.
 		
 	}
 
