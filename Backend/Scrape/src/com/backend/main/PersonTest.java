@@ -21,26 +21,36 @@ public class PersonTest {
 //		String[] test = expandDay("M   W F  ");
 //		System.out.println(Arrays.toString(test));
 		
-		LoginCredentials lc = LoginCredentials.console();
-		String rawText = "";
+		String period = "E1";
 		
-		try {
-			rawText = Authenticator.getScheduleOnline(lc);
-		} catch (InvalidCredentialsException e) {
-			e.printStackTrace();
-		} catch (GatorlinkTimeoutException e) {
-			e.printStackTrace();
+		while(period.contains("E1")){
+			period = period.replaceFirst("E1", "12");
 		}
 		
-		Person will = Parse.makeAPerson(lc, rawText);
+		System.out.println(period);
 		
-		will.getSchedule().addEvent("M", "9", "Testing123","NEB","101");
+//		LoginCredentials lc = LoginCredentials.console();
+//		String rawText = "";
+//		
+//		try {
+//			rawText = Authenticator.getScheduleOnline(lc);
+//		} catch (InvalidCredentialsException e) {
+//			e.printStackTrace();
+//		} catch (GatorlinkTimeoutException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		Person will = Parse.makeAPerson(lc, rawText);
+//		
+//		//will.getSchedule().addEvent("M", "9", "Testing123","NEB","101");
+//		
+//		System.out.println(will);
+//		
+//		System.out.println("END!!!!");
 		
-		System.out.println(will);
+		//will.getSchedule().removeEvent("M", "9");
 		
-		will.getSchedule().removeEvent("M", "9");
-		
-		System.out.println(will);
+		//System.out.println(will);
 //		
 //		
 //		

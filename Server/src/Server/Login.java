@@ -42,6 +42,8 @@ public class Login extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("HERE0");
+		
 		HttpSession session = request.getSession(true);
 		
 		Person test = (Person) session.getAttribute("student");
@@ -77,8 +79,11 @@ public class Login extends HttpServlet {
 			try {
 				
 				String rawScheduleString = Authenticator.getScheduleOnline(lc);
+				System.out.println("HERE1");
 				Person student = Parse.makeAPerson(lc, rawScheduleString);
+				System.out.println("HERE2");
 				Persist.persistPerson(student);
+				System.out.println("HERE3");
 				
 				session.setAttribute("student", student);
 				session.setAttribute("studentGatorlink", username);
