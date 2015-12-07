@@ -279,6 +279,16 @@ public class Parse {
 		int startPeriod = 0;
 		int endPeriod = 0;
 		
+		while(period.contains("E1")){
+			period.replaceFirst("E1", "12");
+		}
+		while(period.contains("E2")){
+			period.replaceFirst("E2", "13");
+		}
+		while(period.contains("E3")){
+			period.replaceFirst("E3", "14");
+		}
+		
 		if(period.contains("-")){
 		
 			String[] periodStrings = period.split("-");
@@ -307,6 +317,18 @@ public class Parse {
 		
 		for(int i=0; i<len; i++){
 			periods[i] = Integer.toString(startPeriod+i);
+		}
+		
+		for(int i=0; i<periods.length; i++){
+			if(periods[i].equals("12")){
+				periods[i] = "E1";
+			}
+			if(periods[i].equals("13")){
+				periods[i] = "E2";
+			}
+			if(periods[i].equals("14")){
+				periods[i] = "E3";
+			}
 		}
 	
 		return periods;
