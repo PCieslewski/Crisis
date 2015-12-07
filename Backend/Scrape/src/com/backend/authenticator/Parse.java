@@ -276,17 +276,19 @@ public class Parse {
 	//Expands a periods string such as "1-3" to ["1","2","3"]
 	private static String[] expandPeriod(String period){
 		
+		System.out.println("HERE");
+		
 		int startPeriod = 0;
 		int endPeriod = 0;
 		
 		while(period.contains("E1")){
-			period.replaceFirst("E1", "12");
+			period = period.replaceFirst("E1", "12");
 		}
 		while(period.contains("E2")){
-			period.replaceFirst("E2", "13");
+			period = period.replaceFirst("E2", "13");
 		}
 		while(period.contains("E3")){
-			period.replaceFirst("E3", "14");
+			period = period.replaceFirst("E3", "14");
 		}
 		
 		if(period.contains("-")){
@@ -330,7 +332,7 @@ public class Parse {
 				periods[i] = "E3";
 			}
 		}
-	
+		
 		return periods;
 		
 	}
