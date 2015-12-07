@@ -26,6 +26,11 @@ html {
 	text-align: center;
 }
 
+.down {
+	
+	margin: auto;
+}
+
 .people {
 	height: 335px;
 	width: 75%;

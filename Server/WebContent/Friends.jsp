@@ -576,9 +576,9 @@ $("#dialog").dialog({
 				</div>
 			</div>
 
-			<div id="addFriends" class="tab-pane fade in active people text">
-				<br><br><br><br><br><br><br>
-								
+			<div id="addFriends" class="tab-pane fade in active">
+				<br><br>     
+				<div class="list-group people text">				
 				<script>
 				function addFriend() {
 				    $.ajax({
@@ -602,13 +602,14 @@ $("#dialog").dialog({
 				
 				</script>
 
+			<div class="down">
 				<div>
 					<input id="friendGatorlink" type="text" class="form-control" placeholder="Enter Friend's Gatorlink">
 				</div>
 				<div id="test"></div>
 				<button onclick="addFriend()" class="btn btn-default btn-block addFriendButton text">Add Friend</button>
-				
-			
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>
